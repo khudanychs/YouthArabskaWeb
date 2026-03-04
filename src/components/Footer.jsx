@@ -2,11 +2,31 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
   const navLinks = [
-    { to: '/vize', label: 'Filozofie' },
-    { to: '/horizont', label: 'Horizont' },
-    { to: '/program', label: 'Program' },
-    { to: '/spojenectvi', label: 'Spojenectví' },
+    { to: '/#vize', label: 'Filozofie' },
+    { to: '/#horizont', label: 'Horizont' },
+    { to: '/#program', label: 'Program' },
+    { to: '/#spojenectvi', label: 'Spojenectví' },
   ]
+
+  const handleScrollTo = (e, to) => {
+    // Pokud je to kotva nebo logo, vyřešíme scroll sami
+    if (to.startsWith('/#') || to === '/') {
+      e.preventDefault()
+      
+      const sectionId = to.replace('/#', '')
+      const newPath = to === '/' ? '/YouthArabskaWeb/' : `/YouthArabskaWeb${to}`
+      window.history.pushState(null, '', newPath)
+
+      if (to === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
+    }
+  }
 
   return (
     <footer className="relative py-12 px-4">
@@ -14,7 +34,11 @@ export default function Footer() {
         <div className="glass-card p-8 md:p-10 grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-1 mb-3">
+            <Link 
+              to="/" 
+              onClick={(e) => handleScrollTo(e, '/')}
+              className="flex items-center gap-1 mb-3"
+            >
               <span className="text-white/70 font-sans font-light tracking-widest uppercase text-xs">Youth</span>
               <span className="text-gradient font-serif font-bold text-xl">Arabská</span>
             </Link>
@@ -29,7 +53,11 @@ export default function Footer() {
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.to}>
-                  <Link to={link.to} className="text-white/50 hover:text-white text-xs transition-colors">
+                  <Link 
+                    to={link.to} 
+                    onClick={(e) => handleScrollTo(e, link.to)}
+                    className="text-white/50 hover:text-white text-xs transition-colors"
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -52,7 +80,11 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/50 hover:text-white text-xs transition-colors">
+                <a 
+                  href="#vize" 
+                  onClick={(e) => handleScrollTo(e, '/#vize')}
+                  className="text-white/50 hover:text-white text-xs transition-colors"
+                >
                   Etický kodex komunity
                 </a>
               </li>

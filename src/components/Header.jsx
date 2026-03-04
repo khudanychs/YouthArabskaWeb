@@ -12,13 +12,33 @@ export default function Header() {
   }, [])
 
   const navLinks = [
-    { to: '/vize', label: 'Naše Vize' },
-    { to: '/horizont', label: 'Projekt Horizont' },
-    { to: '/program', label: 'Program' },
-    { to: '/spojenectvi', label: 'Spojenectví' },
+    { to: '/#vize', label: 'Naše Vize' },
+    { to: '/#horizont', label: 'Projekt Horizont' },
+    { to: '/#program', label: 'Program' },
+    { to: '/#spojenectvi', label: 'Spojenectví' },
   ]
 
-  const handleNavLinkClick = () => setNavOpen(false)
+  const handleNavLinkClick = (e, to) => {
+    setNavOpen(false)
+    
+    // Explicitní scroll pro kotvy i logo
+    if (to.startsWith('/#') || to === '/') {
+      e.preventDefault()
+      
+      const sectionId = to.replace('/#', '')
+      const newPath = to === '/' ? '/YouthArabskaWeb/' : `/YouthArabskaWeb${to}`
+      window.history.pushState(null, '', newPath)
+
+      if (to === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
+    }
+  }
 
   return (
     <header
@@ -30,7 +50,12 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand */}
-        <Link to="/" className="flex items-center gap-1 text-xl font-semibold" aria-label="Návrat na počátek">
+        <Link 
+          to="/" 
+          onClick={(e) => handleNavLinkClick(e, '/')}
+          className="flex items-center gap-1 text-xl font-semibold" 
+          aria-label="Návrat na počátek"
+        >
           <span className="text-white/80 font-sans font-light tracking-widest uppercase text-sm">Youth</span>
           <span className="text-gradient font-serif font-bold text-2xl">Arabská</span>
         </Link>
@@ -68,7 +93,7 @@ export default function Header() {
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  onClick={handleNavLinkClick}
+                  onClick={(e) => handleNavLinkClick(e, link.to)}
                   className="text-white/70 hover:text-white transition-colors duration-200 text-sm font-medium tracking-wide"
                 >
                   {link.label}
