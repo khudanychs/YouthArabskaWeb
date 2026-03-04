@@ -1,0 +1,36 @@
+{
+  "name": "Youth Arabská",
+  "short_name": "Youth Arabská",
+  "description": "Prestižní platforma studentů Gymnázia Arabská 14. Skrze projekt Horizont propojujeme akademický svět s reálnou praxí a formujeme elitu zítřka.",
+  "start_url": "/YouthArabskaWeb/",
+  "scope": "/YouthArabskaWeb/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#1a0533",
+  "theme_color": "#FFD700",
+  "lang": "cs",
+  "categories": ["education", "community"],
+  "icons": [
+    {
+      "src": "/YouthArabskaWeb/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/YouthArabskaWeb/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/YouthArabskaWeb/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Youth Arabská – úvodní strana"
+    }
+  ]
+}
