@@ -1,44 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function Footer() {
-  const navLinks = [
-    { to: '/#vize', label: 'Filozofie' },
-    { to: '/#horizont', label: 'Horizont' },
-    { to: '/#program', label: 'Program' },
-    { to: '/#spojenectvi', label: 'Spojenectví' },
-  ]
-
-  const handleScrollTo = (e, to) => {
-    // Pokud je to kotva nebo logo, vyřešíme scroll sami
-    if (to.startsWith('/#') || to === '/') {
-      e.preventDefault()
-      
-      const sectionId = to.replace('/#', '')
-      const newPath = to === '/' ? '/YouthArabskaWeb/' : `/YouthArabskaWeb${to}`
-      window.history.pushState(null, '', newPath)
-
-      if (to === '/') {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      } else {
-        const element = document.getElementById(sectionId)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
-        }
-      }
-    }
-  }
+  const location = useLocation()
+  const isHomePage = location.pathname === '/'
 
   return (
     <footer className="relative py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="glass-card p-8 md:p-10 grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+        <div className={`glass-card p-8 md:p-10 grid grid-cols-1 ${isHomePage ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-8 mb-6`}>
           {/* Brand */}
           <div>
-            <Link 
-              to="/" 
-              onClick={(e) => handleScrollTo(e, '/')}
-              className="flex items-center gap-1 mb-3"
-            >
+            <Link to="/" className="flex items-center gap-1 mb-3">
               <span className="text-white/70 font-sans font-light tracking-widest uppercase text-xs">Youth</span>
               <span className="text-gradient font-serif font-bold text-xl">Arabská</span>
             </Link>
@@ -47,23 +19,18 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <h4 className="text-white text-xs font-semibold tracking-widest uppercase mb-4">Navigace</h4>
-            <ul className="space-y-2">
-              {navLinks.map((link) => (
-                <li key={link.to}>
-                  <Link 
-                    to={link.to} 
-                    onClick={(e) => handleScrollTo(e, link.to)}
-                    className="text-white/50 hover:text-white text-xs transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Navigace - POUZE na hlavní stránce a POUZE čisté kotvy */}
+          {isHomePage && (
+            <div>
+              <h4 className="text-white text-xs font-semibold tracking-widest uppercase mb-4">Navigace</h4>
+              <ul className="space-y-2">
+                <li><a href="#vize" className="text-white/50 hover:text-white text-xs transition-colors">Filozofie</a></li>
+                <li><a href="#horizont" className="text-white/50 hover:text-white text-xs transition-colors">Horizont</a></li>
+                <li><a href="#program" className="text-white/50 hover:text-white text-xs transition-colors">Program</a></li>
+                <li><a href="#spojenectvi" className="text-white/50 hover:text-white text-xs transition-colors">Spojenectví</a></li>
+              </ul>
+            </div>
+          )}
 
           {/* Instituce */}
           <div>
@@ -79,15 +46,13 @@ export default function Footer() {
                   Gymnázium Arabská
                 </a>
               </li>
-              <li>
-                <a 
-                  href="#vize" 
-                  onClick={(e) => handleScrollTo(e, '/#vize')}
-                  className="text-white/50 hover:text-white text-xs transition-colors"
-                >
-                  Etický kodex komunity
-                </a>
-              </li>
+              {isHomePage && (
+                <li>
+                  <a href="#vize" className="text-white/50 hover:text-white text-xs transition-colors">
+                    Etický kodex komunity
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>

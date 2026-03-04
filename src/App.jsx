@@ -4,6 +4,10 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import HomePage from './pages/HomePage'
+import VizePage from './pages/VizePage'
+import HorizontPage from './pages/HorizontPage'
+import ProgramPage from './pages/ProgramPage'
+import SpojenectviPage from './pages/SpojenectviPage'
 
 export default function App() {
   return (
@@ -15,6 +19,10 @@ export default function App() {
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/vize" element={<VizePage />} />
+            <Route path="/horizont" element={<HorizontPage />} />
+            <Route path="/program" element={<ProgramPage />} />
+            <Route path="/spojenectvi" element={<SpojenectviPage />} />
             {/* Fallback to home */}
             <Route path="*" element={<HomePage />} />
           </Routes>

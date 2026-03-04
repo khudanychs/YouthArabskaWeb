@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -12,31 +13,19 @@ export default function Header() {
   }, [])
 
   const navLinks = [
-    { to: '/#vize', label: 'Naše Vize' },
-    { to: '/#horizont', label: 'Projekt Horizont' },
-    { to: '/#program', label: 'Program' },
-    { to: '/#spojenectvi', label: 'Spojenectví' },
+    { to: '/vize', label: 'Naše Vize' },
+    { to: '/horizont', label: 'Projekt Horizont' },
+    { to: '/program', label: 'Program' },
+    { to: '/spojenectvi', label: 'Spojenectví' },
   ]
 
   const handleNavLinkClick = (e, to) => {
     setNavOpen(false)
     
-    // Explicitní scroll pro kotvy i logo
-    if (to.startsWith('/#') || to === '/') {
+    // Pokud klikneme na stejnou stránku, na které už jsme, vyrolujeme nahoru
+    if (location.pathname === to || (location.pathname === '/' && to === '/')) {
       e.preventDefault()
-      
-      const sectionId = to.replace('/#', '')
-      const newPath = to === '/' ? '/YouthArabskaWeb/' : `/YouthArabskaWeb${to}`
-      window.history.pushState(null, '', newPath)
-
-      if (to === '/') {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      } else {
-        const element = document.getElementById(sectionId)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
-        }
-      }
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
@@ -94,7 +83,9 @@ export default function Header() {
                 <Link
                   to={link.to}
                   onClick={(e) => handleNavLinkClick(e, link.to)}
-                  className="text-white/70 hover:text-white transition-colors duration-200 text-sm font-medium tracking-wide"
+                  className={`transition-colors duration-200 text-sm font-medium tracking-wide ${
+                    location.pathname === link.to ? 'text-dawn-gold' : 'text-white/70 hover:text-white'
+                  }`}
                 >
                   {link.label}
                 </Link>

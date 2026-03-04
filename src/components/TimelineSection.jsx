@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
 
 const nodes = [
@@ -51,9 +52,12 @@ function TimelineNode({ node }) {
         <h3 className="font-serif text-xl font-bold text-white mt-1 mb-2">{node.title}</h3>
         <p className="text-white/60 text-sm leading-relaxed">{node.desc}</p>
         {node.apex && (
-          <button className="mt-4 px-5 py-2 rounded-lg bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-semibold text-sm hover:opacity-90 transition-opacity">
+          <Link
+            to="/spojenectvi"
+            className="inline-block mt-4 px-5 py-2 rounded-lg bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-semibold text-sm hover:opacity-90 transition-opacity"
+          >
             Zajistit si místo
-          </button>
+          </Link>
         )}
       </div>
     </div>
