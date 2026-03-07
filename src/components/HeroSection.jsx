@@ -24,10 +24,10 @@ export default function HeroSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="#horizont"
+              href="#akce"
               className="px-8 py-4 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-semibold text-base hover:opacity-90 transition-opacity text-center"
             >
-              Vstoupit do Horizontu
+              Prozkoumat naše akce
             </a>
             <a
               href="#vize"

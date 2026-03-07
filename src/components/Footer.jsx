@@ -10,12 +10,12 @@ export default function Footer() {
         <div className={`glass-card p-8 md:p-10 grid grid-cols-1 ${isHomePage ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-8 mb-6`}>
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-1 mb-3">
-              <span className="text-white/70 font-sans font-light tracking-widest uppercase text-xs">Youth</span>
-              <span className="text-gradient font-serif font-bold text-xl">Arabská</span>
+            <Link to="/" className="flex items-center mb-4">
+              <span className="text-white font-serif font-bold text-xl tracking-wide">Youth</span>
+              <span className="text-gradient font-serif font-bold text-xl tracking-wide ml-1.5">Arabská</span>
             </Link>
             <p className="text-white/50 text-xs leading-relaxed">
-              Platforma pro ty, kteří formují zítřek. Organizátoři projektu Horizont na Gymnáziu Arabská 14.
+              Platforma pro studenty, kteří chtějí víc. Organizátoři projektu Youth Horizon na Gymnáziu Arabská 14.
             </p>
           </div>
 
@@ -24,9 +24,9 @@ export default function Footer() {
             <div>
               <h4 className="text-white text-xs font-semibold tracking-widest uppercase mb-4">Navigace</h4>
               <ul className="space-y-2">
-                <li><a href="#vize" className="text-white/50 hover:text-white text-xs transition-colors">Filozofie</a></li>
-                <li><a href="#horizont" className="text-white/50 hover:text-white text-xs transition-colors">Horizont</a></li>
-                <li><a href="#program" className="text-white/50 hover:text-white text-xs transition-colors">Program</a></li>
+                <li><a href="#vize" className="text-white/50 hover:text-white text-xs transition-colors">O nás</a></li>
+                <li><a href="#horizon" className="text-white/50 hover:text-white text-xs transition-colors">Youth Horizon</a></li>
+                <li><a href="#akce" className="text-white/50 hover:text-white text-xs transition-colors">Akce</a></li>
                 <li><a href="#spojenectvi" className="text-white/50 hover:text-white text-xs transition-colors">Spojenectví</a></li>
               </ul>
             </div>

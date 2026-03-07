@@ -7,15 +7,24 @@ export default function Header() {
   const location = useLocation()
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const navLinks = [
-    { to: '/vize', label: 'Naše Vize' },
-    { to: '/horizont', label: 'Projekt Horizont' },
-    { to: '/program', label: 'Program' },
+    { to: '/vize', label: 'O nás' },
+    { to: '/horizon', label: 'Youth Horizon' },
+    { to: '/akce', label: 'Akce' },
     { to: '/spojenectvi', label: 'Spojenectví' },
   ]
 
@@ -42,11 +51,11 @@ export default function Header() {
         <Link 
           to="/" 
           onClick={(e) => handleNavLinkClick(e, '/')}
-          className="flex items-center gap-1 text-xl font-semibold" 
+          className="flex items-center" 
           aria-label="Návrat na počátek"
         >
-          <span className="text-white/80 font-sans font-light tracking-widest uppercase text-sm">Youth</span>
-          <span className="text-gradient font-serif font-bold text-2xl">Arabská</span>
+          <span className="text-white font-serif font-bold text-2xl tracking-wide">Youth</span>
+          <span className="text-gradient font-serif font-bold text-2xl tracking-wide ml-1.5">Arabská</span>
         </Link>
 
         {/* Hamburger (mobile) */}

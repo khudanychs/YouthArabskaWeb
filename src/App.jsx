@@ -6,7 +6,7 @@ import ScrollToTop from './components/ScrollToTop'
 import HomePage from './pages/HomePage'
 import VizePage from './pages/VizePage'
 import HorizontPage from './pages/HorizontPage'
-import ProgramPage from './pages/ProgramPage'
+import EventsPage from './pages/EventsPage'
 import SpojenectviPage from './pages/SpojenectviPage'
 
 export default function App() {
@@ -20,8 +20,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/vize" element={<VizePage />} />
-            <Route path="/horizont" element={<HorizontPage />} />
-            <Route path="/program" element={<ProgramPage />} />
+            <Route path="/horizon" element={<HorizontPage />} />
+            <Route path="/akce" element={<EventsPage />} />
             <Route path="/spojenectvi" element={<SpojenectviPage />} />
             {/* Fallback to home */}
             <Route path="*" element={<HomePage />} />

@@ -6,11 +6,11 @@ export default function VizePage() {
   return (
     <>
       <SEO
-        title="Kultivace Myšlení – Naše Vize"
-        description="Odmítáme povrchnost. Youth Arabská zprostředkovává přímý kontakt s kapacitami od metafyziky přes vědu až po byznys. Hloubka poznání, propojení světů, tvorba elity."
+        title="O nás – Kdo jsme a co chceme"
+        description="Jsme komunita studentů Gymnázia Arabská. Chceme být otevřeným prostorem pro nové nápady a propojovat školu s reálnou praxí. Poznejte naši misi."
         canonical="/vize"
-        ogTitle="Naše Vize | Youth Arabská – Kultivace Myšlení"
-        ogDescription="Ctíme tradici klasického vzdělávání, avšak radikálně inovujeme jeho aplikaci. Filozofie a hodnoty komunity Youth Arabská."
+        ogTitle="O nás | Youth Arabská – Kdo jsme a co chceme"
+        ogDescription="Budoucnost není to, co přijde, ale to, co uděláme. Filozofie a hodnoty komunity Youth Arabská."
       />
       <div className="pt-24">
         <PhilosophySection />

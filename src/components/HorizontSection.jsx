@@ -1,16 +1,16 @@
 import useReveal from '../hooks/useReveal'
 
 const stats = [
-  { value: '40+', name: 'Pozvaných autorit' },
+  { value: '40+', name: 'Pozvaných osobností' },
   { value: '15',  name: 'Institucí' },
   { value: '600+', name: 'Účastníků' },
 ]
 
-export default function HorizontSection() {
+export default function HorizonSection() {
   const ref = useReveal()
 
   return (
-    <section id="horizont" className="relative py-24 px-4">
+    <section id="horizon" className="relative py-24 px-4">
       <div className="max-w-7xl mx-auto">
         <div
           ref={ref}
@@ -19,19 +19,19 @@ export default function HorizontSection() {
           {/* Content */}
           <div>
             <span className="text-dawn-gold/80 text-xs font-semibold tracking-widest uppercase mb-3 block">
-              Magnum Opus komunity
+              Vrcholná událost komunity
             </span>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-white mb-6">
-              Veletrh Horizont
+              Veletrh Youth Horizon
             </h2>
             <div className="space-y-4 text-white/65 text-sm leading-relaxed mb-8">
               <p>
-                Horizont není pouhou událostí, je to manifestace naší vize. Jednou do roka transformujeme
-                půdu Gymnázia Arabská v absolutní centrum příležitostí, intelektuálního střetu a inspirace.
+                Youth Horizon není jen obyčejná akce, je to zhmotnění naší vize. Jednou do roka proměňujeme
+                prostory Gymnázia Arabská v centrum příležitostí, kde se potkávají inspirativní myšlenky z různých oborů.
               </p>
               <p>
-                Zveme přední osobnosti a prestižní organizace, aby předstoupily před studenty. Vytváříme
-                prostor, kde hierarchie ustupuje čisté výměně myšlenek. Zde se rodí stáže, partnerství a
+                Zveme přední osobnosti a prestižní organizace, aby se setkali se studenty přímo. Vytváříme
+                prostor, kde formální pravidla ustupují vzájemné inspiraci a sdílení zkušeností. Právě zde vznikají stáže, partnerství a
                 budoucí kariéry.
               </p>
             </div>

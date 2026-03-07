@@ -5,4 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/YouthArabskaWeb/',
+  server: {
+    host: true, // Listen on all network interfaces (0.0.0.0)
+  },
 })

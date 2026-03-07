@@ -1,7 +1,7 @@
 {
   "name": "Youth Arabská",
   "short_name": "Youth Arabská",
-  "description": "Prestižní platforma studentů Gymnázia Arabská 14. Skrze projekt Horizont propojujeme akademický svět s reálnou praxí a formujeme elitu zítřka.",
+  "description": "Prestižní platforma studentů Gymnázia Arabská 14. Skrze projekt Horizon propojujeme akademický svět s reálnou praxí a formujeme elitu zítřka.",
   "start_url": "/YouthArabskaWeb/",
   "scope": "/YouthArabskaWeb/",
   "display": "standalone",

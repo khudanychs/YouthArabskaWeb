@@ -10,6 +10,13 @@ export default function AllianceSection() {
     setSubmitted(true)
   }
 
+  const visionPlaceholder = `Jaký je tvůj cíl v naší komunitě?
+Například:
+- Proč se k nám chceš připojit?
+- Co od toho očekáváš?
+- Kolik času hodláš věnovat komunitě?
+- Jaké máš nápady na budoucí akce?`
+
   return (
     <section id="spojenectvi" className="relative py-24 px-4">
       <div className="max-w-7xl mx-auto">
@@ -33,8 +40,8 @@ export default function AllianceSection() {
               </p>
               <p>
                 <strong className="text-white">Komunikace:</strong>{' '}
-                <a href="mailto:vedení@youth.gyarab.cz" className="text-dawn-gold hover:underline">
-                  vedení@youth.gyarab.cz
+                <a href="mailto:vedeni@youth.gyarab.cz" className="text-dawn-gold hover:underline transition-colors">
+                  vedeni@youth.gyarab.cz
                 </a>
               </p>
             </div>
@@ -50,10 +57,10 @@ export default function AllianceSection() {
                   </svg>
                 </div>
                 <p className="text-white font-semibold text-lg">Deklarace odeslána</p>
-                <p className="text-white/60 text-sm">Brzy se ozveme.</p>
+                <p className="text-white/60 text-sm">Brzy se ti ozveme.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-white/70 text-xs font-semibold mb-1.5 tracking-wide uppercase">
                     Identifikace (Jméno)
@@ -62,7 +69,7 @@ export default function AllianceSection() {
                     type="text"
                     required
                     placeholder="Vaše jméno a příjmení"
-                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all"
+                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/20 text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all"
                   />
                 </div>
                 <div>
@@ -73,38 +80,23 @@ export default function AllianceSection() {
                     type="email"
                     required
                     placeholder="@gyarab.cz"
-                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all"
+                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/20 text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all"
                   />
                 </div>
                 <div>
                   <label className="block text-white/70 text-xs font-semibold mb-1.5 tracking-wide uppercase">
-                    Sféra zájmu
-                  </label>
-                  <select
-                    required
-                    defaultValue=""
-                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all appearance-none"
-                  >
-                    <option value="" disabled className="bg-gray-900">Zvolte svou doménu...</option>
-                    <option value="organizace" className="bg-gray-900">Architektura událostí (Organizace)</option>
-                    <option value="technologie" className="bg-gray-900">Technologická infrastruktura</option>
-                    <option value="komunikace" className="bg-gray-900">Vnější vztahy a PR</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-white/70 text-xs font-semibold mb-1.5 tracking-wide uppercase">
-                    Vaše vize (Motivace)
+                    Tvá vize a motivace
                   </label>
                   <textarea
                     required
-                    rows={4}
-                    placeholder="Jaký je váš cíl v naší komunitě?"
-                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all resize-none"
+                    rows={8}
+                    placeholder={visionPlaceholder}
+                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/20 text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all resize-none leading-relaxed"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-semibold text-sm hover:opacity-90 transition-opacity"
+                  className="w-full py-4 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-bold text-sm hover:opacity-90 transition-opacity uppercase tracking-widest"
                 >
                   Odeslat deklaraci
                 </button>

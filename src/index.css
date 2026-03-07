@@ -5,13 +5,20 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Výška fixního headeru + rezerva */
+    scroll-padding-top: 24px; /* Záměrně menší než header, aby se odkrojila část velkého paddingu sekcí a zbylo ideální místo */
   }
 
   body {
     @apply font-sans text-white overflow-x-hidden;
-    background: linear-gradient(135deg, #1a0533 0%, #0d1b3e 50%, #1a1a2e 100%);
+    background-color: #1a0533;
     min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+
+  ::selection {
+    background-color: #FFD700; /* Plná barva odstraní ošklivé překrývání (tmavé pruhy), které vzniká u poloprůhledných barev při malém line-height */
+    color: #1a0533;
+    text-shadow: none;
   }
 }
 
@@ -24,12 +31,14 @@
   }
 
   .glass-card {
-    @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl;
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-2xl;
+    will-change: transform;
   }
 
   .glass-card-highlight {
-    @apply bg-white/15 backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl;
+    @apply bg-white/15 backdrop-blur-md border border-white/30 shadow-lg rounded-2xl;
     border-color: rgba(255, 215, 0, 0.3);
+    will-change: transform;
   }
 
   .reveal-enter {
