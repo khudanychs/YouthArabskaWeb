@@ -1,16 +1,18 @@
 import SEO from '../components/SEO'
 import PhilosophySection from '../components/PhilosophySection'
 import AllianceSection from '../components/AllianceSection'
+import { useTranslation } from 'react-i18next'
 
 export default function VizePage() {
+  const { t } = useTranslation()
   return (
     <>
       <SEO
-        title="O nás – Kdo jsme a co chceme"
-        description="Jsme komunita studentů Gymnázia Arabská. Chceme být otevřeným prostorem pro nové nápady a propojovat školu s reálnou praxí. Poznejte naši misi."
+        title={t('seo.vize.title')}
+        description={t('seo.vize.description')}
         canonical="/vize"
-        ogTitle="O nás | Youth Arabská – Kdo jsme a co chceme"
-        ogDescription="Budoucnost není to, co přijde, ale to, co uděláme. Filozofie a hodnoty komunity Youth Arabská."
+        ogTitle={t('seo.vize.og_title')}
+        ogDescription={t('seo.vize.og_description')}
       />
       <div className="pt-24">
         <PhilosophySection />

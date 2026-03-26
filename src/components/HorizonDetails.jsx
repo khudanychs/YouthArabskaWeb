@@ -1,36 +1,23 @@
+import { useTranslation } from 'react-i18next'
 import useReveal from '../hooks/useReveal'
 
 const details = [
   {
-    category: 'Státní Správa',
-    items: [
-      { name: 'Zastoupení EK v ČR', desc: 'Informace o činnosti EU, vysvětlování politik a zprostředkování názorů.' },
-      { name: 'Tvoříme Evropu', desc: 'Nezávislé informace o EU, vzdělávací akce a podpora debat.' },
-      { name: 'Akademie věd ČR', desc: 'Největší veřejná výzkumná instituce, základní výzkum a popularizace vědy.' },
-      { name: 'Česká televize', desc: 'Veřejnoprávní média, příležitosti pro stáže v produkci a žurnalistice.' },
-    ]
+    categoryKey: 'state',
+    itemKeys: ['ek_cr', 'tvorime_evropu', 'av_cr', 'ct']
   },
   {
-    category: 'Neziskový Sektor',
-    items: [
-      { name: 'Pražský studentský summit', desc: 'Modelová jednání OSN a EU, rozvoj argumentačních dovedností.' },
-      { name: 'Future Port Youth', desc: 'Technologická konference pro studenty, inovace a udržitelnost.' },
-      { name: 'DofE', desc: 'Mezinárodní program rozvoje dovedností, sportu a dobrovolnictví.' },
-      { name: 'AmKon', desc: 'Model amerického kongresu, simulace politického dění v USA.' },
-    ]
+    categoryKey: 'nonprofit',
+    itemKeys: ['summit', 'future_port', 'dofe', 'amkon']
   },
   {
-    category: 'Soukromý Sektor',
-    items: [
-      { name: 'EF Education First', desc: 'Jazykové kurzy a studijní pobyty v zahraničí po celém světě.' },
-      { name: 'YFU Česká republika', desc: 'Studium roku nebo semestru v zahraničí pro středoškoláky.' },
-      { name: 'Fondee', desc: 'Investiční platforma pro snadné a transparentní investování do ETF.' },
-      { name: 'Renome Card', desc: 'Prémiové NFC vizitky pro moderní síťování a prezentaci.' },
-    ]
+    categoryKey: 'private',
+    itemKeys: ['ef', 'yfu', 'fondee', 'renome']
   }
 ]
 
 export default function HorizonDetails() {
+  const { t } = useTranslation()
   const ref = useReveal()
 
   return (
@@ -38,27 +25,27 @@ export default function HorizonDetails() {
       <div className="max-w-7xl mx-auto">
         <header className="mb-16">
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-white mb-6 text-center">
-            Příležitosti, které otevíráme
+            {t('horizon.details.header_title')}
           </h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto text-center">
-            Na Youth Horizonu propojujeme studenty s organizacemi, které nabízejí reálnou praxi, stáže a prostor pro růst.
+            {t('horizon.details.header_subtitle')}
           </p>
         </header>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-12 reveal-enter">
           {details.map((group) => (
-            <div key={group.category} className="space-y-8">
+            <div key={group.categoryKey} className="space-y-8">
               <h3 className="text-dawn-gold text-xs font-bold tracking-[0.2em] uppercase border-b border-dawn-gold/20 pb-4">
-                {group.category}
+                {t(`horizon.details.categories.${group.categoryKey}`)}
               </h3>
               <div className="space-y-8">
-                {group.items.map((item) => (
-                  <div key={item.name} className="group">
+                {group.itemKeys.map((itemKey) => (
+                  <div key={itemKey} className="group">
                     <h4 className="text-white font-serif text-xl font-bold mb-2 group-hover:text-dawn-gold transition-colors">
-                      {item.name}
+                      {t(`horizon.details.items.${itemKey}.name`)}
                     </h4>
                     <p className="text-white/50 text-sm leading-relaxed">
-                      {item.desc}
+                      {t(`horizon.details.items.${itemKey}.desc`)}
                     </p>
                   </div>
                 ))}

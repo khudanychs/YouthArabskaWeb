@@ -4,16 +4,18 @@ import PhilosophySection from '../components/PhilosophySection'
 import HorizontSection from '../components/HorizontSection'
 import EventsSection from '../components/EventsSection'
 import AllianceSection from '../components/AllianceSection'
+import { useTranslation } from 'react-i18next'
 
 export default function HomePage() {
+  const { t } = useTranslation()
   return (
     <>
       <SEO
-        title="Překračujeme Zavedené Hranice"
-        description="Youth Arabská je oficiální platforma studentů Gymnázia Arabská 14. Skrze projekt Youth Horizon propojujeme akademický svět s praxí a pomáháme studentům v jejich rozvoji."
+        title={t('seo.home.title')}
+        description={t('seo.home.description')}
         canonical="/"
-        ogTitle="Youth Arabská | Nová éra příležitostí"
-        ogDescription="Vstupte do prostoru, kde se formuje myšlení a otevírají se nové obzory na Gymnáziu Arabská 14 skrze projekt Youth Horizon."
+        ogTitle={t('seo.home.og_title')}
+        ogDescription={t('seo.home.og_description')}
       />
       <HeroSection />
       <PhilosophySection />

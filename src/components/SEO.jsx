@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async'
+import { useTranslation } from 'react-i18next'
 
-const BASE_URL = 'https://sergioGyarab.github.io/YouthArabskaWeb'
+const BASE_URL = 'https://khudanychs.github.io/YouthArabskaWeb'
 
 export default function SEO({
   title,
@@ -10,9 +11,10 @@ export default function SEO({
   ogDescription,
   ogImage = `${BASE_URL}/og-image.png`,
 }) {
+  const { t } = useTranslation()
   const fullTitle = title
-    ? `${title} | Youth Arabská`
-    : 'Youth Arabská | Prestižní prostor pro formování budoucnosti'
+    ? t('seo.title_template', { title })
+    : t('seo.default_title')
 
   return (
     <Helmet>

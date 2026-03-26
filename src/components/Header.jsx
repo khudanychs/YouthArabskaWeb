@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function Header() {
+  const { t } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
   const location = useLocation()
@@ -22,10 +24,10 @@ export default function Header() {
   }, [])
 
   const navLinks = [
-    { to: '/vize', label: 'O nás' },
-    { to: '/horizon', label: 'Youth Horizon' },
-    { to: '/akce', label: 'Akce' },
-    { to: '/spojenectvi', label: 'Spojenectví' },
+    { to: '/vize', label: t('common.nav.vize') },
+    { to: '/horizon', label: t('common.nav.horizon') },
+    { to: '/akce', label: t('common.nav.akce') },
+    { to: '/spojenectvi', label: t('common.nav.spojenectvi') },
   ]
 
   const handleNavLinkClick = (e, to) => {
@@ -52,10 +54,10 @@ export default function Header() {
           to="/" 
           onClick={(e) => handleNavLinkClick(e, '/')}
           className="flex items-center" 
-          aria-label="Návrat na počátek"
+          aria-label={t('common.nav.home')}
         >
-          <span className="text-white font-serif font-bold text-2xl tracking-wide">Youth</span>
-          <span className="text-gradient font-serif font-bold text-2xl tracking-wide ml-1.5">Arabská</span>
+          <span className="text-white font-serif font-bold text-2xl tracking-wide">{t('common.brand_youth')}</span>
+          <span className="text-gradient font-serif font-bold text-2xl tracking-wide ml-1.5">{t('common.brand_arabska')}</span>
         </Link>
 
         {/* Hamburger (mobile) */}
@@ -64,7 +66,7 @@ export default function Header() {
           onClick={() => setNavOpen((v) => !v)}
           aria-expanded={navOpen}
           aria-controls="main-navigation"
-          aria-label="Menu"
+          aria-label={t('common.nav.menu')}
         >
           <span
             className={`block h-0.5 w-6 bg-white transition-all duration-300 ${navOpen ? 'rotate-45 translate-y-2' : ''}`}
@@ -107,7 +109,7 @@ export default function Header() {
             rel="noopener noreferrer"
             className="mt-2 md:mt-0 px-4 py-2 rounded-lg border border-white/30 text-white/80 hover:bg-white/10 transition-all duration-200 text-sm font-medium whitespace-nowrap"
           >
-            Gymnázium Arabská
+            {t('common.gymnazium')}
           </a>
         </nav>
       </div>

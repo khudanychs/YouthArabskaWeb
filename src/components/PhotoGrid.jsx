@@ -1,13 +1,15 @@
 import useReveal from '../hooks/useReveal'
+import { useTranslation } from 'react-i18next'
 
 export default function PhotoGrid() {
+  const { t } = useTranslation()
   const ref = useReveal()
   
   const placeholders = [
-    { id: 1, label: 'Atmosféra akce', delay: 0 },
-    { id: 2, label: 'Přednášky a diskuse', delay: 100 },
-    { id: 3, label: 'Networking', delay: 200 },
-    { id: 4, label: 'Naše komunita', delay: 300 },
+    { id: 'atmosphere', delay: 0 },
+    { id: 'lectures', delay: 100 },
+    { id: 'networking', delay: 200 },
+    { id: 'community', delay: 300 },
   ]
 
   return (
@@ -15,10 +17,10 @@ export default function PhotoGrid() {
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-16">
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-white mb-4">
-            Obrazy z Youth Horizonu
+            {t('photogrid.header_title')}
           </h2>
           <p className="text-white/60 text-lg">
-            Momentky, které zachycují energii a vizi naší komunity.
+            {t('photogrid.header_subtitle')}
           </p>
         </header>
 
@@ -41,13 +43,13 @@ export default function PhotoGrid() {
                     </svg>
                   </div>
                   <span className="text-white/40 group-hover:text-white/80 text-sm font-medium tracking-wide uppercase transition-colors">
-                    {item.label}
+                    {t(`photogrid.items.${item.id}`)}
                   </span>
                 </div>
 
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                  <p className="text-dawn-gold text-xs font-serif italic">Zobrazit detail</p>
+                  <p className="text-dawn-gold text-xs font-serif italic">{t('photogrid.view_detail')}</p>
                 </div>
               </div>
 

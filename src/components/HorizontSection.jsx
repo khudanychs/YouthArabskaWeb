@@ -1,13 +1,15 @@
+import { useTranslation } from 'react-i18next'
 import useReveal from '../hooks/useReveal'
 
-const stats = [
-  { value: '40+', name: 'Pozvaných osobností' },
-  { value: '15',  name: 'Institucí' },
-  { value: '600+', name: 'Účastníků' },
-]
-
 export default function HorizonSection() {
+  const { t } = useTranslation()
   const ref = useReveal()
+
+  const stats = [
+    { value: '40+', name: t('horizon.stats.personalities') },
+    { value: '15',  name: t('horizon.stats.institutions') },
+    { value: '600+', name: t('horizon.stats.participants') },
+  ]
 
   return (
     <section id="horizon" className="relative py-24 px-4">
@@ -19,20 +21,17 @@ export default function HorizonSection() {
           {/* Content */}
           <div>
             <span className="text-dawn-gold/80 text-xs font-semibold tracking-widest uppercase mb-3 block">
-              Vrcholná událost komunity
+              {t('horizon.badge')}
             </span>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-white mb-6">
-              Veletrh Youth Horizon
+              {t('horizon.title')}
             </h2>
             <div className="space-y-4 text-white/65 text-sm leading-relaxed mb-8">
               <p>
-                Youth Horizon není jen obyčejná akce, je to zhmotnění naší vize. Jednou do roka proměňujeme
-                prostory Gymnázia Arabská v centrum příležitostí, kde se potkávají inspirativní myšlenky z různých oborů.
+                {t('horizon.description_1')}
               </p>
               <p>
-                Zveme přední osobnosti a prestižní organizace, aby se setkali se studenty přímo. Vytváříme
-                prostor, kde formální pravidla ustupují vzájemné inspiraci a sdílení zkušeností. Právě zde vznikají stáže, partnerství a
-                budoucí kariéry.
+                {t('horizon.description_2')}
               </p>
             </div>
 

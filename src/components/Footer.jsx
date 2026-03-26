@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function Footer() {
+  const { t } = useTranslation()
   const location = useLocation()
   const isHomePage = location.pathname === '/'
 
@@ -11,30 +13,30 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center mb-4">
-              <span className="text-white font-serif font-bold text-xl tracking-wide">Youth</span>
-              <span className="text-gradient font-serif font-bold text-xl tracking-wide ml-1.5">Arabská</span>
+              <span className="text-white font-serif font-bold text-xl tracking-wide">{t('common.brand_youth')}</span>
+              <span className="text-gradient font-serif font-bold text-xl tracking-wide ml-1.5">{t('common.brand_arabska')}</span>
             </Link>
             <p className="text-white/50 text-xs leading-relaxed">
-              Platforma pro studenty, kteří chtějí víc. Organizátoři projektu Youth Horizon na Gymnáziu Arabská 14.
+              {t('footer.description')}
             </p>
           </div>
 
           {/* Navigace - POUZE na hlavní stránce a POUZE čisté kotvy */}
           {isHomePage && (
             <div>
-              <h4 className="text-white text-xs font-semibold tracking-widest uppercase mb-4">Navigace</h4>
+              <h4 className="text-white text-xs font-semibold tracking-widest uppercase mb-4">{t('footer.navigation')}</h4>
               <ul className="space-y-2">
-                <li><a href="#vize" className="text-white/50 hover:text-white text-xs transition-colors">O nás</a></li>
-                <li><a href="#horizon" className="text-white/50 hover:text-white text-xs transition-colors">Youth Horizon</a></li>
-                <li><a href="#akce" className="text-white/50 hover:text-white text-xs transition-colors">Akce</a></li>
-                <li><a href="#spojenectvi" className="text-white/50 hover:text-white text-xs transition-colors">Spojenectví</a></li>
+                <li><a href="#vize" className="text-white/50 hover:text-white text-xs transition-colors">{t('common.nav.vize')}</a></li>
+                <li><a href="#horizon" className="text-white/50 hover:text-white text-xs transition-colors">{t('common.nav.horizon')}</a></li>
+                <li><a href="#akce" className="text-white/50 hover:text-white text-xs transition-colors">{t('common.nav.akce')}</a></li>
+                <li><a href="#spojenectvi" className="text-white/50 hover:text-white text-xs transition-colors">{t('common.nav.spojenectvi')}</a></li>
               </ul>
             </div>
           )}
 
           {/* Instituce */}
           <div>
-            <h4 className="text-white text-xs font-semibold tracking-widest uppercase mb-4">Instituce</h4>
+            <h4 className="text-white text-xs font-semibold tracking-widest uppercase mb-4">{t('footer.institutions')}</h4>
             <ul className="space-y-2">
               <li>
                 <a
@@ -43,13 +45,13 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-white/50 hover:text-white text-xs transition-colors"
                 >
-                  Gymnázium Arabská
+                  {t('common.gymnazium')}
                 </a>
               </li>
               {isHomePage && (
                 <li>
                   <a href="#vize" className="text-white/50 hover:text-white text-xs transition-colors">
-                    Etický kodex komunity
+                    {t('footer.ethical_code')}
                   </a>
                 </li>
               )}
@@ -58,7 +60,7 @@ export default function Footer() {
         </div>
 
         <p className="text-center text-white/30 text-xs">
-          &copy; 2026 Youth Arabská. Konstruováno s respektem k tradici, s vizí do budoucnosti.
+          {t('footer.copyright')}
         </p>
       </div>
     </footer>

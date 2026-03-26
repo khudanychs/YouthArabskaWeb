@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import useReveal from '../hooks/useReveal'
 
 export default function AllianceSection() {
+  const { t } = useTranslation()
   const ref = useReveal()
   const [submitted, setSubmitted] = useState(false)
 
@@ -9,13 +11,6 @@ export default function AllianceSection() {
     e.preventDefault()
     setSubmitted(true)
   }
-
-  const visionPlaceholder = `Jaký je tvůj cíl v naší komunitě?
-Například:
-- Proč se k nám chceš připojit?
-- Co od toho očekáváš?
-- Kolik času hodláš věnovat komunitě?
-- Jaké máš nápady na budoucí akce?`
 
   return (
     <section id="spojenectvi" className="relative py-24 px-4">
@@ -27,19 +22,17 @@ Například:
           {/* Info */}
           <div>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-white mb-6">
-              Připojte se k nám
+              {t('alliance.title')}
             </h2>
             <p className="text-white/65 text-sm leading-relaxed mb-8">
-              Hledáme jedince, kteří jsou ochotni investovat svůj čas do budování něčeho přesahujícího
-              je samotné. Ať už toužíte organizovat, tvořit, nebo přinášet nové myšlenky – váš prostor
-              je zde.
+              {t('alliance.description')}
             </p>
             <div className="space-y-2 text-white/70 text-sm">
               <p>
-                <strong className="text-white">Sídlo:</strong> Gymnázium, Praha 6, Arabská 14
+                <strong className="text-white">{t('alliance.labels.headquarters')}:</strong> {t('common.gymnazium_long')}
               </p>
               <p>
-                <strong className="text-white">Komunikace:</strong>{' '}
+                <strong className="text-white">{t('alliance.labels.communication')}:</strong>{' '}
                 <a href="mailto:vedeni@youth.gyarab.cz" className="text-dawn-gold hover:underline transition-colors">
                   vedeni@youth.gyarab.cz
                 </a>
@@ -56,41 +49,41 @@ Například:
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <p className="text-white font-semibold text-lg">Deklarace odeslána</p>
-                <p className="text-white/60 text-sm">Brzy se ti ozveme.</p>
+                <p className="text-white font-semibold text-lg">{t('alliance.success_title')}</p>
+                <p className="text-white/60 text-sm">{t('alliance.success_text')}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-white/70 text-xs font-semibold mb-1.5 tracking-wide uppercase">
-                    Identifikace (Jméno)
+                    {t('alliance.labels.name')}
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="Vaše jméno a příjmení"
+                    placeholder={t('alliance.placeholders.name')}
                     className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/20 text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all"
                   />
                 </div>
                 <div>
                   <label className="block text-white/70 text-xs font-semibold mb-1.5 tracking-wide uppercase">
-                    Akademický E-mail
+                    {t('alliance.labels.email')}
                   </label>
                   <input
                     type="email"
                     required
-                    placeholder="@gyarab.cz"
+                    placeholder={t('alliance.placeholders.email')}
                     className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/20 text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all"
                   />
                 </div>
                 <div>
                   <label className="block text-white/70 text-xs font-semibold mb-1.5 tracking-wide uppercase">
-                    Tvá vize a motivace
+                    {t('alliance.labels.vision')}
                   </label>
                   <textarea
                     required
                     rows={8}
-                    placeholder={visionPlaceholder}
+                    placeholder={t('alliance.placeholders.vision')}
                     className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white placeholder-white/20 text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all resize-none leading-relaxed"
                   />
                 </div>
@@ -98,7 +91,7 @@ Například:
                   type="submit"
                   className="w-full py-4 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-bold text-sm hover:opacity-90 transition-opacity uppercase tracking-widest"
                 >
-                  Odeslat deklaraci
+                  {t('alliance.submit')}
                 </button>
               </form>
             )}

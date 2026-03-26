@@ -1,16 +1,18 @@
 import SEO from '../components/SEO'
 import EventsSection from '../components/EventsSection'
 import AllianceSection from '../components/AllianceSection'
+import { useTranslation } from 'react-i18next'
 
 export default function EventsPage() {
+  const { t } = useTranslation()
   return (
     <>
       <SEO
-        title="Naše Aktivity – Youth Arabská"
-        description="Přehled akcí a projektů komunity Youth Arabská. Od Veletrhu Youth Horizon po Beyond The Bell."
+        title={t('seo.akce.title')}
+        description={t('seo.akce.description')}
         canonical="/akce"
-        ogTitle="Naše Aktivity | Youth Arabská"
-        ogDescription="Podívejte se na akce, které jsme uspořádali a které chystáme. Budujeme aktivní komunitu na Arabské."
+        ogTitle={t('seo.akce.og_title')}
+        ogDescription={t('seo.akce.og_description')}
       />
       <div className="pt-24">
         <EventsSection />
