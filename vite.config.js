@@ -12,36 +12,10 @@ export default defineConfig({
       webp: { lossy: true, quality: 80 },
     }),
     visualizer({
-      open: true,
       filename: 'stats.html',
       gzipSize: true,
     }),
   ],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react-dom')) {
-              return 'react-vendor'
-            }
-            if (id.includes('react') && !id.includes('react-dom')) {
-              return 'react-vendor'
-            }
-            if (id.includes('react-router')) {
-              return 'router'
-            }
-            if (id.includes('i18next') || id.includes('react-i18next')) {
-              return 'i18n'
-            }
-            return 'vendor'
-          }
-        },
-      },
-    },
-  },
+  // Base musí odpovídat názvu tvého repozitáře na GitHubu
   base: '/YouthArabskaWeb/',
-  server: {
-    host: true,
-  },
 })
