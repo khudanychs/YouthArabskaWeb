@@ -9,28 +9,5 @@
   "background_color": "#1a0533",
   "theme_color": "#FFD700",
   "lang": "cs",
-  "categories": ["education", "community"],
-  "icons": [
-    {
-      "src": "/YouthArabskaWeb/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/YouthArabskaWeb/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/YouthArabskaWeb/screenshot-desktop.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Youth Arabská – úvodní strana"
-    }
-  ]
+  "categories": ["education", "community"]
 }

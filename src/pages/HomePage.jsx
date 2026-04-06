@@ -1,8 +1,9 @@
 import SEO from '../components/SEO'
 import HeroSection from '../components/HeroSection'
 import PhilosophySection from '../components/PhilosophySection'
-import HorizontSection from '../components/HorizontSection'
+import Testimonials from '../components/Testimonials'
 import EventsSection from '../components/EventsSection'
+import PhotoGrid from '../components/PhotoGrid'
 import AllianceSection from '../components/AllianceSection'
 import { useTranslation } from 'react-i18next'
 
@@ -19,10 +20,10 @@ export default function HomePage() {
       />
       <HeroSection />
       <PhilosophySection />
-      <HorizontSection />
+      <Testimonials />
       <EventsSection />
+      <PhotoGrid />
       <AllianceSection />
     </>
   )
 }
-

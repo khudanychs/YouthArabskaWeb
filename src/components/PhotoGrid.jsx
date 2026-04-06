@@ -5,57 +5,73 @@ export default function PhotoGrid() {
   const { t } = useTranslation()
   const ref = useReveal()
   
-  const placeholders = [
-    { id: 'atmosphere', delay: 0 },
-    { id: 'lectures', delay: 100 },
-    { id: 'networking', delay: 200 },
-    { id: 'community', delay: 300 },
+  const photos = [
+    { 
+      id: 1, 
+      src: '/YouthArabskaWeb/Horizon1.jpg',
+      alt: 'Youth Horizon - Registrace účastníků',
+      description: 'Kdokoliv se mohl zúčastnit veletrhu Youth Horizon'
+    },
+    { 
+      id: 2, 
+      src: '/YouthArabskaWeb/Horizon2.jpg',
+      alt: 'Youth Horizon - Diskuse s hosty',
+      description: 'Inspirativní diskuse s odborníky z různých oborů'
+    },
+    { 
+      id: 3, 
+      src: '/YouthArabskaWeb/Horizon5.jpg',
+      alt: 'Youth Horizon - Networking',
+      description: 'Stánky s interaktivními aktivitami pro účastníky Youth Horizon'
+    },
+    { 
+      id: 4, 
+      src: '/YouthArabskaWeb/Horizon4.jpg',
+      alt: 'Youth Horizon - Prezentace',
+      description: 'Organizátoři akce Youth Horizon - Adam a Lujza'
+    },
   ]
 
   return (
-    <section className="py-24 px-4 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <header className="text-center mb-16">
-          <h2 className="font-serif text-3xl md:text-5xl font-bold text-white mb-4">
-            {t('photogrid.header_title')}
+    <section id="photogrid" className="py-16 sm:py-20 md:py-24 px-2 sm:px-4 overflow-hidden">
+      {/* ZMĚNA: Zvětšil jsem max-width na 90rem (cca 1440px), takže na desktopu to bude masivnější */}
+      <div className="max-w-[90rem] mx-auto">
+        <header className="text-center mb-12 sm:mb-16">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            Momentky z našich akcí
           </h2>
-          <p className="text-white/60 text-lg">
-            {t('photogrid.header_subtitle')}
+          <p className="text-white/60 text-base sm:text-lg px-4">
+            Fotografie zachycující atmosféru a energii naší komunity
           </p>
         </header>
 
-        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 reveal-enter">
-          {placeholders.map((item) => (
+        {/* ZMĚNA: grid-cols-2 je teď výchozí (mobil). xl:grid-cols-4 zajistí 1 řadu až na velkých monitorech */}
+        <div ref={ref} className="grid grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 reveal-enter">
+          {photos.map((photo) => (
             <div 
-              key={item.id} 
-              className="relative group cursor-pointer"
+              key={photo.id} 
+              className="relative group cursor-pointer rounded-xl sm:rounded-2xl transition-transform duration-500 sm:hover:-translate-y-2"
             >
-              {/* Decorative Frame */}
-              <div className="absolute -inset-2 bg-gradient-to-tr from-dawn-gold/20 to-dawn-orange/20 rounded-2xl blur-sm opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Photo Container */}
-              <div className="relative aspect-[3/4] overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl">
-                {/* Placeholder Content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                  <div className="w-12 h-12 mb-4 border-2 border-dawn-gold/30 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:border-dawn-gold transition-all duration-500">
-                    <svg className="w-6 h-6 text-dawn-gold/50 group-hover:text-dawn-gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <span className="text-white/40 group-hover:text-white/80 text-sm font-medium tracking-wide uppercase transition-colors">
-                    {t(`photogrid.items.${item.id}`)}
-                  </span>
-                </div>
-
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                  <p className="text-dawn-gold text-xs font-serif italic">{t('photogrid.view_detail')}</p>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-[0_10px_30px_rgba(0,0,0,0.5)] sm:shadow-[0_15px_40px_rgba(0,0,0,0.6)] ring-1 ring-white/5 group-hover:shadow-[0_20px_50px_rgba(255,215,0,0.15)] transition-shadow duration-500">
+                
+                <img 
+                  src={photo.src} 
+                  alt={photo.alt}
+                  className="relative w-full h-full object-cover z-10 transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                
+                {/* ZMĚNA: Menší padding a text na mobilu, aby popisky nepůsobily na malých 2x2 fotkách obrovsky */}
+                <div className="absolute inset-x-0 bottom-0 z-20 h-full sm:h-2/3 bg-gradient-to-t from-black/95 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3 sm:p-5 lg:p-6">
+                  <p className="text-white/95 text-[10px] sm:text-sm font-light tracking-wide leading-snug sm:leading-relaxed drop-shadow-md transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    {photo.description}
+                  </p>
                 </div>
               </div>
 
-              {/* Corner Accents */}
-              <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-dawn-gold/40 rounded-tl-lg" />
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-dawn-gold/40 rounded-br-lg" />
+              {/* Dekorativní rožky - na mobilu jsou o něco menší (w-3 h-3) */}
+              <div className="absolute top-0 left-0 w-3 h-3 sm:w-4 sm:h-4 border-t-2 border-l-2 border-dawn-gold/60 rounded-tl-xl sm:rounded-tl-2xl z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-0 right-0 w-3 h-3 sm:w-4 sm:h-4 border-b-2 border-r-2 border-dawn-gold/60 rounded-br-xl sm:rounded-br-2xl z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           ))}
         </div>

@@ -23,79 +23,134 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (navOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [navOpen])
+
   const navLinks = [
-    { to: '/vize', label: t('common.nav.vize') },
-    { to: '/horizon', label: t('common.nav.horizon') },
-    { to: '/akce', label: t('common.nav.akce') },
-    { to: '/spojenectvi', label: t('common.nav.spojenectvi') },
+    { to: '/akce', label: t('common.nav.akce', 'Naše Akce'), scrollId: 'akce' },
+    { to: '/vize', label: t('common.nav.vize', 'O nás'), scrollId: 'vize' },
   ]
 
-  const handleNavLinkClick = (e, to) => {
+  const handleNavLinkClick = (e, to, scrollId) => {
     setNavOpen(false)
-    
-    // Pokud klikneme na stejnou stránku, na které už jsme, vyrolujeme nahoru
     if (location.pathname === to || (location.pathname === '/' && to === '/')) {
       e.preventDefault()
       window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else if (scrollId) {
+      sessionStorage.setItem('scrollFrom', scrollId)
     }
   }
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/10 backdrop-blur-xl border-b border-white/20 shadow-2xl py-2'
-          : 'bg-transparent py-4'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand */}
-        <Link 
-          to="/" 
-          onClick={(e) => handleNavLinkClick(e, '/')}
-          className="flex items-center" 
-          aria-label={t('common.nav.home')}
-        >
-          <span className="text-white font-serif font-bold text-2xl tracking-wide">{t('common.brand_youth')}</span>
-          <span className="text-gradient font-serif font-bold text-2xl tracking-wide ml-1.5">{t('common.brand_arabska')}</span>
-        </Link>
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-white/5 backdrop-blur-2xl border-b border-white/10 shadow-2xl py-3 lg:py-4'
+            : 'bg-white/[0.02] backdrop-blur-md py-4 lg:py-6'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          <Link 
+            to="/" 
+            onClick={(e) => handleNavLinkClick(e, '/')}
+            className="flex items-center group" 
+            aria-label={t('common.nav.home')}
+          >
+            <span className="text-white font-serif font-bold text-2xl lg:text-3xl tracking-wide transition-transform group-hover:scale-105">
+              {t('common.brand_youth')}
+            </span>
+            <span className="text-gradient font-serif font-bold text-2xl lg:text-3xl tracking-wide ml-1.5 transition-transform group-hover:scale-105">
+              {t('common.brand_arabska')}
+            </span>
+          </Link>
 
-        {/* Hamburger (mobile) */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2 focus:outline-none"
-          onClick={() => setNavOpen((v) => !v)}
-          aria-expanded={navOpen}
-          aria-controls="main-navigation"
-          aria-label={t('common.nav.menu')}
-        >
-          <span
-            className={`block h-0.5 w-6 bg-white transition-all duration-300 ${navOpen ? 'rotate-45 translate-y-2' : ''}`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-white transition-all duration-300 ${navOpen ? 'opacity-0' : ''}`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-white transition-all duration-300 ${navOpen ? '-rotate-45 -translate-y-2' : ''}`}
-          />
-        </button>
+          <button
+            className="md:hidden flex flex-col gap-1.5 p-2 focus:outline-none z-50 relative"
+            onClick={() => setNavOpen((v) => !v)}
+            aria-expanded={navOpen}
+            aria-controls="main-navigation"
+            aria-label={t('common.nav.menu')}
+          >
+            <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${navOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${navOpen ? 'opacity-0' : ''}`} />
+            <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${navOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          </button>
 
-        {/* Nav */}
-        <nav
-          id="main-navigation"
-          className={`${
-            navOpen ? 'flex' : 'hidden'
-          } md:flex absolute md:static top-full left-0 right-0 md:top-auto flex-col md:flex-row items-start md:items-center gap-2 md:gap-6
-          bg-black/80 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none
-          p-4 md:p-0 border-t border-white/10 md:border-0`}
-        >
-          <ul className="flex flex-col md:flex-row gap-2 md:gap-6">
+          <nav className="hidden md:flex items-center gap-8">
+            <ul className="flex items-center gap-8">
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    onClick={(e) => handleNavLinkClick(e, link.to, link.scrollId)}
+                    className={`transition-all duration-200 text-sm lg:text-base font-medium tracking-wide ${
+                      location.pathname === link.to ? 'text-dawn-gold drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]' : 'text-white/70 hover:text-white hover:-translate-y-0.5'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            
+            <div className="flex items-center gap-4">
+              <a
+                href="mailto:serhii.khudanych.s@gyarab.cz"
+                className="px-5 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all duration-200 text-sm lg:text-base font-medium border border-white/20"
+              >
+                {t('common.contact', 'Napište nám')}
+              </a>
+              <a
+                href="https://www.instagram.com/youtharabska/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 hover:text-dawn-gold transition-all duration-200"
+                aria-label="Instagram"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                </svg>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <div
+        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
+          navOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setNavOpen(false)}
+      />
+
+      <aside
+        id="main-navigation"
+        className={`fixed top-0 right-0 bottom-0 w-[280px] bg-black/90 backdrop-blur-2xl border-l border-white/10 shadow-2xl z-50 md:hidden transition-transform duration-300 ${
+          navOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex flex-col h-full p-6 pt-20">
+          <ul className="flex flex-col gap-4 mb-8">
             {navLinks.map((link) => (
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  onClick={(e) => handleNavLinkClick(e, link.to)}
-                  className={`transition-colors duration-200 text-sm font-medium tracking-wide ${
-                    location.pathname === link.to ? 'text-dawn-gold' : 'text-white/70 hover:text-white'
+                  onClick={(e) => handleNavLinkClick(e, link.to, link.scrollId)}
+                  className={`block py-3 px-4 rounded-lg transition-all duration-200 text-base font-medium tracking-wide ${
+                    location.pathname === link.to 
+                      ? 'bg-dawn-gold/10 text-dawn-gold border border-dawn-gold/20' 
+                      : 'text-white/70 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {link.label}
@@ -103,16 +158,30 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <a
-            href="https://www.gyarab.cz/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 md:mt-0 px-4 py-2 rounded-lg border border-white/30 text-white/80 hover:bg-white/10 transition-all duration-200 text-sm font-medium whitespace-nowrap"
-          >
-            {t('common.gymnazium')}
-          </a>
-        </nav>
-      </div>
-    </header>
+          
+          <div className="flex flex-col gap-3 mt-auto border-t border-white/10 pt-6">
+            <a
+              href="mailto:serhii.khudanych.s@gyarab.cz"
+              className="px-5 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all duration-200 text-base font-medium text-center border border-white/20"
+            >
+              {t('common.contact', 'Napište nám')}
+            </a>
+            <a
+              href="https://www.instagram.com/youtharabska/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 hover:from-purple-500/30 hover:to-pink-500/30 text-white transition-all duration-200 text-base font-medium text-center border border-purple-500/20 flex items-center justify-center gap-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+              </svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </aside>
+    </>
   )
 }

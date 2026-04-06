@@ -4,13 +4,16 @@
     "brand_arabska": "Arabská",
     "gymnazium": "Gymnázium Arabská",
     "gymnazium_long": "Gymnázium, Praha 6, Arabská 14",
+    "contact": "Napište nám",
     "nav": {
-      "vize": "O nás",
-      "horizon": "Youth Horizon",
-      "akce": "Akce",
-      "spojenectvi": "Spojenectví",
+      "about": "O nás",
+      "events": "Akce",
+      "gallery": "Galerie",
+      "get_involved": "Připoj se",
       "menu": "Menu",
-      "home": "Návrat na počátek"
+      "home": "Návrat na počátek",
+      "akce": "Naše Akce",
+      "vize": "O nás"
     }
   },
   "seo": {
@@ -48,12 +51,12 @@
     }
   },
   "hero": {
-    "badge": "Officially recognized student platform",
-    "title_1": "Překračujeme",
-    "title_2": "Zavedené Hranice",
-    "description": "Nejsme jen komunitou. Jsme katalyzátorem změny na Gymnáziu Arabská 14. Vytváříme dokonalý prostor pro ty, kteří chápou, že skutečné poznání a formování vlastní cesty začíná tam, kde končí běžné osnovy.",
-    "cta_explore": "Prozkoumat naše akce",
-    "cta_philosophy": "Poznat naši filozofii"
+    "badge": "Oficiální studentská platforma",
+    "title_1": "Připoj se do komunity,",
+    "title_2": "která za něco stojí",
+    "description": "Youth Arabská není jen další školní klub. Jsme místo, kde se setkávají zajímaví studenti, kde vznikají nápady a kde si můžeš vybudovat své kontakty. Pořádáme akce, workshop a setkáváme se s inspirativními lidmi z byznysu, vědy a veřejného sektoru.",
+    "cta_primary": "Objevte Youth Horizon",
+    "cta_secondary": "Napište nám e-mail"
   },
   "philosophy": {
     "header_title": "Kdo jsme a co chceme",
@@ -77,6 +80,7 @@
     "header_title": "Naše Aktivity",
     "header_subtitle": "Vytváříme prostor, kde se teorie setkává s praxí. Podívejte se na projekty, které už mají své místo v naší komunitě.",
     "status_done": "Uskutečněno",
+    "view_detail": "Zobrazit detail",
     "items": {
       "horizon_2025": {
         "date": "Září 2025",
@@ -90,73 +94,58 @@
       }
     }
   },
-  "horizon": {
-    "badge": "Vrcholná událost komunity",
-    "title": "Veletrh Youth Horizon",
-    "description_1": "Youth Horizon není jen obyčejná akce, je to zhmotnění naší vize. Jednou do roka proměňujeme prostory Gymnázia Arabská v centrum příležitostí, kde se potkávají inspirativní myšlenky z různých oborů.",
-    "description_2": "Zveme přední osobnosti a prestižní organizace, aby se setkali se studenty přímo. Vytváříme prostor, kde formální pravidla ustupují vzájemné inspiraci a sdílení zkušeností. Právě zde vznikají stáže, partnerství a budoucí kariéry.",
-    "stats": {
-      "personalities": "Pozvaných osobností",
-      "institutions": "Institucí",
-      "participants": "Účastníků"
-    },
-    "details": {
-      "header_title": "Příležitosti, které otevíráme",
-      "header_subtitle": "Na Youth Horizonu propojujeme studenty s organizacemi, které nabízejí reálnou praxi, stáže a prostor pro růst.",
-      "categories": {
-        "state": "Státní Správa",
-        "nonprofit": "Neziskový Sektor",
-        "private": "Soukromý Sektor"
+  "event_detail": {
+    "not_found": "Událost nenalezena",
+    "back_to_events": "Zpět na přehled akcí",
+    "about_title": "O události",
+    "about_text_1": "Tato událost představuje důležitý milník v historii Youth Arabské. Propojili jsme studenty s inspirativními osobnostmi a vytvořili prostor pro sdílení zkušeností a budování vztahů.",
+    "about_text_2": "Více informací o této akci brzy doplníme včetně fotogalerie a detailního popisu programu.",
+    "gallery_title": "Fotogalerie",
+    "gallery_placeholder": "Fotogalerie z této akce bude brzy doplněna",
+    "cta_title": "Chcete být u toho příště?",
+    "cta_text": "Sledujte nás na Instagramu a nenechte si ujít naše další akce",
+    "cta_button": "Sledovat na Instagramu",
+    "cta_button_mobile": "Instagram"
+  },
+  "testimonials": {
+    "badge": "Názory studentů",
+    "title_1": "Co si o nás",
+    "title_2": "myslí naši členové",
+    "subtitle": "Slyš přímo od studentů, proč je Youth Arabská něco speciálního",
+    "cta_text": "Inspirován? Připoj se k nám a staň se součástí komunity",
+    "cta_button": "Sleduj nás na Instagramu",
+    "items": {
+      "student_1": {
+        "quote": "Youth Arabská je prostor, kde se setkávají zajímaví lidé a kde můžeš být součástí něčeho smysluplného. Připoj se k nám a zjisti, co všechno můžeš dokázat.",
+        "author": "Student Youth Arabské",
+        "role": "Gymnázium Arabská"
       },
-      "items": {
-        "ek_cr": {
-          "name": "Zastoupení EK v ČR",
-          "desc": "Informace o činnosti EU, vysvětlování politik a zprostředkování názorů."
-        },
-        "tvorime_evropu": {
-          "name": "Tvoříme Evropu",
-          "desc": "Nezávislé informace o EU, vzdělávací akce a podpora debat."
-        },
-        "av_cr": {
-          "name": "Akademie věd ČR",
-          "desc": "Největší veřejná výzkumná instituce, základní výzkum a popularizace vědy."
-        },
-        "ct": {
-          "name": "Česká televize",
-          "desc": "Veřejnoprávní média, příležitosti pro stáže v produkci a žurnalistice."
-        },
-        "summit": {
-          "name": "Pražský studentský summit",
-          "desc": "Modelová jednání OSN a EU, rozvoj argumentačních dovedností."
-        },
-        "future_port": {
-          "name": "Future Port Youth",
-          "desc": "Technologická konference pro studenty, inovace a udržitelnost."
-        },
-        "dofe": {
-          "name": "DofE",
-          "desc": "Mezinárodní program rozvoje dovedností, sportu a dobrovolnictví."
-        },
-        "amkon": {
-          "name": "AmKon",
-          "desc": "Model amerického kongresu, simulace politického dění v USA."
-        },
-        "ef": {
-          "name": "EF Education First",
-          "desc": "Jazykové kurzy a studijní pobyty v zahraničí po celém světě."
-        },
-        "yfu": {
-          "name": "YFU Česká republika",
-          "desc": "Studium roku nebo semestru v zahraničí pro středoškoláky."
-        },
-        "fondee": {
-          "name": "Fondee",
-          "desc": "Investiční platforma pro snadné a transparentní investování do ETF."
-        },
-        "renome": {
-          "name": "Renome Card",
-          "desc": "Prémiové NFC vizitky pro moderní síťování a prezentaci."
-        }
+      "student_2": {
+        "quote": "Díky Youth Horizon jsem poznal profesionály z různých oborů a získal cenné kontakty, které mi pomohly v rozhodování o budoucnosti.",
+        "author": "Člen naší komunity",
+        "role": "Gymnázium Arabská"
+      }
+    }
+  },
+  "photogrid": {
+    "header_title": "Momentky z našich akcí",
+    "header_subtitle": "Fotografie zachycující atmosféru a energii naší komunity",
+    "photos": {
+      "horizon_1": {
+        "alt": "Youth Horizon - Registrace účastníků",
+        "description": "Účastníci při registraci na veletrh Youth Horizon"
+      },
+      "horizon_2": {
+        "alt": "Youth Horizon - Diskuse s hosty",
+        "description": "Inspirativní diskuse s odborníky z různých oborů"
+      },
+      "horizon_3": {
+        "alt": "Youth Horizon - Networking",
+        "description": "Studenti v rozhovoru se zástupci institucí"
+      },
+      "horizon_4": {
+        "alt": "Youth Horizon - Prezentace",
+        "description": "Prezentace příležitostí a programů pro studenty"
       }
     }
   },
@@ -179,22 +168,10 @@
     "success_title": "Deklarace odeslána",
     "success_text": "Brzy se ti ozveme."
   },
-  "photogrid": {
-    "header_title": "Obrazy z Youth Horizonu",
-    "header_subtitle": "Momentky, které zachycují energii a vizi naší komunity.",
-    "view_detail": "Zobrazit detail",
-    "items": {
-      "atmosphere": "Atmosféra akce",
-      "lectures": "Přednášky a diskuse",
-      "networking": "Networking",
-      "community": "Naše komunita"
-    }
-  },
   "footer": {
-    "description": "Platforma pro studenty, kteří chtějí víc. Organizátoři projektu Youth Horizon na Gymnáziu Arabská 14.",
-    "navigation": "Navigace",
-    "institutions": "Instituce",
-    "ethical_code": "Etický kodex komunity",
-    "copyright": "© 2026 Youth Arabská. Konstruováno s respektem k tradici, s vizí do budoucnosti."
+    "description": "Studentská organizace propojující aktivní lidi ze všech oborů. Děláme školu lepším místem.",
+    "navigation": "Odkazy",
+    "institutions": "Partneři",
+    "copyright": "Všechna práva vyhrazena."
   }
 }

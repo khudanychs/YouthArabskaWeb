@@ -5,18 +5,22 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 24px; /* Záměrně menší než header, aby se odkrojila část velkého paddingu sekcí a zbylo ideální místo */
+    scroll-padding-top: 100px;
+    /* ULTIMÁTNÍ FIX: Změna fialové na tmavě modrou ze spodku gradientu */
+    background-color: #1a1a2e; 
+    overscroll-behavior-y: none;
   }
 
   body {
     @apply font-sans text-white overflow-x-hidden;
-    background-color: #1a0533;
+    /* Zde také tmavě modrá místo fialové */
+    background-color: #1a1a2e; 
     min-height: 100vh;
-    min-height: -webkit-fill-available;
+    overscroll-behavior-y: none;
   }
 
   ::selection {
-    background-color: #FFD700; /* Plná barva odstraní ošklivé překrývání (tmavé pruhy), které vzniká u poloprůhledných barev při malém line-height */
+    background-color: #FFD700;
     color: #1a0533;
     text-shadow: none;
   }
@@ -32,23 +36,23 @@
 
   .glass-card {
     @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-2xl;
-    will-change: transform;
   }
 
   .glass-card-highlight {
     @apply bg-white/15 backdrop-blur-md border border-white/30 shadow-lg rounded-2xl;
     border-color: rgba(255, 215, 0, 0.3);
-    will-change: transform;
   }
 
   .reveal-enter {
+    visibility: hidden;
     opacity: 0;
     transform: translateY(30px);
   }
 
   .reveal-visible {
+    visibility: visible;
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
 }
