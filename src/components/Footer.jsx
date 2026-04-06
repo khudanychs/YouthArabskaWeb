@@ -67,7 +67,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="text-white text-xs sm:text-sm font-semibold tracking-widest uppercase mb-4 sm:mb-6">{t('footer.institutions', 'Partneři')}</h4>
+              <h4 className="text-white text-xs sm:text-sm font-semibold tracking-widest uppercase mb-4 sm:mb-6">{t('footer.institutions', 'Instituce')}</h4>
               <ul className="space-y-2 sm:space-y-3">
                 <li>
                   <a
