@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
@@ -7,10 +8,10 @@ const eventData = {
   'horizon-2025': {
     key: 'horizon_2025',
     images: [
-      { src: '/YouthArabskaWeb/Horizon1.jpg', alt: 'Horizon1' },
-      { src: '/YouthArabskaWeb/Horizon2.jpg', alt: 'Horizon2' },
-      { src: '/YouthArabskaWeb/Horizon3.jpg', alt: 'Horizon3' },
-      { src: '/YouthArabskaWeb/Horizon4.jpg', alt: 'Horizon4' }
+      { src: '/YouthArabskaWeb/Horizon1.jpg' },
+      { src: '/YouthArabskaWeb/Horizon2.jpg' },
+      { src: '/YouthArabskaWeb/Horizon5.jpg' },
+      { src: '/YouthArabskaWeb/Horizon4.jpg' }
     ]
   },
   'beyond-the-bell': {
@@ -24,8 +25,37 @@ export default function EventDetailPage() {
   const { t } = useTranslation()
   const headerRef = useReveal()
   const contentRef = useReveal(200)
+  const [activeImageIndex, setActiveImageIndex] = useState(null)
 
   const event = eventData[eventId]
+
+  useEffect(() => {
+    if (activeImageIndex === null) {
+      return
+    }
+
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setActiveImageIndex(null)
+        return
+      }
+
+      if (!event?.images?.length) {
+        return
+      }
+
+      if (e.key === 'ArrowRight') {
+        setActiveImageIndex((prev) => (prev + 1) % event.images.length)
+      }
+
+      if (e.key === 'ArrowLeft') {
+        setActiveImageIndex((prev) => (prev - 1 + event.images.length) % event.images.length)
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [activeImageIndex, event])
 
   if (!event) {
     return (
@@ -109,7 +139,12 @@ export default function EventDetailPage() {
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   {event.images.map((img, idx) => (
-                    <div key={idx} className="group relative overflow-hidden rounded-xl bg-white/5">
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setActiveImageIndex(idx)}
+                      className="group relative overflow-hidden rounded-xl bg-white/5 text-left"
+                    >
                       <div className="aspect-[4/3] overflow-hidden">
                         <img
                           src={img.src}
@@ -122,7 +157,7 @@ export default function EventDetailPage() {
                       <p className="absolute bottom-0 left-0 right-0 p-4 text-white text-sm transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                         {t(`photogrid.photos.horizon_${idx + 1}.description`)}
                       </p>
-                    </div>
+                    </button>
                   ))}
                 </div>
               </section>
@@ -157,6 +192,67 @@ export default function EventDetailPage() {
           </div>
         </div>
       </div>
+
+      {activeImageIndex !== null && event.images[activeImageIndex] && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center px-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label={t('event_detail.gallery_title')}
+          onClick={() => setActiveImageIndex(null)}
+        >
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              setActiveImageIndex(null)
+            }}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/80 hover:text-white text-3xl leading-none"
+            aria-label={t('event_detail.close_gallery')}
+          >
+            ×
+          </button>
+
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              setActiveImageIndex((prev) => (prev - 1 + event.images.length) % event.images.length)
+            }}
+            className="absolute left-2 sm:left-6 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 text-white"
+            aria-label={t('event_detail.prev_photo')}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </button>
+
+          <figure className="w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={event.images[activeImageIndex].src}
+              alt={t(`photogrid.photos.horizon_${activeImageIndex + 1}.alt`)}
+              className="w-full max-h-[80vh] object-contain"
+            />
+            <figcaption className="mt-4 text-center text-white/80 text-sm sm:text-base">
+              {t(`photogrid.photos.horizon_${activeImageIndex + 1}.description`)}
+            </figcaption>
+          </figure>
+
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              setActiveImageIndex((prev) => (prev + 1) % event.images.length)
+            }}
+            className="absolute right-2 sm:right-6 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 text-white"
+            aria-label={t('event_detail.next_photo')}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+      )}
     </>
   )
 }

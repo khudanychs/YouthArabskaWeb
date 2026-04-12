@@ -4,7 +4,7 @@
     "brand_arabska": "Arabská",
     "gymnazium": "Gymnázium Arabská",
     "gymnazium_long": "Gymnázium, Praha 6, Arabská 14",
-    "contact": "Napište nám",
+    "contact": "Napiš nám",
     "nav": {
       "about": "O nás",
       "events": "Akce",
@@ -35,7 +35,7 @@
       "title": "Youth Horizon – Veletrh příležitostí",
       "description": "Každoroční událost na Gymnáziu Arabská propojující studenty s předními osobnostmi a prestižními organizacemi.",
       "og_title": "Youth Horizon | Veletrh příležitostí na Arabské",
-      "og_description": "Stáže, partnerství a budoucí kariéry začínají zde. Objevte svět Youth Horizon."
+      "og_description": "Stáže, partnerství a budoucí kariéry začínají zde. Objev svět Youth Horizon."
     },
     "akce": {
       "title": "Akce – Naše Aktivity",
@@ -44,10 +44,10 @@
       "og_description": "Vytváříme prostor pro teoretické znalosti i praktické zkušenosti. Přehled našich projektů."
     },
     "spojenectvi": {
-      "title": "Spojenectví – Připojte se k nám",
-      "description": "Váš prostor pro růst a tvorbu na Gymnáziu Arabská. Hledáme aktivní studenty, kteří chtějí budovat komunitu.",
-      "og_title": "Spojenectví | Youth Arabská – Připojte se k nám",
-      "og_description": "Investujte svůj čas do budování něčeho, co má smysl. Staňte se součástí naší vize."
+      "title": "Spojenectví – Připoj se k nám",
+      "description": "Tvůj prostor pro růst a tvorbu na Gymnáziu Arabská. Hledáme aktivní studenty, kteří chtějí budovat komunitu.",
+      "og_title": "Spojenectví | Youth Arabská – Připoj se k nám",
+      "og_description": "Investuj svůj čas do budování něčeho, co má smysl. Staň se součástí naší vize."
     }
   },
   "hero": {
@@ -55,8 +55,8 @@
     "title_1": "Připoj se do komunity,",
     "title_2": "která za něco stojí",
     "description": "Youth Arabská není jen další školní klub. Jsme místo, kde se setkávají zajímaví studenti, kde vznikají nápady a kde si můžeš vybudovat své kontakty. Pořádáme akce, workshop a setkáváme se s inspirativními lidmi z byznysu, vědy a veřejného sektoru.",
-    "cta_primary": "Objevte Youth Horizon",
-    "cta_secondary": "Napište nám e-mail"
+    "cta_primary": "Objev Youth Horizon",
+    "cta_secondary": "Napiš nám e-mail"
   },
   "philosophy": {
     "header_title": "Kdo jsme a co chceme",
@@ -78,7 +78,7 @@
   },
   "events": {
     "header_title": "Naše Aktivity",
-    "header_subtitle": "Vytváříme prostor, kde se teorie setkává s praxí. Podívejte se na projekty, které už mají své místo v naší komunitě.",
+    "header_subtitle": "Vytváříme prostor, kde se teorie setkává s praxí. Podívej se na projekty, které už mají své místo v naší komunitě.",
     "status_done": "Uskutečněno",
     "view_detail": "Zobrazit detail",
     "items": {
@@ -102,10 +102,13 @@
     "about_text_2": "Více informací o této akci brzy doplníme včetně fotogalerie a detailního popisu programu.",
     "gallery_title": "Fotogalerie",
     "gallery_placeholder": "Fotogalerie z této akce bude brzy doplněna",
-    "cta_title": "Chcete být u toho příště?",
-    "cta_text": "Sledujte nás na Instagramu a nenechte si ujít naše další akce",
+    "cta_title": "Chceš být u toho příště?",
+    "cta_text": "Sleduj nás na Instagramu a nenech si ujít naše další akce",
     "cta_button": "Sledovat na Instagramu",
-    "cta_button_mobile": "Instagram"
+    "cta_button_mobile": "Instagram",
+    "close_gallery": "Zavřít galerii",
+    "prev_photo": "Předchozí fotka",
+    "next_photo": "Další fotka"
   },
   "testimonials": {
     "badge": "Názory studentů",
@@ -133,7 +136,7 @@
     "photos": {
       "horizon_1": {
         "alt": "Youth Horizon - Registrace účastníků",
-        "description": "Účastníci při registraci na veletrh Youth Horizon"
+        "description": "Kdokoliv se mohl zúčastnit veletrhu Youth Horizon"
       },
       "horizon_2": {
         "alt": "Youth Horizon - Diskuse s hosty",
@@ -141,26 +144,26 @@
       },
       "horizon_3": {
         "alt": "Youth Horizon - Networking",
-        "description": "Studenti v rozhovoru se zástupci institucí"
+        "description": "Stánky s interaktivními aktivitami pro účastníky Youth Horizon"
       },
       "horizon_4": {
         "alt": "Youth Horizon - Prezentace",
-        "description": "Prezentace příležitostí a programů pro studenty"
+        "description": "Organizátoři akce Youth Horizon - Adam a Lujza"
       }
     }
   },
   "alliance": {
-    "title": "Připojte se k nám",
-    "description": "Hledáme jedince, kteří jsou ochotni investovat svůj čas do budování něčeho přesahujícího je samotné. Ať už toužíte organizovat, tvořit, nebo přinášet nové myšlenky – váš prostor je zde.",
+    "title": "Připoj se k nám",
+    "description": "Hledáme jedince, kteří jsou ochotni investovat svůj čas do budování něčeho přesahujícího je samotné. Ať už toužíš organizovat, tvořit nebo přinášet nové myšlenky, tvůj prostor je tady.",
     "labels": {
       "headquarters": "Sídlo",
       "communication": "Komunikace",
-      "name": "Identifikace (Jméno)",
+      "name": "Identifikace",
       "email": "Akademický E-mail",
       "vision": "Tvá vize a motivace"
     },
     "placeholders": {
-      "name": "Vaše jméno a příjmení",
+      "name": "Tvé jméno a příjmení",
       "email": "@gyarab.cz",
       "vision": "Jaký je tvůj cíl v naší komunitě?\nNapříklad:\n- Proč se k nám chceš připojit?\n- Co od toho očekáváš?\n- Kolik času hodláš věnovat komunitě?\n- Jaké máš nápady na budoucí akce?"
     },
