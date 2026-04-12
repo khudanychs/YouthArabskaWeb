@@ -7,7 +7,7 @@ export default function HeroSection() {
   const ref = useReveal()
 
   return (
-    <section className="relative min-h-[100dvh] flex items-center justify-start px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-48 overflow-hidden bg-transparent">
+    <section className="relative min-h-screen flex items-center justify-start px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-48 overflow-hidden bg-transparent">
       <div className="max-w-7xl mx-auto w-full relative z-20">
         <div ref={ref} className="max-w-4xl lg:max-w-5xl reveal-enter">
           

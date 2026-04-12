@@ -10,15 +10,23 @@ export default function Header() {
 
   useEffect(() => {
     let ticking = false
+    let lastScrolled = false
+
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 50)
+          const nextScrolled = window.scrollY > 50
+          if (nextScrolled !== lastScrolled) {
+            lastScrolled = nextScrolled
+            setScrolled(nextScrolled)
+          }
           ticking = false
         })
         ticking = true
       }
     }
+
+    handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -43,9 +51,7 @@ export default function Header() {
     setNavOpen(false)
     if (location.pathname === to || (location.pathname === '/' && to === '/')) {
       e.preventDefault()
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    } else if (scrollId) {
-      sessionStorage.setItem('scrollFrom', scrollId)
+      window.scrollTo({ top: 0, behavior: 'auto' })
     }
   }
 
@@ -54,8 +60,8 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-white/5 backdrop-blur-2xl border-b border-white/10 shadow-2xl py-3 lg:py-4'
-            : 'bg-white/[0.02] backdrop-blur-md py-4 lg:py-6'
+            ? 'bg-[#0f1426]/94 md:bg-[#101a32]/82 border-b border-white/12 shadow-2xl py-3 lg:py-4 md:backdrop-blur-2xl'
+            : 'bg-[#0f1426]/84 md:bg-[#101a32]/68 border-b border-white/8 py-4 lg:py-6 md:backdrop-blur-md'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">

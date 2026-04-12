@@ -4,19 +4,20 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     scroll-padding-top: 100px;
-    /* ULTIMÁTNÍ FIX: Změna fialové na tmavě modrou ze spodku gradientu */
-    background-color: #1a1a2e; 
+    background-color: #1a1a2e;
+    min-height: 100vh;
     overscroll-behavior-y: none;
+    overflow-anchor: none;
   }
 
   body {
     @apply font-sans text-white overflow-x-hidden;
-    /* Zde také tmavě modrá místo fialové */
-    background-color: #1a1a2e; 
+    background-color: #1a1a2e;
     min-height: 100vh;
     overscroll-behavior-y: none;
+    overflow-anchor: none;
   }
 
   ::selection {
@@ -54,5 +55,60 @@
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .kinetic-gradient-shift {
+    background:
+      radial-gradient(circle at 20% 20%, rgba(104, 165, 255, 0.22), transparent 40%),
+      radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.1), transparent 45%),
+      linear-gradient(135deg, #1a0533 0%, #0d1b3e 55%, #1a1a2e 100%);
+    animation: kineticGradientPan 18s ease-in-out infinite alternate;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .kinetic-vignette {
+    background: radial-gradient(circle at 50% 120%, rgba(26, 26, 46, 0.75), transparent 55%);
+  }
+
+  .kinetic-css-particle {
+    position: absolute;
+    left: var(--particle-x);
+    bottom: -18vh;
+    width: var(--particle-size);
+    height: var(--particle-size);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.22);
+    opacity: 0;
+    transform: translate3d(-50%, 0, 0);
+    will-change: transform, opacity;
+    animation: kineticFloat var(--particle-duration) linear var(--particle-delay) infinite;
+  }
+}
+
+@keyframes kineticGradientPan {
+  from {
+    transform: scale(1.05) translate3d(-1%, -1%, 0);
+  }
+
+  to {
+    transform: scale(1.1) translate3d(1.2%, 1.4%, 0);
+  }
+}
+
+@keyframes kineticFloat {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, 0, 0) scale(0.85);
+  }
+
+  20% {
+    opacity: 0.35;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, -135vh, 0) scale(1.15);
   }
 }

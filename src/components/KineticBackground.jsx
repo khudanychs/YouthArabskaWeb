@@ -1,5 +1,9 @@
 import { useRef, useEffect } from 'react'
 
+const MOBILE_BREAKPOINT = 768
+const MOBILE_HEIGHT_BUFFER = 300
+const MAX_DPR = 1.5
+
 class GlassSphere {
   constructor(canvasWidth, canvasHeight, ctx, dpr) {
     this.ctx = ctx
@@ -78,89 +82,138 @@ class GlassSphere {
 
 export default function KineticBackground() {
   const canvasRef = useRef(null)
+  const useCssFallback = (import.meta.env.VITE_KINETIC_BG_MODE || '').toLowerCase() === 'css'
+  const cssParticles = Array.from({ length: 12 })
 
   useEffect(() => {
+    if (useCssFallback) return
+
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     let spheres = []
     let animFrameId
-    
-    // Získání hustoty pixelů displeje. Zastropujeme na 2, abychom neuvařili grafiku na mobilech (DPR 3+ by bylo 9x více pixelů k počítání).
-    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+
+    // Cap DPR to keep GPU cost stable on high-refresh mobile/tablet displays.
+    const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR)
 
     function populateSpheres(width, height) {
       spheres = []
-      const density = window.innerWidth <= 768 ? 0.00003 : 0.00004 
+      const density = width <= MOBILE_BREAKPOINT ? 0.00003 : 0.00004
       const count = Math.floor(width * height * density)
-      const optimalCount = Math.min(Math.max(count, 15), 50) 
-      
+      const optimalCount = Math.min(Math.max(count, 15), 50)
+
       for (let i = 0; i < optimalCount; i++) {
         spheres.push(new GlassSphere(width, height, ctx, dpr))
       }
     }
 
-    let lastLogicalWidth = 0
-
-    function handleResize() {
-      const logicalWidth = window.innerWidth
-      
-      // EXTRÉMNÍ OCHRANA PROTI SCROLLOVÁNÍ: 
-      // Pokud se změní jen výška (URL lišta mizí/objevuje se), funkci okamžitě ukončíme.
-      if (lastLogicalWidth === logicalWidth && lastLogicalWidth !== 0) {
-        return
-      }
-      
-      lastLogicalWidth = logicalWidth
-      const isMobile = logicalWidth <= 768
-      
-      // Na mobilu nastavíme plátno na fyzickou velikost celého displeje, ne jen na okno prohlížeče.
-      const logicalHeight = isMobile ? window.screen.height : window.innerHeight
-
-      // 1. Nastavíme CSS (logickou) velikost, aby nepřetékalo doprava
+    function sizeCanvas(logicalWidth, logicalHeight) {
       canvas.style.width = `${logicalWidth}px`
       canvas.style.height = `${logicalHeight}px`
-      
-      // 2. Nastavíme interní (renderovací) velikost znásobenou DPR pro ostrost
-      canvas.width = logicalWidth * dpr
-      canvas.height = logicalHeight * dpr
-      
-      // 3. Řekneme kontextu, aby všechno interně škáloval
-      ctx.scale(dpr, dpr)
+
+      canvas.width = Math.floor(logicalWidth * dpr)
+      canvas.height = Math.floor(logicalHeight * dpr)
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
       populateSpheres(logicalWidth, logicalHeight)
     }
 
     function animate() {
       animFrameId = requestAnimationFrame(animate)
-      
-      // ClearReact také musí používat logické rozměry, protože ctx je teď pod vlivem ctx.scale()
+
       ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr)
-      
+
       for (let i = 0; i < spheres.length; i++) {
         spheres[i].update()
       }
     }
 
-    handleResize()
+    const mountedWidth = window.innerWidth
+    const isMobileAtMount = mountedWidth <= MOBILE_BREAKPOINT
+    let lastKnownWidth = mountedWidth
+
+    if (isMobileAtMount) {
+      sizeCanvas(mountedWidth, window.screen.height + MOBILE_HEIGHT_BUFFER)
+    } else {
+      sizeCanvas(mountedWidth, window.innerHeight)
+    }
+
     animate()
 
-    window.addEventListener('resize', handleResize)
+    let cleanupResizeListener = () => {}
+
+    if (isMobileAtMount) {
+      const handleOrientationChange = () => {
+        const nextWidth = window.innerWidth
+        if (nextWidth === lastKnownWidth) return
+
+        lastKnownWidth = nextWidth
+        const nextIsMobile = nextWidth <= MOBILE_BREAKPOINT
+        const nextHeight = nextIsMobile
+          ? window.screen.height + MOBILE_HEIGHT_BUFFER
+          : window.innerHeight
+
+        sizeCanvas(nextWidth, nextHeight)
+      }
+
+      window.addEventListener('orientationchange', handleOrientationChange)
+      cleanupResizeListener = () => {
+        window.removeEventListener('orientationchange', handleOrientationChange)
+      }
+    } else {
+      const handleResize = () => {
+        const nextWidth = window.innerWidth
+        const nextHeight = window.innerHeight
+
+        if (nextWidth === lastKnownWidth && nextHeight === canvas.height / dpr) return
+        lastKnownWidth = nextWidth
+        sizeCanvas(nextWidth, nextHeight)
+      }
+
+      window.addEventListener('resize', handleResize)
+      cleanupResizeListener = () => {
+        window.removeEventListener('resize', handleResize)
+      }
+    }
 
     return () => {
       cancelAnimationFrame(animFrameId)
-      window.removeEventListener('resize', handleResize)
+      cleanupResizeListener()
     }
-  }, [])
+  }, [useCssFallback])
 
   return (
-    <div 
-      /* FIX 3: Místo h-full použijeme h-[100dvh], což dynamicky reaguje na mizející lištu Chrome */
-      className="fixed inset-0 w-full h-[100dvh] z-0 pointer-events-none overflow-hidden bg-[#1a0533]" 
-      aria-hidden="true" 
+    <div
+      className="fixed top-0 left-0 z-0 pointer-events-none overflow-hidden bg-[#1a1a2e]"
+      style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh' }}
+      aria-hidden="true"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1a0533] via-[#0d1b3e] to-[#1a1a2e]" />
-      <canvas ref={canvasRef} className="absolute inset-0" />
+      {useCssFallback ? (
+        <>
+          <div className="absolute inset-0 kinetic-gradient-shift" />
+          <div className="absolute inset-0 kinetic-vignette" />
+          <div className="absolute inset-0">
+            {cssParticles.map((_, index) => (
+              <span
+                key={index}
+                className="kinetic-css-particle"
+                style={{
+                  '--particle-x': `${(index * 73) % 100}%`,
+                  '--particle-size': `${16 + (index % 5) * 10}px`,
+                  '--particle-delay': `${index * -1.8}s`,
+                  '--particle-duration': `${18 + (index % 4) * 6}s`
+                }}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1a0533] via-[#0d1b3e] to-[#1a1a2e]" />
+          <canvas ref={canvasRef} className="absolute inset-0" />
+        </>
+      )}
     </div>
   )
 }

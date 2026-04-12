@@ -16,6 +16,10 @@ export default defineConfig({
       gzipSize: true,
     }),
   ],
-  // Base musí odpovídat názvu tvého repozitáře na GitHubu
+  // TADY JE TA ZMĚNA:
+  server: {
+    host: true, 
+    port: 5174, 
+  },
   base: '/YouthArabskaWeb/',
 })

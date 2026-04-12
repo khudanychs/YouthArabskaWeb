@@ -21,7 +21,6 @@ function EventCard({ event, index }) {
   const ref = useReveal(index * 200)
 
   const handleClick = () => {
-    sessionStorage.setItem('scrollFrom', 'akce')
     navigate(`/akce/${event.id}`)
   }
 
