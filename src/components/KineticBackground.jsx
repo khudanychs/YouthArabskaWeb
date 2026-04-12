@@ -1,8 +1,28 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useMemo } from 'react'
 
 const MOBILE_BREAKPOINT = 768
 const MOBILE_HEIGHT_BUFFER = 300
 const MAX_DPR = 1.5
+const SCROLL_IDLE_TIMEOUT = 120
+
+function resolveKineticMode() {
+  const envMode = (import.meta.env.VITE_KINETIC_BG_MODE || '').toLowerCase()
+  if (envMode === 'css') return 'css'
+  if (envMode === 'canvas') return 'canvas'
+
+  if (typeof window === 'undefined') return 'css'
+
+  const isMobile = window.innerWidth <= MOBILE_BREAKPOINT
+  const hasReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  const saveData = navigator.connection?.saveData === true
+  const lowConcurrency = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4
+
+  if (isMobile || hasReducedMotion || saveData || lowConcurrency) {
+    return 'css'
+  }
+
+  return 'canvas'
+}
 
 class GlassSphere {
   constructor(canvasWidth, canvasHeight, ctx, dpr) {
@@ -82,7 +102,7 @@ class GlassSphere {
 
 export default function KineticBackground() {
   const canvasRef = useRef(null)
-  const useCssFallback = (import.meta.env.VITE_KINETIC_BG_MODE || '').toLowerCase() === 'css'
+  const useCssFallback = useMemo(() => resolveKineticMode() === 'css', [])
   const cssParticles = Array.from({ length: 12 })
 
   useEffect(() => {
@@ -93,15 +113,19 @@ export default function KineticBackground() {
     const ctx = canvas.getContext('2d')
     let spheres = []
     let animFrameId
+    let lastFrameTs = 0
+    let scrollStateResetTimer = null
+    let isTabHidden = document.visibilityState === 'hidden'
+    let isUserScrolling = false
 
     // Cap DPR to keep GPU cost stable on high-refresh mobile/tablet displays.
     const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR)
 
     function populateSpheres(width, height) {
       spheres = []
-      const density = width <= MOBILE_BREAKPOINT ? 0.00003 : 0.00004
+      const density = width <= MOBILE_BREAKPOINT ? 0.000012 : 0.00002
       const count = Math.floor(width * height * density)
-      const optimalCount = Math.min(Math.max(count, 15), 50)
+      const optimalCount = Math.min(Math.max(count, 10), 26)
 
       for (let i = 0; i < optimalCount; i++) {
         spheres.push(new GlassSphere(width, height, ctx, dpr))
@@ -119,8 +143,18 @@ export default function KineticBackground() {
       populateSpheres(logicalWidth, logicalHeight)
     }
 
-    function animate() {
+    function animate(ts) {
       animFrameId = requestAnimationFrame(animate)
+
+      if (isTabHidden) return
+
+      const width = window.innerWidth
+      const isMobile = width <= MOBILE_BREAKPOINT
+      const targetFps = isUserScrolling ? (isMobile ? 16 : 20) : (isMobile ? 24 : 36)
+      const frameInterval = 1000 / targetFps
+
+      if (ts - lastFrameTs < frameInterval) return
+      lastFrameTs = ts
 
       ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr)
 
@@ -139,7 +173,24 @@ export default function KineticBackground() {
       sizeCanvas(mountedWidth, window.innerHeight)
     }
 
-    animate()
+    animFrameId = requestAnimationFrame(animate)
+
+    const handleVisibilityChange = () => {
+      isTabHidden = document.visibilityState === 'hidden'
+    }
+
+    const handleScroll = () => {
+      isUserScrolling = true
+      if (scrollStateResetTimer) {
+        clearTimeout(scrollStateResetTimer)
+      }
+      scrollStateResetTimer = window.setTimeout(() => {
+        isUserScrolling = false
+      }, SCROLL_IDLE_TIMEOUT)
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    window.addEventListener('scroll', handleScroll, { passive: true })
 
     let cleanupResizeListener = () => {}
 
@@ -179,6 +230,11 @@ export default function KineticBackground() {
 
     return () => {
       cancelAnimationFrame(animFrameId)
+      if (scrollStateResetTimer) {
+        clearTimeout(scrollStateResetTimer)
+      }
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+      window.removeEventListener('scroll', handleScroll)
       cleanupResizeListener()
     }
   }, [useCssFallback])
