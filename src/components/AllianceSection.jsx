@@ -53,34 +53,43 @@ export default function AllianceSection() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div>
-                  <label className="block text-white/70 text-xs font-semibold mb-1.5 tracking-wide uppercase">
+                  <label htmlFor="alliance-name" className="block text-white/70 text-xs font-semibold mb-1.5 tracking-wide uppercase">
                     {t('alliance.labels.name')}
                   </label>
                   <input
+                    id="alliance-name"
+                    name="name"
                     type="text"
                     required
+                    autoComplete="name"
                     placeholder={t('alliance.placeholders.name')}
                     className="w-full bg-white/5 border border-white/15 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 text-white placeholder-white/20 text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-white/70 text-xs font-semibold mb-1.5 tracking-wide uppercase">
+                  <label htmlFor="alliance-email" className="block text-white/70 text-xs font-semibold mb-1.5 tracking-wide uppercase">
                     {t('alliance.labels.email')}
                   </label>
                   <input
+                    id="alliance-email"
+                    name="email"
                     type="email"
                     required
+                    autoComplete="email"
                     placeholder={t('alliance.placeholders.email')}
                     className="w-full bg-white/5 border border-white/15 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 text-white placeholder-white/20 text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-white/70 text-xs font-semibold mb-1.5 tracking-wide uppercase">
+                  <label htmlFor="alliance-vision" className="block text-white/70 text-xs font-semibold mb-1.5 tracking-wide uppercase">
                     {t('alliance.labels.vision')}
                   </label>
                   <textarea
+                    id="alliance-vision"
+                    name="vision"
                     required
                     rows={6}
+                    autoComplete="off"
                     placeholder={t('alliance.placeholders.vision')}
                     className="w-full bg-white/5 border border-white/15 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 text-white placeholder-white/20 text-sm focus:outline-none focus:border-dawn-gold/50 focus:bg-white/10 transition-all resize-none leading-relaxed"
                   />
