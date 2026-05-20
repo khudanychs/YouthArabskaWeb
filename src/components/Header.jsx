@@ -32,14 +32,8 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
-    if (navOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-    return () => {
-      document.body.style.overflow = 'unset'
-    }
+    document.body.style.overflow = navOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
   }, [navOpen])
 
   const navLinks = [
@@ -110,7 +104,8 @@ export default function Header() {
             
             <div className="flex items-center gap-4">
               <a
-                href="mailto:serhii.khudanych.s@gyarab.cz"
+                href="#contact"
+                onClick={(e) => { e.preventDefault(); window.location.href = 'mai' + 'lto:' + 'serhii.khudanych.s' + '@' + 'gyarab.cz' }}
                 className="px-5 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all duration-200 text-sm lg:text-base font-medium border border-white/20"
               >
                 {t('common.contact', 'Napište nám')}
@@ -190,7 +185,8 @@ export default function Header() {
           
           <div className="mt-auto rounded-3xl border border-white/10 bg-white/5 p-3 sm:p-4 space-y-3">
             <a
-              href="mailto:serhii.khudanych.s@gyarab.cz"
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); window.location.href = 'mai' + 'lto:' + 'serhii.khudanych.s' + '@' + 'gyarab.cz' }}
               className="block px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/16 text-white transition-all duration-200 text-base font-medium text-center border border-white/15"
             >
               {t('common.contact', 'Napište nám')}

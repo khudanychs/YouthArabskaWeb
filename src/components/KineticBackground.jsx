@@ -117,6 +117,7 @@ export default function KineticBackground() {
     let scrollStateResetTimer = null
     let isTabHidden = document.visibilityState === 'hidden'
     let isUserScrolling = false
+    let isCanvasVisible = true
 
     // Cap DPR to keep GPU cost stable on high-refresh mobile/tablet displays.
     const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR)
@@ -146,7 +147,7 @@ export default function KineticBackground() {
     function animate(ts) {
       animFrameId = requestAnimationFrame(animate)
 
-      if (isTabHidden) return
+      if (isTabHidden || !isCanvasVisible) return
 
       const width = window.innerWidth
       const isMobile = width <= MOBILE_BREAKPOINT
@@ -228,6 +229,12 @@ export default function KineticBackground() {
       }
     }
 
+    const canvasObserver = new IntersectionObserver(
+      ([entry]) => { isCanvasVisible = entry.isIntersecting },
+      { threshold: 0 }
+    )
+    canvasObserver.observe(canvas)
+
     return () => {
       cancelAnimationFrame(animFrameId)
       if (scrollStateResetTimer) {
@@ -236,6 +243,7 @@ export default function KineticBackground() {
       document.removeEventListener('visibilitychange', handleVisibilityChange)
       window.removeEventListener('scroll', handleScroll)
       cleanupResizeListener()
+      canvasObserver.disconnect()
     }
   }, [useCssFallback])
 

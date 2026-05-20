@@ -7,8 +7,8 @@ export default function Footer() {
   const isHomePage = location.pathname === '/'
 
   const emails = [
-    { address: 'serhii.khudanych.s@gyarab.cz', label: 'Serhii Khudanych' },
-    { address: 'matous.tlamka.s@gyarab.cz', label: 'Vedení Youth Arabská' },
+    { user: 'serhii.khudanych.s', domain: 'gyarab.cz', label: 'Serhii Khudanych' },
+    { user: 'matous.tlamka.s', domain: 'gyarab.cz', label: 'Vedení Youth Arabská' },
   ]
 
   return (
@@ -29,15 +29,16 @@ export default function Footer() {
               <div className="flex flex-col gap-3 mb-4">
                 {emails.map((email) => (
                   <a 
-                    key={email.address}
-                    href={`mailto:${email.address}`} 
+                    key={email.user}
+                    href="#contact"
+                    onClick={(e) => { e.preventDefault(); window.location.href = 'mai' + 'lto:' + email.user + '@' + email.domain }}
                     className="text-white/70 hover:text-white transition-colors duration-200 flex items-start gap-2 text-xs sm:text-sm bg-white/5 px-3 sm:px-4 py-2 rounded-lg hover:bg-white/10 w-fit"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect width="20" height="16" x="2" y="4" rx="2"/>
                       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                     </svg>
-                    <span className="break-all">{email.address}</span>
+                    <span className="break-all">{email.user + '@' + email.domain}</span>
                   </a>
                 ))}
               </div>
@@ -70,7 +71,6 @@ export default function Footer() {
             <div>
               <h4 className="text-white text-xs sm:text-sm font-semibold tracking-widest uppercase mb-4 sm:mb-6">{t('footer.navigation', 'Odkazy')}</h4>
               <ul className="space-y-2 sm:space-y-3">
-                <li><Link to="/horizon" className="text-white/60 hover:text-white text-sm transition-colors block">{t('common.nav.horizon', 'Youth Horizon')}</Link></li>
                 <li><Link to="/akce" className="text-white/60 hover:text-white text-sm transition-colors block">{t('common.nav.akce', 'Naše Akce')}</Link></li>
                 <li><Link to="/vize" className="text-white/60 hover:text-white text-sm transition-colors block">{t('common.nav.vize', 'O nás')}</Link></li>
               </ul>
