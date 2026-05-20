@@ -1,10 +1,8 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 export default function Footer() {
   const { t } = useTranslation()
-  const location = useLocation()
-  const isHomePage = location.pathname === '/'
 
   const emails = [
     { user: 'serhii.khudanych.s', domain: 'gyarab.cz', label: 'Serhii Khudanych' },
@@ -18,10 +16,10 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-8">
             
             <div className="sm:col-span-2">
-              <Link to="/" className="flex items-center mb-4 flex-wrap">
+              <span className="flex items-center mb-4 flex-wrap">
                 <span className="text-white font-serif font-bold text-xl sm:text-2xl tracking-wide">{t('common.brand_youth')}</span>
                 <span className="text-gradient font-serif font-bold text-xl sm:text-2xl tracking-wide ml-1.5">{t('common.brand_arabska')}</span>
-              </Link>
+              </span>
               <p className="text-white/60 text-sm leading-relaxed mb-6 max-w-md">
                 {t('footer.description')}
               </p>
