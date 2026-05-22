@@ -61,7 +61,7 @@ export default function AllianceSection() {
 
             {/* Left column — CTA text */}
             <div className="relative z-10">
-              <p className="inline-flex items-center gap-3 mb-6 text-white/62 text-xs font-medium tracking-widest uppercase">
+              <p className="inline-flex items-center gap-3 mb-6 text-white/60 text-xs font-medium tracking-widest uppercase">
                 <span className="w-5 h-px bg-dawn-gold/60" />
                 <span>Připoj se</span>
               </p>
