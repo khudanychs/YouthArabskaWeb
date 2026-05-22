@@ -6,7 +6,7 @@
   html {
     scroll-behavior: auto;
     scroll-padding-top: 100px;
-    background-color: #070a17;
+    background-color: #0c1428;
     min-height: 100vh;
     overscroll-behavior-y: none;
     overflow-anchor: none;
@@ -14,7 +14,7 @@
 
   body {
     @apply font-sans text-white overflow-x-hidden;
-    background-color: #070a17;
+    background-color: #0c1428;
     min-height: 100vh;
     overscroll-behavior-y: none;
     overflow-anchor: none;
@@ -92,16 +92,16 @@
     background:
       linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.05) 0%,
-        rgba(255, 255, 255, 0.018) 100%
+        rgba(255, 255, 255, 0.07) 0%,
+        rgba(255, 255, 255, 0.028) 100%
       );
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 1rem;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.05),
-      0 24px 48px -28px rgba(0, 0, 0, 0.6);
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      0 24px 48px -28px rgba(0, 0, 0, 0.5);
     transition:
       border-color 300ms ease,
       box-shadow 300ms ease,
@@ -146,23 +146,23 @@
     }
   }
 
-  /* Highlighted variant — single 1px gold border, no doubled ring */
+  /* Highlighted variant */
   .glass-card-highlight {
     position: relative;
     isolation: isolate;
     background:
       linear-gradient(
         180deg,
-        rgba(255, 215, 0, 0.06) 0%,
-        rgba(255, 255, 255, 0.02) 100%
+        rgba(255, 215, 0, 0.09) 0%,
+        rgba(255, 255, 255, 0.03) 100%
       );
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    border: 1px solid rgba(255, 215, 0, 0.22);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(255, 215, 0, 0.28);
     border-radius: 1rem;
     box-shadow:
-      inset 0 1px 0 rgba(255, 215, 0, 0.08),
-      0 24px 48px -28px rgba(0, 0, 0, 0.6);
+      inset 0 1px 0 rgba(255, 215, 0, 0.1),
+      0 24px 48px -28px rgba(0, 0, 0, 0.5);
   }
 
   /* ─────────────────────────────────────────────────────────────

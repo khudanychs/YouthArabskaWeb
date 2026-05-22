@@ -43,7 +43,7 @@ export default function Footer() {
                 <span className="text-white font-serif font-bold text-2xl sm:text-3xl tracking-wide">{t('common.brand_youth')}</span>
                 <span className="text-gradient font-serif font-bold text-2xl sm:text-3xl tracking-wide ml-1.5">{t('common.brand_arabska')}</span>
               </div>
-              <p className="text-white/50 text-sm leading-relaxed mb-7 max-w-sm">
+              <p className="text-white/65 text-sm leading-relaxed mb-7 max-w-sm">
                 {t('footer.description')}
               </p>
 
@@ -52,9 +52,8 @@ export default function Footer() {
                 {emails.map((email) => (
                   <motion.a
                     key={email.user}
-                    href="#contact"
-                    onClick={(e) => { e.preventDefault(); window.location.href = 'mai' + 'lto:' + email.user + '@' + email.domain }}
-                    className="group flex items-center gap-3 text-white/50 hover:text-white text-xs sm:text-sm transition-colors duration-200"
+                    href={`mailto:${email.user}@${email.domain}`}
+                    className="group flex items-center gap-3 text-white/65 hover:text-white text-xs sm:text-sm transition-colors duration-200"
                     whileHover={{ x: 4 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                   >
@@ -72,7 +71,7 @@ export default function Footer() {
                 href="https://www.instagram.com/youtharabska/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 text-white/50 hover:text-white text-xs sm:text-sm transition-colors duration-200"
+                className="group inline-flex items-center gap-2.5 text-white/65 hover:text-white text-xs sm:text-sm transition-colors duration-200"
                 whileHover={{ x: 4 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                 aria-label="Instagram"
@@ -97,7 +96,7 @@ export default function Footer() {
                     <motion.div whileHover={{ x: 4 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
                       <Link
                         to={link.to}
-                        className="text-white/50 hover:text-white text-sm transition-colors duration-200 block"
+                        className="text-white/65 hover:text-white text-sm transition-colors duration-200 block"
                       >
                         {link.label}
                       </Link>
@@ -118,7 +117,7 @@ export default function Footer() {
                     href="https://www.gyarab.cz/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-2 text-white/50 hover:text-white text-sm transition-colors duration-200"
+                    className="group flex items-center gap-2 text-white/65 hover:text-white text-sm transition-colors duration-200"
                     whileHover={{ x: 4 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                   >

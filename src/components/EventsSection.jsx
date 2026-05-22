@@ -67,7 +67,7 @@ function FeaturedEventCard({ event }) {
           {t(`events.items.${event.key}.title`)}
         </h3>
 
-        <p className="text-white/65 text-sm sm:text-base leading-relaxed mb-6 max-w-lg">
+        <p className="text-white/80 text-sm sm:text-base leading-relaxed mb-6 max-w-lg">
           {t(`events.items.${event.key}.desc`)}
         </p>
 
@@ -116,7 +116,7 @@ function SecondaryEventCard({ event }) {
           {t(`events.items.${event.key}.title`)}
         </h3>
 
-        <p className="text-white/55 text-sm leading-relaxed mb-6">
+        <p className="text-white/72 text-sm leading-relaxed mb-6">
           {t(`events.items.${event.key}.desc`)}
         </p>
       </div>
@@ -168,7 +168,7 @@ export default function EventsSection() {
       <div className="max-w-7xl mx-auto">
 
         <header ref={headerRef} className="text-center mb-14 sm:mb-18 opacity-0">
-          <p className="inline-flex items-center gap-3 mb-6 text-white/45 text-xs sm:text-sm font-medium tracking-widest uppercase">
+          <p className="inline-flex items-center gap-3 mb-6 text-white/62 text-xs sm:text-sm font-medium tracking-widest uppercase">
             <span className="w-8 h-px bg-gradient-to-r from-transparent to-dawn-gold/70" aria-hidden="true" />
             <span>{t('events.badge', 'Akce')}</span>
             <span className="w-8 h-px bg-gradient-to-l from-transparent to-dawn-gold/70" aria-hidden="true" />
@@ -176,7 +176,7 @@ export default function EventsSection() {
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-5">
             {t('events.header_title')}
           </h2>
-          <p className="text-white/55 text-base sm:text-lg max-w-2xl mx-auto px-4 leading-relaxed">
+          <p className="text-white/72 text-base sm:text-lg max-w-2xl mx-auto px-4 leading-relaxed">
             {t('events.header_subtitle')}
           </p>
         </header>

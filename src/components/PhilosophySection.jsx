@@ -67,7 +67,7 @@ function SectionCard({ section, index }) {
           <h3 className="font-serif text-xl sm:text-2xl font-bold text-white leading-snug">
             {t(`philosophy.sections.${section.key}.title`)}
           </h3>
-          <p className="text-white/60 text-sm sm:text-base leading-relaxed flex-grow">
+          <p className="text-white/75 text-sm sm:text-base leading-relaxed flex-grow">
             {t(`philosophy.sections.${section.key}.text`)}
           </p>
           <div className="h-px w-full bg-gradient-to-r from-dawn-gold/20 to-transparent mt-2" />
@@ -112,7 +112,7 @@ export default function PhilosophySection() {
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <header ref={headerRef} className="text-center mb-14 sm:mb-18 opacity-0">
-          <p className="inline-flex items-center gap-3 mb-6 text-white/45 text-xs sm:text-sm font-medium tracking-widest uppercase">
+          <p className="inline-flex items-center gap-3 mb-6 text-white/62 text-xs sm:text-sm font-medium tracking-widest uppercase">
             <span className="w-8 h-px bg-gradient-to-r from-transparent to-dawn-gold/70" aria-hidden="true" />
             <span>{t('philosophy.badge', 'Naše filozofie')}</span>
             <span className="w-8 h-px bg-gradient-to-l from-transparent to-dawn-gold/70" aria-hidden="true" />
@@ -120,7 +120,7 @@ export default function PhilosophySection() {
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-5 leading-tight">
             {t('philosophy.header_title')}
           </h2>
-          <p className="text-white/55 text-base sm:text-lg max-w-2xl mx-auto px-4 leading-relaxed">
+          <p className="text-white/72 text-base sm:text-lg max-w-2xl mx-auto px-4 leading-relaxed">
             {t('philosophy.header_subtitle')}
           </p>
         </header>
