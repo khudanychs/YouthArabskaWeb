@@ -99,7 +99,7 @@ function SecondaryEventCard({ event }) {
   return (
     <motion.article
       onClick={() => navigate(`/akce/${event.id}`)}
-      className="glass-card tap-press p-6 sm:p-8 flex flex-col justify-between group hover:border-dawn-gold/30 transition-all duration-500 cursor-pointer"
+      className="tap-press p-6 sm:p-8 flex flex-col justify-between group cursor-pointer rounded-2xl border border-slate-200 bg-white hover:border-dawn-gold/40 hover:shadow-lg transition-all duration-500"
       whileHover={{ y: -4, scale: 1.01 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
     >
@@ -112,11 +112,11 @@ function SecondaryEventCard({ event }) {
           <div className="w-8 h-px bg-dawn-gold/30 group-hover:w-14 transition-all duration-500" />
         </div>
 
-        <h3 className="font-serif text-xl sm:text-2xl font-bold text-white mb-3 leading-snug group-hover:text-dawn-gold/90 transition-colors duration-300">
+        <h3 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-dawn-gold/90 transition-colors duration-300">
           {t(`events.items.${event.key}.title`)}
         </h3>
 
-        <p className="text-white/72 text-sm leading-relaxed mb-6">
+        <p className="text-slate-600 text-sm leading-relaxed mb-6">
           {t(`events.items.${event.key}.desc`)}
         </p>
       </div>
@@ -168,15 +168,15 @@ export default function EventsSection() {
       <div className="max-w-7xl mx-auto">
 
         <header ref={headerRef} className="text-center mb-14 sm:mb-18 opacity-0">
-          <p className="inline-flex items-center gap-3 mb-6 text-white/62 text-xs sm:text-sm font-medium tracking-widest uppercase">
+          <p className="inline-flex items-center gap-3 mb-6 text-slate-500 text-xs sm:text-sm font-medium tracking-widest uppercase">
             <span className="w-8 h-px bg-gradient-to-r from-transparent to-dawn-gold/70" aria-hidden="true" />
             <span>{t('events.badge', 'Akce')}</span>
             <span className="w-8 h-px bg-gradient-to-l from-transparent to-dawn-gold/70" aria-hidden="true" />
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-5">
             {t('events.header_title')}
           </h2>
-          <p className="text-white/72 text-base sm:text-lg max-w-2xl mx-auto px-4 leading-relaxed">
+          <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto px-4 leading-relaxed">
             {t('events.header_subtitle')}
           </p>
         </header>

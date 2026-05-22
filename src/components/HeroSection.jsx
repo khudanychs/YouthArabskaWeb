@@ -85,7 +85,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-start px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40 overflow-hidden bg-transparent"
     >
       {/* Background beams */}
-      <BackgroundBeams className="z-0 opacity-60" />
+      <BackgroundBeams className="z-0 opacity-30" />
 
       {/* Parallax content wrapper */}
       <motion.div
@@ -97,7 +97,7 @@ export default function HeroSection() {
           {/* Badge */}
           <div ref={badgeRef} className="flex items-center gap-3 mb-8 sm:mb-10 lg:mb-12 opacity-0">
             <span className="w-8 h-px bg-gradient-to-r from-dawn-gold/80 to-dawn-orange/60" aria-hidden="true" />
-            <p className="text-white/70 text-xs sm:text-sm font-medium tracking-wider uppercase">
+            <p className="text-slate-500 text-xs sm:text-sm font-medium tracking-wider uppercase">
               {t('hero.badge', 'Oficiální studentská platforma')}
             </p>
           </div>
@@ -106,7 +106,7 @@ export default function HeroSection() {
           <h1 className="font-serif leading-[1.03] tracking-tight mb-7 sm:mb-9">
             <span
               ref={line1Ref}
-              className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white opacity-0"
+              className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-slate-900 opacity-0"
               style={{ clipPath: 'inset(0 0 100% 0)' }}
             >
               {t('hero.title_1')}
@@ -123,7 +123,7 @@ export default function HeroSection() {
           {/* Description */}
           <p
             ref={descRef}
-            className="text-white/80 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-2xl lg:max-w-3xl mb-10 sm:mb-12 font-light opacity-0"
+            className="text-slate-600 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-2xl lg:max-w-3xl mb-10 sm:mb-12 font-light opacity-0"
           >
             {t('hero.description')}
           </p>
@@ -156,7 +156,7 @@ export default function HeroSection() {
 
             <a
               href="mailto:serhii.khudanych.s@gyarab.cz"
-              className="px-7 py-3.5 sm:px-9 sm:py-4.5 lg:px-11 lg:py-5 rounded-xl border border-white/15 bg-white/[0.03] text-white hover:bg-white/[0.08] hover:border-white/30 transition-all duration-300 font-semibold text-sm sm:text-base lg:text-lg text-center backdrop-blur-sm opacity-0"
+              className="px-7 py-3.5 sm:px-9 sm:py-4.5 lg:px-11 lg:py-5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:border-slate-300 transition-all duration-300 font-semibold text-sm sm:text-base lg:text-lg text-center backdrop-blur-sm opacity-0"
             >
               {t('hero.cta_secondary', 'Napište nám e-mail')}
             </a>
@@ -166,18 +166,18 @@ export default function HeroSection() {
           <div ref={statsRef} className="flex items-center gap-6 sm:gap-10 lg:gap-14 flex-wrap">
             {stats.map((stat, i) => (
               <div key={stat.label} className="flex flex-col gap-1 opacity-0">
-                <span className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
+                <span className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900">
                   {stat.value}
                 </span>
-                <span className="text-white/55 text-xs sm:text-sm tracking-wide">
+                <span className="text-slate-500 text-xs sm:text-sm tracking-wide">
                   {stat.label}
                 </span>
               </div>
             ))}
 
             {/* Divider + premium line */}
-            <div className="hidden sm:block h-10 w-px bg-gradient-to-b from-transparent via-white/15 to-transparent ml-2" />
-            <div className="hidden sm:flex items-center gap-2 text-white/35 text-xs tracking-widest uppercase">
+            <div className="hidden sm:block h-10 w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent ml-2" />
+            <div className="hidden sm:flex items-center gap-2 text-slate-400 text-xs tracking-widest uppercase">
               <span className="w-5 h-px bg-dawn-gold/40" />
               <span>Gymnázium Arabská</span>
             </div>
@@ -191,7 +191,7 @@ export default function HeroSection() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-0 animate-scroll-bounce"
         aria-hidden="true"
       >
-        <span className="text-white/30 text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+        <span className="text-slate-400 text-[10px] tracking-[0.3em] uppercase">Scroll</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -202,7 +202,7 @@ export default function HeroSection() {
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-white/30"
+          className="text-slate-400"
         >
           <path d="m6 9 6 6 6-6" />
         </svg>

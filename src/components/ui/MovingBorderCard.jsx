@@ -14,17 +14,17 @@ export default function MovingBorderCard({ children, className = '', borderDurat
       <div
         className="absolute inset-0 rounded-2xl opacity-100 group-hover:opacity-0 transition-opacity duration-700"
         style={{
-          background: 'rgba(255,255,255,0.08)',
+          background: 'rgba(0,0,0,0.07)',
         }}
       />
       {/* Card content */}
       <div
         className="relative h-full rounded-[calc(1rem-1px)] flex flex-col"
         style={{
-          background:
-            'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.018) 100%)',
+          background: 'rgba(255, 255, 255, 0.92)',
           backdropFilter: 'blur(14px) saturate(140%)',
           WebkitBackdropFilter: 'blur(14px) saturate(140%)',
+          boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)',
         }}
       >
         {children}
