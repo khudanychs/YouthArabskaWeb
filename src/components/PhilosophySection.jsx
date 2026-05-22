@@ -53,7 +53,7 @@ function SectionCard({ section, index }) {
       <MovingBorderCard className="h-full">
         <div className="p-7 sm:p-8 flex flex-col gap-4 h-full">
           <div className="flex items-start justify-between">
-            <div className="text-dawn-gold p-2.5 rounded-xl bg-dawn-gold/10 border border-dawn-gold/15">
+            <div className="text-amber-600 p-2.5 rounded-xl bg-amber-50 border border-amber-200">
               {section.icon}
             </div>
             <span

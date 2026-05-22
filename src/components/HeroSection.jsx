@@ -104,22 +104,18 @@ export default function HeroSection() {
 
           {/* Headline — wrapper with overflow:hidden clips the upward slide reveal cleanly */}
           <h1 className="font-serif leading-[1.18] tracking-tight mb-7 sm:mb-9">
-            <div className="overflow-hidden pb-[0.25em]">
-              <span
-                ref={line1Ref}
-                className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-slate-900 opacity-0"
-              >
-                {t('hero.title_1')}
-              </span>
-            </div>
-            <div className="overflow-hidden pb-[0.25em]">
-              <span
-                ref={line2Ref}
-                className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-gradient-animated opacity-0"
-              >
-                {t('hero.title_2')}
-              </span>
-            </div>
+            <span
+              ref={line1Ref}
+              className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-slate-900 opacity-0"
+            >
+              {t('hero.title_1')}
+            </span>
+            <span
+              ref={line2Ref}
+              className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-gradient-animated opacity-0"
+            >
+              {t('hero.title_2')}
+            </span>
           </h1>
 
           {/* Description */}
