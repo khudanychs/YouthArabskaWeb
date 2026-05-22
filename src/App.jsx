@@ -14,6 +14,7 @@ const EventsPage = lazy(() => import('./pages/EventsPage'))
 const EventDetailPage = lazy(() => import('./pages/EventDetailPage'))
 const SpojenectviPage = lazy(() => import('./pages/SpojenectviPage'))
 const GalleryPage = lazy(() => import('./pages/GalleryPage'))
+const NewsletterPage = lazy(() => import('./pages/NewsletterPage'))
 
 function LoadingSpinner() {
   return (
@@ -68,6 +69,7 @@ function AppContent() {
                 <Route path="/akce" element={<EventsPage />} />
                 <Route path="/akce/:eventId" element={<EventDetailPage />} />
                 <Route path="/spojenectvi" element={<SpojenectviPage />} />
+                <Route path="/newsletter" element={<NewsletterPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>

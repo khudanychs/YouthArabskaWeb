@@ -88,7 +88,7 @@ export default function PhotoGrid() {
     <section ref={sectionRef} id="photogrid" className="py-20 sm:py-24 md:py-28 px-4 sm:px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
-        <header ref={headerRef} className="text-center mb-14 sm:mb-18 opacity-0">
+        <header ref={headerRef} className="text-center mb-14 sm:mb-20 opacity-0">
           <p className="inline-flex items-center gap-3 mb-6 text-slate-500 text-xs sm:text-sm font-medium tracking-widest uppercase">
             <span className="w-8 h-px bg-gradient-to-r from-transparent to-dawn-gold/70" aria-hidden="true" />
             <span>Galerie</span>
@@ -105,7 +105,7 @@ export default function PhotoGrid() {
         {/* Masonry-style columns grid */}
         <div
           ref={gridRef}
-          className="columns-2 md:columns-3 gap-4 sm:gap-5"
+          className="columns-1 min-[480px]:columns-2 md:columns-3 gap-4 sm:gap-5"
           style={{ columnFill: 'balance' }}
         >
           {photos.map((photo) => (

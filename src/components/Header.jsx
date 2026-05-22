@@ -27,6 +27,7 @@ export default function Header() {
   const navLinks = [
     { to: '/akce', label: t('common.nav.akce', 'Naše Akce') },
     { to: '/vize', label: t('common.nav.vize', 'O nás') },
+    { to: '/newsletter', label: 'Newsletter' },
   ]
 
   const handleNavLinkClick = (e, to) => {
@@ -72,7 +73,7 @@ export default function Header() {
 
               {/* Logo */}
               {location.pathname === '/' ? (
-                <span className="flex items-center flex-shrink-0">
+                <span className="flex items-center flex-shrink-0 min-w-0 whitespace-nowrap">
                   <span className="text-slate-900 font-serif font-bold text-xl sm:text-2xl tracking-wide">
                     {t('common.brand_youth')}
                   </span>
@@ -81,7 +82,7 @@ export default function Header() {
                   </span>
                 </span>
               ) : (
-                <Link to="/" className="flex items-center flex-shrink-0 group" aria-label={t('common.nav.home')}>
+                <Link to="/" className="flex items-center flex-shrink-0 min-w-0 whitespace-nowrap group" aria-label={t('common.nav.home')}>
                   <motion.span
                     className="text-slate-900 font-serif font-bold text-xl sm:text-2xl tracking-wide"
                     whileHover={{ scale: 1.02 }}

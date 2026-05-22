@@ -99,36 +99,46 @@ function SecondaryEventCard({ event }) {
   return (
     <motion.article
       onClick={() => navigate(`/akce/${event.id}`)}
-      className="tap-press p-6 sm:p-8 flex flex-col justify-between group cursor-pointer rounded-2xl border border-slate-200 bg-white hover:border-dawn-gold/40 hover:shadow-lg transition-all duration-500"
-      whileHover={{ y: -4, scale: 1.01 }}
+      className="relative tap-press flex flex-col justify-between group cursor-pointer rounded-2xl border border-white/[0.08] hover:border-dawn-gold/25 overflow-hidden transition-all duration-500"
+      style={{ minHeight: '320px', background: 'linear-gradient(160deg, #0d1526 0%, #070a17 100%)' }}
+      whileHover={{ y: -4, scale: 1.008 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
     >
-      <div>
-        {/* Date as editorial element */}
-        <div className="mb-5">
-          <div className="text-dawn-gold/80 text-[10px] font-bold tracking-[0.3em] uppercase mb-1">
-            {t(`events.items.${event.key}.date`)}
+      {/* Subtle glow accent */}
+      <div
+        className="absolute top-0 right-0 w-48 h-48 pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(255,215,0,0.035), transparent 70%)', filter: 'blur(30px)' }}
+      />
+      {/* Glass border top highlight */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      <div className="relative z-10 p-6 sm:p-8 flex flex-col justify-between h-full" style={{ minHeight: '320px' }}>
+        <div>
+          <div className="mb-5">
+            <div className="text-dawn-gold/80 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">
+              {t(`events.items.${event.key}.date`)}
+            </div>
+            <div className="w-8 h-px bg-dawn-gold/30 group-hover:w-14 transition-all duration-500" />
           </div>
-          <div className="w-8 h-px bg-dawn-gold/30 group-hover:w-14 transition-all duration-500" />
+
+          <h3 className="font-serif text-xl sm:text-2xl font-bold text-white mb-3 leading-snug group-hover:text-dawn-gold/90 transition-colors duration-300">
+            {t(`events.items.${event.key}.title`)}
+          </h3>
+
+          <p className="text-white/65 text-sm leading-relaxed">
+            {t(`events.items.${event.key}.desc`)}
+          </p>
         </div>
 
-        <h3 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-dawn-gold/90 transition-colors duration-300">
-          {t(`events.items.${event.key}.title`)}
-        </h3>
-
-        <p className="text-slate-600 text-sm leading-relaxed mb-6">
-          {t(`events.items.${event.key}.desc`)}
-        </p>
-      </div>
-
-      <div className="flex items-center gap-2 text-dawn-gold/60 group-hover:text-dawn-gold transition-colors duration-300">
-        <span className="text-xs font-semibold tracking-wider uppercase flex items-center gap-1.5">
-          {t('events.view_detail')}
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
-            <path d="M5 12h14"/>
-            <path d="m12 5 7 7-7 7"/>
-          </svg>
-        </span>
+        <div className="flex items-center gap-2 mt-8 text-dawn-gold/60 group-hover:text-dawn-gold transition-colors duration-300">
+          <div className="h-px bg-dawn-gold/40 group-hover:bg-dawn-gold transition-all duration-500" style={{ width: '1.5rem' }} />
+          <span className="text-xs font-semibold tracking-wider uppercase flex items-center gap-1.5">
+            {t('events.view_detail')}
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </span>
+        </div>
       </div>
     </motion.article>
   )
@@ -167,7 +177,7 @@ export default function EventsSection() {
     <section ref={sectionRef} id="akce" className="relative py-20 sm:py-24 md:py-28 px-4">
       <div className="max-w-7xl mx-auto">
 
-        <header ref={headerRef} className="text-center mb-14 sm:mb-18 opacity-0">
+        <header ref={headerRef} className="text-center mb-14 sm:mb-20 opacity-0">
           <p className="inline-flex items-center gap-3 mb-6 text-slate-500 text-xs sm:text-sm font-medium tracking-widest uppercase">
             <span className="w-8 h-px bg-gradient-to-r from-transparent to-dawn-gold/70" aria-hidden="true" />
             <span>{t('events.badge', 'Akce')}</span>

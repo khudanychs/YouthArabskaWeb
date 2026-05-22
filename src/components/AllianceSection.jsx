@@ -44,9 +44,9 @@ export default function AllianceSection() {
           }}
         >
           <div
-            className="relative rounded-[calc(1rem-1px)] p-7 sm:p-10 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-9 sm:gap-12 overflow-hidden"
+            className="relative rounded-[calc(1rem-1px)] p-7 sm:p-10 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 overflow-hidden"
             style={{
-              background: 'linear-gradient(160deg, rgba(15,20,38,0.97) 0%, rgba(7,10,23,0.99) 100%)',
+              background: 'linear-gradient(160deg, #0f1426 0%, #070912 100%)',
               backdropFilter: 'blur(20px)',
             }}
           >
@@ -74,25 +74,25 @@ export default function AllianceSection() {
               </p>
 
               <div className="space-y-3 text-sm">
-                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/8 hover:border-white/15 transition-colors">
+                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.06] border border-white/[0.12] hover:border-white/[0.2] transition-colors">
                   <div className="text-dawn-gold/70 mt-0.5 flex-shrink-0">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
                     </svg>
                   </div>
                   <div>
-                    <span className="text-white/62 text-[10px] uppercase tracking-wider font-semibold block mb-0.5">{t('alliance.labels.headquarters')}</span>
-                    <span className="text-white/75">{t('common.gymnazium_long')}</span>
+                    <span className="text-white/55 text-[10px] uppercase tracking-wider font-semibold block mb-1">{t('alliance.labels.headquarters')}</span>
+                    <span className="text-white/90">{t('common.gymnazium_long')}</span>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/8 hover:border-dawn-gold/20 transition-colors">
+                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/[0.06] border border-white/[0.12] hover:border-dawn-gold/30 transition-colors">
                   <div className="text-dawn-gold/70 mt-0.5 flex-shrink-0">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                     </svg>
                   </div>
                   <div>
-                    <span className="text-white/62 text-[10px] uppercase tracking-wider font-semibold block mb-0.5">{t('alliance.labels.communication')}</span>
+                    <span className="text-white/55 text-[10px] uppercase tracking-wider font-semibold block mb-1">{t('alliance.labels.communication')}</span>
                     <a href="mailto:matous.tlamka.s@gyarab.cz" className="text-dawn-gold hover:text-dawn-orange transition-colors break-all">
                       matous.tlamka.s@gyarab.cz
                     </a>

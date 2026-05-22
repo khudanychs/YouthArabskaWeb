@@ -40,15 +40,15 @@ export default function HeroSection() {
       )
       tl.fromTo(
         line1Ref.current,
-        { opacity: 0, y: 40, clipPath: 'inset(0 0 100% 0)' },
-        { opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.85, ease: 'power4.out' },
+        { opacity: 0, y: 56 },
+        { opacity: 1, y: 0, duration: 0.9, ease: 'power4.out' },
         '-=0.3'
       )
       tl.fromTo(
         line2Ref.current,
-        { opacity: 0, y: 40, clipPath: 'inset(0 0 100% 0)' },
-        { opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.85, ease: 'power4.out' },
-        '-=0.6'
+        { opacity: 0, y: 56 },
+        { opacity: 1, y: 0, duration: 0.9, ease: 'power4.out' },
+        '-=0.65'
       )
       tl.fromTo(
         descRef.current,
@@ -95,29 +95,31 @@ export default function HeroSection() {
         <div className="max-w-4xl lg:max-w-5xl xl:max-w-6xl">
 
           {/* Badge */}
-          <div ref={badgeRef} className="flex items-center gap-3 mb-8 sm:mb-10 lg:mb-12 opacity-0">
+          <div ref={badgeRef} className="flex flex-wrap items-center gap-2 mb-8 sm:mb-10 lg:mb-12 opacity-0">
             <span className="w-8 h-px bg-gradient-to-r from-dawn-gold/80 to-dawn-orange/60" aria-hidden="true" />
             <p className="text-slate-500 text-xs sm:text-sm font-medium tracking-wider uppercase">
               {t('hero.badge', 'Oficiální studentská platforma')}
             </p>
           </div>
 
-          {/* Headline */}
-          <h1 className="font-serif leading-[1.03] tracking-tight mb-7 sm:mb-9">
-            <span
-              ref={line1Ref}
-              className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-slate-900 opacity-0"
-              style={{ clipPath: 'inset(0 0 100% 0)' }}
-            >
-              {t('hero.title_1')}
-            </span>
-            <span
-              ref={line2Ref}
-              className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-gradient-animated opacity-0"
-              style={{ clipPath: 'inset(0 0 100% 0)' }}
-            >
-              {t('hero.title_2')}
-            </span>
+          {/* Headline — wrapper with overflow:hidden clips the upward slide reveal cleanly */}
+          <h1 className="font-serif leading-[1.18] tracking-tight mb-7 sm:mb-9">
+            <div className="overflow-hidden">
+              <span
+                ref={line1Ref}
+                className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-slate-900 opacity-0"
+              >
+                {t('hero.title_1')}
+              </span>
+            </div>
+            <div className="overflow-hidden">
+              <span
+                ref={line2Ref}
+                className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-gradient-animated opacity-0"
+              >
+                {t('hero.title_2')}
+              </span>
+            </div>
           </h1>
 
           {/* Description */}
@@ -129,10 +131,10 @@ export default function HeroSection() {
           </p>
 
           {/* CTAs */}
-          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 mb-14 sm:mb-18 lg:mb-20">
+          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 mb-14 sm:mb-20 lg:mb-20">
             <Link
               to="/akce/horizon-2025"
-              className="btn-glow-gold group relative px-7 py-3.5 sm:px-9 sm:py-4.5 lg:px-11 lg:py-5 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-bold text-sm sm:text-base lg:text-lg hover:scale-[1.02] transition-all duration-300 text-center inline-flex items-center justify-center gap-2.5 opacity-0"
+              className="btn-glow-gold group relative px-7 py-3.5 sm:px-9 sm:py-[1.125rem] lg:px-11 lg:py-5 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-bold text-sm sm:text-base lg:text-lg hover:scale-[1.02] transition-all duration-300 text-center inline-flex items-center justify-center gap-2.5 opacity-0"
             >
               <span>{t('hero.cta_primary', 'Objev Youth Horizon')}</span>
               <motion.svg
@@ -156,7 +158,7 @@ export default function HeroSection() {
 
             <a
               href="mailto:serhii.khudanych.s@gyarab.cz"
-              className="px-7 py-3.5 sm:px-9 sm:py-4.5 lg:px-11 lg:py-5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:border-slate-300 transition-all duration-300 font-semibold text-sm sm:text-base lg:text-lg text-center backdrop-blur-sm opacity-0"
+              className="px-7 py-3.5 sm:px-9 sm:py-[1.125rem] lg:px-11 lg:py-5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:border-slate-300 transition-all duration-300 font-semibold text-sm sm:text-base lg:text-lg text-center backdrop-blur-sm opacity-0"
             >
               {t('hero.cta_secondary', 'Napište nám e-mail')}
             </a>

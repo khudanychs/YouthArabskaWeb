@@ -111,7 +111,7 @@ export default function PhilosophySection() {
     <section ref={sectionRef} id="vize" className="relative py-20 sm:py-24 md:py-28 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <header ref={headerRef} className="text-center mb-14 sm:mb-18 opacity-0">
+        <header ref={headerRef} className="text-center mb-14 sm:mb-20 opacity-0">
           <p className="inline-flex items-center gap-3 mb-6 text-slate-500 text-xs sm:text-sm font-medium tracking-widest uppercase">
             <span className="w-8 h-px bg-gradient-to-r from-transparent to-dawn-gold/70" aria-hidden="true" />
             <span>{t('philosophy.badge', 'Naše filozofie')}</span>

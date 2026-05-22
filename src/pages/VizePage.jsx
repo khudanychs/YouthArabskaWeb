@@ -14,7 +14,7 @@ export default function VizePage() {
         ogTitle={t('seo.vize.og_title')}
         ogDescription={t('seo.vize.og_description')}
       />
-      <div className="pt-24">
+      <div className="pt-28">
         <PhilosophySection />
         <AllianceSection />
       </div>
