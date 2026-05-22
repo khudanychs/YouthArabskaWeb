@@ -1,78 +1,162 @@
-import useReveal from '../hooks/useReveal'
+import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
+import { motion } from 'motion/react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const photos = [
+  {
+    id: 1,
+    src: '/YouthArabskaWeb/Horizon1.jpg',
+    alt: 'Youth Horizon - Registrace účastníků',
+    description: 'Kdokoliv se mohl zúčastnit veletrhu Youth Horizon',
+    aspect: 'aspect-[4/3]',
+  },
+  {
+    id: 2,
+    src: '/YouthArabskaWeb/Horizon2.jpg',
+    alt: 'Youth Horizon - Diskuse s hosty',
+    description: 'Inspirativní diskuse s odborníky z různých oborů',
+    aspect: 'aspect-[3/4]',
+  },
+  {
+    id: 3,
+    src: '/YouthArabskaWeb/Horizon5.jpg',
+    alt: 'Youth Horizon - Networking',
+    description: 'Stánky s interaktivními aktivitami pro účastníky',
+    aspect: 'aspect-square',
+  },
+  {
+    id: 4,
+    src: '/YouthArabskaWeb/Horizon4.jpg',
+    alt: 'Youth Horizon - Organizátoři',
+    description: 'Organizátoři akce Youth Horizon - Adam a Lujza',
+    aspect: 'aspect-[4/3]',
+  },
+  {
+    id: 5,
+    src: '/YouthArabskaWeb/Horizon3.jpg',
+    alt: 'Youth Horizon - Atmosféra',
+    description: 'Výjimečná atmosféra propojování lidí a myšlenek',
+    aspect: 'aspect-[3/4]',
+  },
+  {
+    id: 6,
+    src: '/YouthArabskaWeb/Horizon6.jpg',
+    alt: 'Youth Horizon - Záběry z akce',
+    description: 'Živá energie studentů a profesionálů na jednom místě',
+    aspect: 'aspect-[4/3]',
+  },
+]
 
 export default function PhotoGrid() {
   const { t } = useTranslation()
-  const ref = useReveal()
-  
-  const photos = [
-    { 
-      id: 1, 
-      src: '/YouthArabskaWeb/Horizon1.jpg',
-      alt: 'Youth Horizon - Registrace účastníků',
-      description: 'Kdokoliv se mohl zúčastnit veletrhu Youth Horizon'
-    },
-    { 
-      id: 2, 
-      src: '/YouthArabskaWeb/Horizon2.jpg',
-      alt: 'Youth Horizon - Diskuse s hosty',
-      description: 'Inspirativní diskuse s odborníky z různých oborů'
-    },
-    { 
-      id: 3, 
-      src: '/YouthArabskaWeb/Horizon5.jpg',
-      alt: 'Youth Horizon - Networking',
-      description: 'Stánky s interaktivními aktivitami pro účastníky Youth Horizon'
-    },
-    { 
-      id: 4, 
-      src: '/YouthArabskaWeb/Horizon4.jpg',
-      alt: 'Youth Horizon - Prezentace',
-      description: 'Organizátoři akce Youth Horizon - Adam a Lujza'
-    },
-  ]
+  const sectionRef = useRef(null)
+  const headerRef = useRef(null)
+  const gridRef = useRef(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: headerRef.current, start: 'top 82%', once: true },
+        }
+      )
+
+      const items = gridRef.current.querySelectorAll('.photo-item')
+      gsap.fromTo(
+        items,
+        { opacity: 0, y: 32 },
+        {
+          opacity: 1, y: 0, duration: 0.75,
+          stagger: { amount: 0.65, from: 'start' },
+          ease: 'power3.out',
+          scrollTrigger: { trigger: gridRef.current, start: 'top 80%', once: true },
+        }
+      )
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
 
   return (
-    <section id="photogrid" className="py-16 sm:py-20 md:py-24 px-2 sm:px-4 overflow-hidden">
-      {/* ZMĚNA: Zvětšil jsem max-width na 90rem (cca 1440px), takže na desktopu to bude masivnější */}
-      <div className="max-w-[90rem] mx-auto">
-        <header className="text-center mb-12 sm:mb-16">
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            Momentky z našich akcí
+    <section ref={sectionRef} id="photogrid" className="py-20 sm:py-24 md:py-28 px-4 sm:px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+
+        <header ref={headerRef} className="text-center mb-14 sm:mb-18 opacity-0">
+          <p className="inline-flex items-center gap-3 mb-6 text-white/45 text-xs sm:text-sm font-medium tracking-widest uppercase">
+            <span className="w-8 h-px bg-gradient-to-r from-transparent to-dawn-gold/70" aria-hidden="true" />
+            <span>Galerie</span>
+            <span className="w-8 h-px bg-gradient-to-l from-transparent to-dawn-gold/70" aria-hidden="true" />
+          </p>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-5">
+            {t('photogrid.header_title', 'Momentky z našich akcí')}
           </h2>
-          <p className="text-white/60 text-base sm:text-lg px-4">
-            Fotografie zachycující atmosféru a energii naší komunity
+          <p className="text-white/55 text-base sm:text-lg max-w-2xl mx-auto px-4 leading-relaxed">
+            {t('photogrid.header_subtitle', 'Fotografie zachycující atmosféru a energii naší komunity')}
           </p>
         </header>
 
-        {/* ZMĚNA: grid-cols-2 je teď výchozí (mobil). xl:grid-cols-4 zajistí 1 řadu až na velkých monitorech */}
-        <div ref={ref} className="grid grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 reveal-enter">
+        {/* Masonry-style columns grid */}
+        <div
+          ref={gridRef}
+          className="columns-2 md:columns-3 gap-4 sm:gap-5"
+          style={{ columnFill: 'balance' }}
+        >
           {photos.map((photo) => (
-            <div 
-              key={photo.id} 
-              className="relative group cursor-pointer rounded-xl sm:rounded-2xl transition-transform duration-500 sm:hover:-translate-y-2"
+            <motion.div
+              key={photo.id}
+              className="photo-item break-inside-avoid mb-4 sm:mb-5 group relative cursor-pointer opacity-0"
+              whileHover={{ scale: 1.015 }}
+              transition={{ type: 'spring', stiffness: 250, damping: 25 }}
             >
-              <div className="relative aspect-[4/3] overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-[0_10px_30px_rgba(0,0,0,0.5)] sm:shadow-[0_15px_40px_rgba(0,0,0,0.6)] ring-1 ring-white/5 group-hover:shadow-[0_20px_50px_rgba(255,215,0,0.15)] transition-shadow duration-500">
-                
-                <img 
-                  src={photo.src} 
+              <div
+                className={`relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] ${photo.aspect}`}
+              >
+                <img
+                  src={photo.src}
                   alt={photo.alt}
-                  className="relative w-full h-full object-cover z-10 transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.08]"
                   loading="lazy"
                 />
-                
-                {/* ZMĚNA: Menší padding a text na mobilu, aby popisky nepůsobily na malých 2x2 fotkách obrovsky */}
-                <div className="absolute inset-x-0 bottom-0 z-20 h-full sm:h-2/3 bg-gradient-to-t from-black/95 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-3 sm:p-5 lg:p-6">
-                  <p className="text-white/95 text-[10px] sm:text-sm font-light tracking-wide leading-snug sm:leading-relaxed drop-shadow-md transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    {photo.description}
-                  </p>
-                </div>
-              </div>
 
-              {/* Dekorativní rožky - na mobilu jsou o něco menší (w-3 h-3) */}
-              <div className="absolute top-0 left-0 w-3 h-3 sm:w-4 sm:h-4 border-t-2 border-l-2 border-dawn-gold/60 rounded-tl-xl sm:rounded-tl-2xl z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 sm:w-4 sm:h-4 border-b-2 border-r-2 border-dawn-gold/60 rounded-br-xl sm:rounded-br-2xl z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </div>
+                {/* Hover overlay */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-4 sm:p-5"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <motion.p
+                    className="text-white/95 text-[11px] sm:text-sm font-light leading-snug drop-shadow-md"
+                    initial={{ y: 12, opacity: 0 }}
+                    whileHover={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.35, delay: 0.05 }}
+                  >
+                    {photo.description}
+                  </motion.p>
+                </motion.div>
+
+                {/* Corner accents */}
+                <motion.div
+                  className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-dawn-gold/60 rounded-tl-xl sm:rounded-tl-2xl"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-dawn-gold/60 rounded-br-xl sm:rounded-br-2xl"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

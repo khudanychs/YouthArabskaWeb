@@ -22,4 +22,17 @@ export default defineConfig({
     port: 5174, 
   },
   base: '/YouthArabskaWeb/',
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-motion': ['motion'],
+          'vendor-gsap': ['gsap'],
+          'vendor-router': ['react-router-dom'],
+          'vendor-i18n': ['i18next', 'react-i18next'],
+        },
+      },
+    },
+  },
 })
