@@ -97,7 +97,7 @@ export default function Footer() {
               <div className="inline-flex flex-col gap-0.5 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.07]">
                 <span className="text-white/35 text-[10px] font-semibold tracking-[0.25em] uppercase mb-1">Adresa</span>
                 <span className="text-white/70 text-sm">Arabská 14, Praha 6</span>
-                <span className="text-white/30 text-xs">Gymnázium Arabská · Czech Republic</span>
+                <span className="text-white/30 text-xs">Gymnázium, Praha 6, Arabská 14</span>
               </div>
             </div>
           </div>
@@ -151,7 +151,7 @@ export default function Footer() {
                   whileHover={{ x: 3 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                 >
-                  <span>{t('common.gymnazium', 'Gymnázium Arabská')}</span>
+                  <span>{t('common.gymnazium')}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-35 group-hover:opacity-60 flex-shrink-0">
                     <path d="M7 7h10v10"/>
                     <path d="M7 17 17 7"/>
@@ -181,7 +181,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-2 text-white/20 text-[10px] tracking-widest uppercase">
             <span className="w-5 h-px bg-gradient-to-r from-dawn-gold/30 to-transparent" />
-            <span>Gymnázium Arabská · Praha 6</span>
+            <span>Gymnázium, Praha 6, Arabská 14</span>
           </div>
         </div>
       </div>

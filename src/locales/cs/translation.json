@@ -2,7 +2,7 @@
   "common": {
     "brand_youth": "Youth",
     "brand_arabska": "Arabská",
-    "gymnazium": "Gymnázium Arabská",
+    "gymnazium": "Gymnázium, Praha 6, Arabská 14",
     "gymnazium_long": "Gymnázium, Praha 6, Arabská 14",
     "contact": "Napiš nám",
     "nav": {
@@ -51,7 +51,7 @@
     }
   },
   "hero": {
-    "badge": "Studentská komunita · Gymnázium Arabská",
+    "badge": "Studentská komunita · Gymnázium, Praha 6, Arabská 14",
     "title_1": "Připoj se k lidem,",
     "title_2": "kteří to myslí vážně",
     "description": "Youth Arabská nejsme jen další školní klub. Jsme místo, kde se potkávají zajímaví lidé, vznikají reálné projekty a kde si budujete sítě kontaktů na celý život. Pořádáme akce, workshopy a setkání s lidmi z byznysu, vědy i veřejného sektoru.",
