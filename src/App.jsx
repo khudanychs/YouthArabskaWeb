@@ -1,10 +1,12 @@
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
+import { AnimatePresence, motion } from 'motion/react'
 import PremiumBackground from './components/PremiumBackground'
 import SpotlightTracker from './components/SpotlightTracker'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import useLenis from './hooks/useLenis'
 
 const HomePage = lazy(() => import('./pages/HomePage'))
 const VizePage = lazy(() => import('./pages/VizePage'))
@@ -33,33 +35,53 @@ function NotFound() {
   )
 }
 
-export default function App() {
+function AppContent() {
+  const location = useLocation()
+  useLenis()
+
   return (
-    <BrowserRouter basename="/YouthArabskaWeb">
+    <>
       <ScrollToTop />
       <PremiumBackground />
       <SpotlightTracker />
       <div className="relative z-10">
         <Header />
-        <main>
-          <Suspense fallback={<LoadingSpinner />}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<VizePage />} />
-              <Route path="/events" element={<EventsPage />} />
-              <Route path="/events/:eventId" element={<EventDetailPage />} />
-              <Route path="/get-involved" element={<SpojenectviPage />} />
-              <Route path="/gallery" element={<GalleryPage />} />
-              <Route path="/vize" element={<VizePage />} />
-              <Route path="/akce" element={<EventsPage />} />
-              <Route path="/akce/:eventId" element={<EventDetailPage />} />
-              <Route path="/spojenectvi" element={<SpojenectviPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </main>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.main
+            key={location.pathname}
+            className="page-transition-wrapper"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Suspense fallback={<LoadingSpinner />}>
+              <Routes location={location}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<VizePage />} />
+                <Route path="/events" element={<EventsPage />} />
+                <Route path="/events/:eventId" element={<EventDetailPage />} />
+                <Route path="/get-involved" element={<SpojenectviPage />} />
+                <Route path="/gallery" element={<GalleryPage />} />
+                <Route path="/vize" element={<VizePage />} />
+                <Route path="/akce" element={<EventsPage />} />
+                <Route path="/akce/:eventId" element={<EventDetailPage />} />
+                <Route path="/spojenectvi" element={<SpojenectviPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </motion.main>
+        </AnimatePresence>
         <Footer />
       </div>
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter basename="/YouthArabskaWeb">
+      <AppContent />
     </BrowserRouter>
   )
 }

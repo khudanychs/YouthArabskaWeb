@@ -1,51 +1,40 @@
 import { useEffect } from 'react'
 
-/**
- * SpotlightTracker
- *
- * Mounts a single global `pointermove` listener that updates two CSS custom
- * properties (`--spot-x`, `--spot-y`) on the nearest `.glass-card` ancestor
- * of the cursor target. The CSS in `index.css` then renders a soft radial
- * glow at those coordinates via a `::after` pseudo-element on each card —
- * the cursor-tracking "spotlight" effect popularized by Linear, Stripe,
- * Vercel and other top-tier marketing sites.
- *
- * Performance:
- *  - Single document-level listener (not per-card)
- *  - `requestAnimationFrame`-throttled — never updates more than once per frame
- *  - Skips fine pointer absent (touch devices) — the effect only activates
- *    on devices where it makes sense visually
- *  - Marked `passive: true`; only writes two CSS vars, no layout thrash
- */
 export default function SpotlightTracker() {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    // Only enable on devices with a fine pointer (mouse/trackpad).
-    // On touch the effect adds nothing and would just waste cycles.
     const supportsHover = window.matchMedia?.('(hover: hover) and (pointer: fine)').matches
     if (!supportsHover) return
 
     let raf = 0
-    let pendingTarget = null
-    let pendingX = 0
-    let pendingY = 0
+    let pendingCard = null
+    let pendingCX = 0, pendingCY = 0
+    let pendingGX = 0, pendingGY = 0
 
     const handlePointerMove = (event) => {
+      // Per-card spotlight (existing glass-card effect)
       const card = event.target.closest?.('.glass-card')
-      if (!card) return
+      if (card) {
+        const rect = card.getBoundingClientRect()
+        pendingCard = card
+        pendingCX = event.clientX - rect.left
+        pendingCY = event.clientY - rect.top
+      }
 
-      const rect = card.getBoundingClientRect()
-      pendingTarget = card
-      pendingX = event.clientX - rect.left
-      pendingY = event.clientY - rect.top
+      // Global page spotlight
+      pendingGX = event.clientX
+      pendingGY = event.clientY
 
       if (raf) return
       raf = requestAnimationFrame(() => {
-        if (pendingTarget) {
-          pendingTarget.style.setProperty('--spot-x', `${pendingX}px`)
-          pendingTarget.style.setProperty('--spot-y', `${pendingY}px`)
+        if (pendingCard) {
+          pendingCard.style.setProperty('--spot-x', `${pendingCX}px`)
+          pendingCard.style.setProperty('--spot-y', `${pendingCY}px`)
         }
+        // Update global cursor vars for the page-spotlight div in PremiumBackground
+        document.documentElement.style.setProperty('--cursor-x', `${pendingGX}px`)
+        document.documentElement.style.setProperty('--cursor-y', `${pendingGY}px`)
         raf = 0
       })
     }

@@ -246,7 +246,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     Reveal-on-scroll primitives
+     Reveal-on-scroll primitives (legacy — kept for non-GSAP pages)
      ───────────────────────────────────────────────────────────── */
   .reveal-enter {
     visibility: hidden;
@@ -260,5 +260,77 @@
     transition:
       opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
       transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Moving border card (for MovingBorderCard.jsx)
+     ───────────────────────────────────────────────────────────── */
+  @keyframes moving-border-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Marquee (Testimonials auto-scroll)
+     ───────────────────────────────────────────────────────────── */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 28s linear infinite;
+    will-change: transform;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     SplitType line wrapping for clip-up reveals
+     ───────────────────────────────────────────────────────────── */
+  .split-line-wrap {
+    overflow: hidden;
+    display: block;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Full-page cursor spotlight (set by SpotlightTracker on documentElement)
+     ───────────────────────────────────────────────────────────── */
+  .page-spotlight {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(
+      600px circle at var(--cursor-x, -9999px) var(--cursor-y, -9999px),
+      rgba(255, 215, 0, 0.04),
+      rgba(199, 121, 208, 0.02) 35%,
+      transparent 60%
+    );
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Editorial decorative number (watermark style)
+     ───────────────────────────────────────────────────────────── */
+  .editorial-number {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    line-height: 0.85;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 215, 0, 0.07);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Page transition wrapper
+     ───────────────────────────────────────────────────────────── */
+  .page-transition-wrapper {
+    will-change: opacity, transform;
   }
 }

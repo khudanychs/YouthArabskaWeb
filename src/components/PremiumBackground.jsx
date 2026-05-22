@@ -1,16 +1,3 @@
-/**
- * PremiumBackground
- *
- * Static, GPU-cheap, premium "aurora" background:
- *  - Deep navy → purple radial base
- *  - Three large soft color glows (gold / coral / violet) at low opacity
- *  - Very fine SVG noise grain for a tactile, expensive feel
- *  - A vignette to focus the eye on the content
- *
- * No JS, no animation loops, no canvas — renders once and is static.
- * This avoids the lag the kinetic canvas/particle background caused on
- * lower-end devices, while keeping the dawn color identity of the site.
- */
 export default function PremiumBackground() {
   return (
     <div
@@ -26,9 +13,9 @@ export default function PremiumBackground() {
         }}
       />
 
-      {/* Aurora glow — gold (top-left) */}
+      {/* Aurora glow — gold (top-left), slowly drifts */}
       <div
-        className="absolute -top-32 -left-32 w-[640px] h-[640px] rounded-full"
+        className="absolute -top-32 -left-32 w-[680px] h-[680px] rounded-full animate-aurora-1"
         style={{
           background: '#FFD700',
           opacity: 0.07,
@@ -36,9 +23,9 @@ export default function PremiumBackground() {
         }}
       />
 
-      {/* Aurora glow — coral (right) */}
+      {/* Aurora glow — coral (right), drifts opposite */}
       <div
-        className="absolute top-[28%] -right-40 w-[720px] h-[720px] rounded-full"
+        className="absolute top-[28%] -right-40 w-[760px] h-[760px] rounded-full animate-aurora-2"
         style={{
           background: '#FF7E5F',
           opacity: 0.06,
@@ -46,9 +33,9 @@ export default function PremiumBackground() {
         }}
       />
 
-      {/* Aurora glow — violet (bottom-left) */}
+      {/* Aurora glow — violet (bottom-left), slow large drift */}
       <div
-        className="absolute -bottom-48 left-[15%] w-[820px] h-[820px] rounded-full"
+        className="absolute -bottom-48 left-[15%] w-[860px] h-[860px] rounded-full animate-aurora-3"
         style={{
           background: '#C779D0',
           opacity: 0.05,
@@ -56,16 +43,30 @@ export default function PremiumBackground() {
         }}
       />
 
-      {/* Subtle horizontal sheen near the top — adds depth without movement */}
+      {/* Extra accent glow — small gold top-right */}
+      <div
+        className="absolute top-8 right-[20%] w-[280px] h-[280px] rounded-full animate-aurora-2"
+        style={{
+          background: '#FFD700',
+          opacity: 0.04,
+          filter: 'blur(80px)',
+          animationDelay: '-8s',
+        }}
+      />
+
+      {/* Subtle horizontal sheen near the top */}
       <div
         className="absolute inset-x-0 top-0 h-[420px]"
         style={{
           background:
-            'linear-gradient(180deg, rgba(255,255,255,0.035) 0%, transparent 100%)',
+            'linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%)',
         }}
       />
 
-      {/* Fine grain — tactile premium texture, no animation */}
+      {/* Full-page cursor spotlight (CSS vars set by SpotlightTracker) */}
+      <div className="page-spotlight" />
+
+      {/* Fine grain — tactile premium texture */}
       <div
         className="absolute inset-0 mix-blend-overlay"
         style={{
@@ -76,7 +77,7 @@ export default function PremiumBackground() {
         }}
       />
 
-      {/* Vignette — focuses content, deepens edges */}
+      {/* Vignette */}
       <div
         className="absolute inset-0"
         style={{
