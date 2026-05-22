@@ -38,7 +38,7 @@ function TestimonialCard({ testimonial }) {
           "
         </div>
 
-        <p className="text-white/80 text-sm sm:text-base leading-relaxed mb-6 relative z-10 pt-4">
+        <p className="text-white/90 text-sm sm:text-base leading-relaxed mb-6 relative z-10 pt-4">
           {t(`testimonials.items.${testimonial.id}.quote`)}
         </p>
 
@@ -52,7 +52,7 @@ function TestimonialCard({ testimonial }) {
             <p className="text-white font-semibold text-sm leading-tight">
               {t(`testimonials.items.${testimonial.id}.author`)}
             </p>
-            <p className="text-white/45 text-xs mt-0.5">
+            <p className="text-white/60 text-xs mt-0.5">
               {t(`testimonials.items.${testimonial.id}.role`)}
             </p>
           </div>
@@ -97,7 +97,7 @@ export default function Testimonials() {
     <section ref={sectionRef} className="relative py-20 sm:py-24 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <header ref={headerRef} className="text-center mb-14 sm:mb-16 opacity-0">
-          <p className="inline-flex items-center gap-3 mb-6 text-white/45 text-xs sm:text-sm font-medium tracking-widest uppercase">
+          <p className="inline-flex items-center gap-3 mb-6 text-white/60 text-xs sm:text-sm font-medium tracking-widest uppercase">
             <span className="w-8 h-px bg-gradient-to-r from-transparent to-dawn-gold/70" aria-hidden="true" />
             <span>{t('testimonials.badge')}</span>
             <span className="w-8 h-px bg-gradient-to-l from-transparent to-dawn-gold/70" aria-hidden="true" />
@@ -106,7 +106,7 @@ export default function Testimonials() {
             {t('testimonials.title_1')}{' '}
             <span className="text-gradient">{t('testimonials.title_2')}</span>
           </h2>
-          <p className="text-white/55 text-base sm:text-lg max-w-2xl mx-auto px-4 leading-relaxed">
+          <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto px-4 leading-relaxed">
             {t('testimonials.subtitle')}
           </p>
         </header>
@@ -128,7 +128,7 @@ export default function Testimonials() {
 
       {/* CTA */}
       <div className="max-w-7xl mx-auto mt-14 text-center px-4">
-        <p className="text-white/50 mb-5 text-sm sm:text-base">
+        <p className="text-white/65 mb-5 text-sm sm:text-base">
           {t('testimonials.cta_text')}
         </p>
         <motion.a

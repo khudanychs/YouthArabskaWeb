@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react'
 
+const CONTACT_EMAIL = 'serhii.khudanych.s@gyarab.cz'
+
 export default function Header() {
   const { t } = useTranslation()
   const [navOpen, setNavOpen] = useState(false)
@@ -14,7 +16,7 @@ export default function Header() {
   const py = useTransform(scrollY, [0, 80], [24, 14])
 
   // String-interpolated motion values for style prop (must be at top level)
-  const bgColor = useTransform(bgOpacity, (v) => `rgba(15,20,38,${v})`)
+  const bgColor = useTransform(bgOpacity, (v) => `rgba(12,18,36,${v})`)
   const borderStyle = useTransform(borderOpacity, (v) => `1px solid rgba(255,255,255,${v})`)
   const pyPx = useTransform(py, (v) => `${v}px`)
 
@@ -156,14 +158,13 @@ export default function Header() {
 
             <div className="flex items-center gap-3">
               <motion.a
-                href="#contact"
-                onClick={(e) => { e.preventDefault(); window.location.href = 'mai' + 'lto:' + 'serhii.khudanych.s' + '@' + 'gyarab.cz' }}
-                className="px-5 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm lg:text-base font-medium border border-white/20"
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="px-5 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm lg:text-base font-medium border border-white/20 transition-colors duration-200"
                 whileHover={{ scale: 1.03, borderColor: 'rgba(255,255,255,0.35)' }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 20 }}
               >
-                {t('common.contact', 'Napište nám')}
+                {t('common.contact', 'Napiš nám')}
               </motion.a>
               <motion.a
                 href="https://www.instagram.com/youtharabska/"
@@ -284,8 +285,7 @@ export default function Header() {
                   variants={{ open: { opacity: 1, y: 0, transition: { delay: 0.22 } }, closed: { opacity: 0, y: 10 } }}
                 >
                   <a
-                    href="#contact"
-                    onClick={(e) => { e.preventDefault(); window.location.href = 'mai' + 'lto:' + 'serhii.khudanych.s' + '@' + 'gyarab.cz' }}
+                    href={`mailto:${CONTACT_EMAIL}`}
                     className="group flex flex-col items-center justify-center gap-1.5 py-4 px-3 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-dawn-gold/40 transition-all duration-200"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-dawn-gold/80 group-hover:text-dawn-gold transition-colors">

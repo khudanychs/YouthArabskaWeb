@@ -61,7 +61,7 @@ export default function AllianceSection() {
 
             {/* Left column — CTA text */}
             <div className="relative z-10">
-              <p className="inline-flex items-center gap-3 mb-6 text-white/45 text-xs font-medium tracking-widest uppercase">
+              <p className="inline-flex items-center gap-3 mb-6 text-white/62 text-xs font-medium tracking-widest uppercase">
                 <span className="w-5 h-px bg-dawn-gold/60" />
                 <span>Připoj se</span>
               </p>
@@ -69,7 +69,7 @@ export default function AllianceSection() {
               <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
                 {t('alliance.title')}
               </h2>
-              <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-7 sm:mb-9">
+              <p className="text-white/75 text-sm sm:text-base leading-relaxed mb-7 sm:mb-9">
                 {t('alliance.description')}
               </p>
 
@@ -81,7 +81,7 @@ export default function AllianceSection() {
                     </svg>
                   </div>
                   <div>
-                    <span className="text-white/45 text-[10px] uppercase tracking-wider font-semibold block mb-0.5">{t('alliance.labels.headquarters')}</span>
+                    <span className="text-white/62 text-[10px] uppercase tracking-wider font-semibold block mb-0.5">{t('alliance.labels.headquarters')}</span>
                     <span className="text-white/75">{t('common.gymnazium_long')}</span>
                   </div>
                 </div>
@@ -92,8 +92,8 @@ export default function AllianceSection() {
                     </svg>
                   </div>
                   <div>
-                    <span className="text-white/45 text-[10px] uppercase tracking-wider font-semibold block mb-0.5">{t('alliance.labels.communication')}</span>
-                    <a href="mailto:matous.tlamka.s@gyarab.cz" className="text-dawn-gold hover:underline transition-colors break-all">
+                    <span className="text-white/62 text-[10px] uppercase tracking-wider font-semibold block mb-0.5">{t('alliance.labels.communication')}</span>
+                    <a href="mailto:matous.tlamka.s@gyarab.cz" className="text-dawn-gold hover:text-dawn-orange transition-colors break-all">
                       matous.tlamka.s@gyarab.cz
                     </a>
                   </div>
@@ -124,7 +124,7 @@ export default function AllianceSection() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.05 + i * 0.08, duration: 0.4 }}
                       >
-                        <label htmlFor={field.id} className="block text-white/60 text-[10px] font-semibold mb-1.5 tracking-[0.2em] uppercase">
+                        <label htmlFor={field.id} className="block text-white/75 text-[10px] font-semibold mb-1.5 tracking-[0.2em] uppercase">
                           {t(field.labelKey)}
                         </label>
                         <input
@@ -144,7 +144,7 @@ export default function AllianceSection() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.21, duration: 0.4 }}
                     >
-                      <label htmlFor="alliance-vision" className="block text-white/60 text-[10px] font-semibold mb-1.5 tracking-[0.2em] uppercase">
+                      <label htmlFor="alliance-vision" className="block text-white/75 text-[10px] font-semibold mb-1.5 tracking-[0.2em] uppercase">
                         {t('alliance.labels.vision')}
                       </label>
                       <textarea
@@ -190,7 +190,7 @@ export default function AllianceSection() {
                     </motion.div>
                     <div>
                       <p className="text-white font-bold text-lg mb-2">{t('alliance.success_title')}</p>
-                      <p className="text-white/55 text-sm leading-relaxed">{t('alliance.success_text')}</p>
+                      <p className="text-white/72 text-sm leading-relaxed">{t('alliance.success_text')}</p>
                     </div>
                   </motion.div>
                 )}

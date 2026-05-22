@@ -97,7 +97,7 @@ export default function HeroSection() {
           {/* Badge */}
           <div ref={badgeRef} className="flex items-center gap-3 mb-8 sm:mb-10 lg:mb-12 opacity-0">
             <span className="w-8 h-px bg-gradient-to-r from-dawn-gold/80 to-dawn-orange/60" aria-hidden="true" />
-            <p className="text-white/55 text-xs sm:text-sm font-medium tracking-wider uppercase">
+            <p className="text-white/70 text-xs sm:text-sm font-medium tracking-wider uppercase">
               {t('hero.badge', 'Oficiální studentská platforma')}
             </p>
           </div>
@@ -123,7 +123,7 @@ export default function HeroSection() {
           {/* Description */}
           <p
             ref={descRef}
-            className="text-white/70 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-2xl lg:max-w-3xl mb-10 sm:mb-12 font-light opacity-0"
+            className="text-white/80 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-2xl lg:max-w-3xl mb-10 sm:mb-12 font-light opacity-0"
           >
             {t('hero.description')}
           </p>
@@ -169,7 +169,7 @@ export default function HeroSection() {
                 <span className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
                   {stat.value}
                 </span>
-                <span className="text-white/40 text-xs sm:text-sm tracking-wide">
+                <span className="text-white/55 text-xs sm:text-sm tracking-wide">
                   {stat.label}
                 </span>
               </div>
