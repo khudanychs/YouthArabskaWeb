@@ -28,7 +28,7 @@ export default function GalleryPage() {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-px bg-gradient-to-r from-dawn-gold/80 to-dawn-orange/60" />
-              <span className="text-dawn-gold text-xs font-semibold tracking-widest uppercase">
+              <span className="text-amber-600 text-xs font-semibold tracking-widest uppercase">
                 Vizuální příběh
               </span>
             </div>

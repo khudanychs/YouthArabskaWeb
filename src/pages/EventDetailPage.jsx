@@ -52,7 +52,7 @@ export default function EventDetailPage() {
           </h1>
           <Link
             to="/akce"
-            className="inline-flex items-center gap-2 text-dawn-gold hover:text-dawn-orange transition-colors text-sm sm:text-base font-medium"
+            className="inline-flex items-center gap-2 text-amber-600 hover:text-amber-700 transition-colors text-sm sm:text-base font-medium"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m15 18-6-6 6-6"/>
@@ -100,7 +100,7 @@ export default function EventDetailPage() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
           >
             <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-5">
-              <span className="text-dawn-gold text-xs font-bold tracking-widest uppercase">
+              <span className="text-amber-600 text-xs font-bold tracking-widest uppercase">
                 {t(`events.items.${event.key}.date`)}
               </span>
               <span className="text-[10px] text-slate-500 border border-slate-200 px-3 py-1 rounded-full uppercase tracking-tighter">

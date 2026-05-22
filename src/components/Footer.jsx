@@ -187,12 +187,12 @@ export default function Footer() {
 
         {/* ── Bottom bar ── */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3 py-6">
-          <p className="text-white/22 text-xs text-center sm:text-left">
+          <p className="text-white/55 text-xs text-center sm:text-left">
             © {new Date().getFullYear()} Youth Arabská · {t('footer.copyright', 'Všechna práva vyhrazena.')}
           </p>
-          <div className="flex items-center gap-2 text-white/18 text-[10px] tracking-widest uppercase">
+          <div className="flex items-center gap-2 text-white/50 text-[10px] tracking-widest uppercase">
             <span className="w-5 h-px bg-gradient-to-r from-dawn-gold/30 to-transparent" />
-            <span>Gymnázium, Praha 6, Arabská 14</span>
+            <span>Matouš Tlamka a Serhii Khudanych</span>
           </div>
         </div>
       </div>
