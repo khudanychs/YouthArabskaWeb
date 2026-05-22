@@ -89,15 +89,15 @@ export default function PhotoGrid() {
       <div className="max-w-7xl mx-auto">
 
         <header ref={headerRef} className="text-center mb-14 sm:mb-18 opacity-0">
-          <p className="inline-flex items-center gap-3 mb-6 text-white/45 text-xs sm:text-sm font-medium tracking-widest uppercase">
+          <p className="inline-flex items-center gap-3 mb-6 text-slate-500 text-xs sm:text-sm font-medium tracking-widest uppercase">
             <span className="w-8 h-px bg-gradient-to-r from-transparent to-dawn-gold/70" aria-hidden="true" />
             <span>Galerie</span>
             <span className="w-8 h-px bg-gradient-to-l from-transparent to-dawn-gold/70" aria-hidden="true" />
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-5">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-5">
             {t('photogrid.header_title', 'Momentky z našich akcí')}
           </h2>
-          <p className="text-white/55 text-base sm:text-lg max-w-2xl mx-auto px-4 leading-relaxed">
+          <p className="text-slate-500 text-base sm:text-lg max-w-2xl mx-auto px-4 leading-relaxed">
             {t('photogrid.header_subtitle', 'Fotografie zachycující atmosféru a energii naší komunity')}
           </p>
         </header>
@@ -116,7 +116,7 @@ export default function PhotoGrid() {
               transition={{ type: 'spring', stiffness: 250, damping: 25 }}
             >
               <div
-                className={`relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] ${photo.aspect}`}
+                className={`relative overflow-hidden rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-100 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15)] ${photo.aspect}`}
               >
                 <img
                   src={photo.src}

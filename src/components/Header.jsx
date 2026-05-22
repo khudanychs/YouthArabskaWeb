@@ -11,8 +11,13 @@ export default function Header() {
   const location = useLocation()
   const { scrollY } = useScroll()
 
-  const shadowOpacity = useTransform(scrollY, [0, 60], [0, 1])
   const bgOpacity = useTransform(scrollY, [0, 60], [0.72, 0.95])
+  const shadowOpacity = useTransform(scrollY, [0, 60], [0, 1])
+  const bgColorValue = useTransform(bgOpacity, (v) => `rgba(255,255,255,${v})`)
+  const shadowValue = useTransform(
+    shadowOpacity,
+    (v) => `0 4px 24px rgba(0,0,0,${(0.06 * v).toFixed(3)}), 0 1px 4px rgba(0,0,0,${(0.04 * v).toFixed(3)})`
+  )
 
   useEffect(() => {
     document.body.style.overflow = navOpen ? 'hidden' : ''
@@ -59,10 +64,8 @@ export default function Header() {
           <motion.div
             className="relative backdrop-blur-2xl backdrop-saturate-200 rounded-2xl border border-black/[0.07]"
             style={{
-              backgroundColor: useTransform(bgOpacity, (v) => `rgba(255,255,255,${v})`),
-              boxShadow: useTransform(shadowOpacity, (v) =>
-                `0 4px 24px rgba(0,0,0,${0.06 * v}), 0 1px 4px rgba(0,0,0,${0.04 * v})`
-              ),
+              backgroundColor: bgColorValue,
+              boxShadow: shadowValue,
             }}
           >
             <div className="px-4 sm:px-6 py-3 sm:py-3.5 flex items-center justify-between gap-4">

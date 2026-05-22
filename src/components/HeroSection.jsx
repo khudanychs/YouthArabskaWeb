@@ -179,7 +179,7 @@ export default function HeroSection() {
             <div className="hidden sm:block h-10 w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent ml-2" />
             <div className="hidden sm:flex items-center gap-2 text-slate-400 text-xs tracking-widest uppercase">
               <span className="w-5 h-px bg-dawn-gold/40" />
-              <span>Gymnázium Arabská</span>
+              <span>Gymnázium, Praha 6, Arabská 14</span>
             </div>
           </div>
         </div>

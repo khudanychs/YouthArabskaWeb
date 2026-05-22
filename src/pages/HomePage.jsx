@@ -1,7 +1,6 @@
 import SEO from '../components/SEO'
 import HeroSection from '../components/HeroSection'
 import PhilosophySection from '../components/PhilosophySection'
-import Testimonials from '../components/Testimonials'
 import EventsSection from '../components/EventsSection'
 import PhotoGrid from '../components/PhotoGrid'
 import AllianceSection from '../components/AllianceSection'
@@ -20,7 +19,6 @@ export default function HomePage() {
       />
       <HeroSection />
       <PhilosophySection />
-      <Testimonials />
       <EventsSection />
       <PhotoGrid />
       <AllianceSection />
