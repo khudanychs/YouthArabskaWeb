@@ -14,7 +14,7 @@ export default function EventsPage() {
         ogTitle={t('seo.akce.og_title')}
         ogDescription={t('seo.akce.og_description')}
       />
-      <div className="pt-24">
+      <div className="pt-28">
         <EventsSection />
         <AllianceSection />
       </div>
