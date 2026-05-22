@@ -13,7 +13,7 @@ export default function SpojenectviPage() {
         ogTitle={t('seo.spojenectvi.og_title')}
         ogDescription={t('seo.spojenectvi.og_description')}
       />
-      <div className="pt-24">
+      <div className="pt-28 sm:pt-36">
         <AllianceSection />
       </div>
     </>

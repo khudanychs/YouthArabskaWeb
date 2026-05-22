@@ -103,7 +103,7 @@ export default function HeroSection() {
           </div>
 
           {/* Headline — wrapper with overflow:hidden clips the upward slide reveal cleanly */}
-          <h1 className="font-serif leading-[1.18] tracking-tight mb-7 sm:mb-9">
+          <h1 className="font-serif leading-[1.35] tracking-tight mb-7 sm:mb-9">
             <span
               ref={line1Ref}
               className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-slate-900 opacity-0"
