@@ -96,7 +96,7 @@ export default function AllianceSection() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 sm:py-4 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-bold text-sm hover:opacity-90 transition-opacity uppercase tracking-widest"
+                  className="btn-glow-gold w-full py-3 sm:py-4 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-bold text-sm hover:scale-[1.01] transition-all duration-300 uppercase tracking-widest"
                 >
                   {t('alliance.submit')}
                 </button>

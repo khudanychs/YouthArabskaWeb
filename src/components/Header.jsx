@@ -84,15 +84,39 @@ export default function Header() {
           )}
 
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2 focus:outline-none z-50 relative"
+            className="md:hidden relative w-11 h-11 flex items-center justify-center rounded-xl bg-white/[0.04] hover:bg-white/[0.08] active:bg-white/[0.12] border border-white/10 hover:border-white/20 transition-colors duration-200 z-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-dawn-gold/60"
             onClick={() => setNavOpen((v) => !v)}
             aria-expanded={navOpen}
             aria-controls="main-navigation"
             aria-label={t('common.nav.menu')}
           >
-            <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${navOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${navOpen ? 'opacity-0' : ''}`} />
-            <span className={`block h-0.5 w-6 bg-white transition-all duration-300 ${navOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            {/* Container for the three lines — fixed-size so each line
+                is positioned absolutely and morphs around a true center.
+                Result: a perfectly balanced X cross with rounded ends. */}
+            <span className="relative block w-[18px] h-[14px]" aria-hidden="true">
+              {/* Top bar */}
+              <span
+                className={`absolute left-0 right-0 h-[1.75px] rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.18)] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+                  navOpen
+                    ? 'top-1/2 -translate-y-1/2 rotate-45'
+                    : 'top-0'
+                }`}
+              />
+              {/* Middle bar — fades + collapses horizontally on open */}
+              <span
+                className={`absolute left-0 right-0 h-[1.75px] top-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.18)] origin-center transition-all duration-200 ease-out ${
+                  navOpen ? 'opacity-0 scale-x-0' : 'opacity-100 scale-x-100'
+                }`}
+              />
+              {/* Bottom bar */}
+              <span
+                className={`absolute left-0 right-0 h-[1.75px] rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.18)] transition-all duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+                  navOpen
+                    ? 'bottom-1/2 translate-y-1/2 -rotate-45'
+                    : 'bottom-0'
+                }`}
+              />
+            </span>
           </button>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -166,11 +190,8 @@ export default function Header() {
         >
           {/* Brand + close */}
           <div className="flex items-center justify-between gap-4 mb-7 pb-4 border-b border-white/[0.07]">
-            <div className="min-w-0 flex items-center gap-2.5">
-              <span className="relative flex h-1.5 w-1.5 shrink-0">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-dawn-gold opacity-60 animate-ping" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-dawn-gold" />
-              </span>
+            <div className="min-w-0 flex items-center gap-3">
+              <span className="w-4 h-px bg-dawn-gold/60 shrink-0" aria-hidden="true" />
               <div className="font-serif text-lg sm:text-xl font-bold tracking-wide leading-none truncate">
                 <span className="text-white">{t('common.brand_youth')}</span>
                 <span className="text-gradient ml-1.5">{t('common.brand_arabska')}</span>

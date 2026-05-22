@@ -177,7 +177,7 @@ export default function EventDetailPage() {
                   href="https://www.instagram.com/youtharabska/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-semibold hover:opacity-90 transition-opacity whitespace-nowrap text-sm sm:text-base w-full md:w-auto justify-center"
+                  className="btn-glow-gold inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-semibold hover:scale-[1.02] transition-all duration-300 whitespace-nowrap text-sm sm:text-base w-full md:w-auto justify-center"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>

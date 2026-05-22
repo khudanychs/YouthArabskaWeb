@@ -14,14 +14,12 @@ export default function Testimonials() {
     <section className="relative py-16 sm:py-20 px-4 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div ref={ref} className="reveal-enter mb-12 text-center">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <div className="w-8 sm:w-12 h-px bg-dawn-gold/60" />
-            <span className="text-dawn-gold/80 font-semibold tracking-widest uppercase text-xs">
-              {t('testimonials.badge')}
-            </span>
-            <div className="w-8 sm:w-12 h-px bg-dawn-gold/60" />
-          </div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4 px-4">
+          <p className="inline-flex items-center gap-3 mb-5 text-white/55 text-xs sm:text-sm font-medium">
+            <span className="w-6 h-px bg-dawn-gold/70" aria-hidden="true" />
+            <span>{t('testimonials.badge')}</span>
+            <span className="w-6 h-px bg-dawn-gold/70" aria-hidden="true" />
+          </p>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4 px-4 tracking-tight">
             {t('testimonials.title_1')} <span className="text-gradient">{t('testimonials.title_2')}</span>
           </h2>
           <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto px-4">
@@ -49,7 +47,7 @@ export default function Testimonials() {
                 </div>
               </div>
 
-              <div className="absolute -inset-px bg-gradient-to-br from-dawn-gold/10 to-dawn-orange/10 rounded-xl group-hover:from-dawn-gold/20 group-hover:to-dawn-orange/20 opacity-0 group-hover:opacity-100 transition-all duration-300 -z-10" />
+              <div className="absolute -inset-4 bg-gradient-to-br from-dawn-gold/8 to-dawn-orange/8 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 pointer-events-none" />
             </div>
           ))}
         </div>
@@ -62,7 +60,7 @@ export default function Testimonials() {
             href="https://www.instagram.com/youtharabska/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base"
+            className="btn-glow-gold inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-semibold hover:scale-[1.02] transition-all duration-300 text-sm sm:text-base"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>

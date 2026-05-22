@@ -6,7 +6,7 @@
   html {
     scroll-behavior: auto;
     scroll-padding-top: 100px;
-    background-color: #1a1a2e;
+    background-color: #070a17;
     min-height: 100vh;
     overscroll-behavior-y: none;
     overflow-anchor: none;
@@ -14,10 +14,23 @@
 
   body {
     @apply font-sans text-white overflow-x-hidden;
-    background-color: #1a1a2e;
+    background-color: #070a17;
     min-height: 100vh;
     overscroll-behavior-y: none;
     overflow-anchor: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Kill the default gray flash when tapping links/buttons on mobile */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Apply to all interactive elements for crisper mobile feel */
+  a,
+  button,
+  [role='button'] {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   ::selection {
@@ -28,6 +41,9 @@
 }
 
 @layer utilities {
+  /* ─────────────────────────────────────────────────────────────
+     Brand text gradient (static)
+     ───────────────────────────────────────────────────────────── */
   .text-gradient {
     background: linear-gradient(90deg, #FFD700, #FF7E5F, #C779D0);
     -webkit-background-clip: text;
@@ -35,80 +51,214 @@
     background-clip: text;
   }
 
+  .text-gradient-animated {
+    background: linear-gradient(
+      90deg,
+      #FFD700 0%,
+      #FF7E5F 25%,
+      #C779D0 50%,
+      #FF7E5F 75%,
+      #FFD700 100%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: text-gradient-pan 14s linear infinite;
+  }
+
+  @keyframes text-gradient-pan {
+    from { background-position: 0% 50%; }
+    to { background-position: 250% 50%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .text-gradient-animated {
+      animation: none;
+      background-size: 100% 100%;
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Premium glass card
+     - Single, clean inset highlight (no redundant outer 1px line that
+       used to read as a double border)
+     - Cursor-tracking spotlight on devices with a fine pointer
+     - Gentle persistent ambient glow on touch devices (mobile premium)
+     ───────────────────────────────────────────────────────────── */
   .glass-card {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-2xl;
+    position: relative;
+    isolation: isolate;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.018) 100%
+      );
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 24px 48px -28px rgba(0, 0, 0, 0.6);
+    transition:
+      border-color 300ms ease,
+      box-shadow 300ms ease,
+      transform 300ms ease;
   }
 
+  /* Spotlight overlay — picks up CSS vars from SpotlightTracker */
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+      400px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      rgba(255, 215, 0, 0.06),
+      rgba(255, 126, 95, 0.025) 35%,
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 350ms ease;
+    z-index: 1;
+  }
+
+  /* Desktop: spotlight only on hover */
+  @media (hover: hover) and (pointer: fine) {
+    .glass-card:hover::after {
+      opacity: 1;
+    }
+  }
+
+  /* Mobile / touch: gentle persistent ambient glow at the top of the card,
+     so touch users still get a "premium depth" feel even without hover. */
+  @media (hover: none) {
+    .glass-card::after {
+      background: radial-gradient(
+        260px circle at 50% 0%,
+        rgba(255, 215, 0, 0.045),
+        transparent 65%
+      );
+      opacity: 1;
+    }
+  }
+
+  /* Highlighted variant — single 1px gold border, no doubled ring */
   .glass-card-highlight {
-    @apply bg-white/15 backdrop-blur-md border border-white/30 shadow-lg rounded-2xl;
-    border-color: rgba(255, 215, 0, 0.3);
+    position: relative;
+    isolation: isolate;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 215, 0, 0.06) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+      );
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(255, 215, 0, 0.22);
+    border-radius: 1rem;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 215, 0, 0.08),
+      0 24px 48px -28px rgba(0, 0, 0, 0.6);
   }
 
+  /* ─────────────────────────────────────────────────────────────
+     Tap-press feedback for interactive cards (mobile-first)
+     ───────────────────────────────────────────────────────────── */
+  .tap-press {
+    transition: transform 200ms ease, border-color 200ms ease;
+  }
+  .tap-press:active {
+    transform: scale(0.985);
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Premium gold hairline divider
+     ───────────────────────────────────────────────────────────── */
+  .premium-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 215, 0, 0.45) 50%,
+      transparent 100%
+    );
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Primary CTA — persistent gold glow + sheen sweep on hover
+     ───────────────────────────────────────────────────────────── */
+  .btn-glow-gold {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow:
+      0 12px 28px -10px rgba(255, 215, 0, 0.45),
+      0 4px 14px -6px rgba(255, 126, 95, 0.35);
+    transition: box-shadow 300ms ease, transform 300ms ease;
+  }
+  .btn-glow-gold:hover {
+    box-shadow:
+      0 16px 36px -10px rgba(255, 215, 0, 0.6),
+      0 6px 18px -6px rgba(255, 126, 95, 0.45);
+  }
+  .btn-glow-gold:active {
+    transform: scale(0.98);
+  }
+
+  .btn-glow-gold::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      120deg,
+      transparent 25%,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 75%
+    );
+    transform: translateX(-130%);
+    transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+  .btn-glow-gold:hover::before {
+    transform: translateX(130%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-glow-gold::before { display: none; }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Editorial card index (PhilosophySection 01 / 02 / 03)
+     Rendered as a small monospaced tag — feels like print, not stamp.
+     ───────────────────────────────────────────────────────────── */
+  .card-index {
+    font-family: 'Playfair Display', serif;
+    font-feature-settings: 'lnum' 1, 'tnum' 1;
+    color: rgba(255, 215, 0, 0.55);
+    letter-spacing: 0.01em;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Reveal-on-scroll primitives
+     ───────────────────────────────────────────────────────────── */
   .reveal-enter {
     visibility: hidden;
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(24px);
   }
-
   .reveal-visible {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .kinetic-gradient-shift {
-    background:
-      radial-gradient(circle at 20% 20%, rgba(104, 165, 255, 0.22), transparent 40%),
-      radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.1), transparent 45%),
-      linear-gradient(135deg, #1a0533 0%, #0d1b3e 55%, #1a1a2e 100%);
-    animation: kineticGradientPan 18s ease-in-out infinite alternate;
-    transform: translateZ(0);
-    will-change: transform;
-  }
-
-  .kinetic-vignette {
-    background: radial-gradient(circle at 50% 120%, rgba(26, 26, 46, 0.75), transparent 55%);
-  }
-
-  .kinetic-css-particle {
-    position: absolute;
-    left: var(--particle-x);
-    bottom: -18vh;
-    width: var(--particle-size);
-    height: var(--particle-size);
-    border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.14);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.22);
-    opacity: 0;
-    transform: translate3d(-50%, 0, 0);
-    will-change: transform, opacity;
-    animation: kineticFloat var(--particle-duration) linear var(--particle-delay) infinite;
-  }
-}
-
-@keyframes kineticGradientPan {
-  from {
-    transform: scale(1.05) translate3d(-1%, -1%, 0);
-  }
-
-  to {
-    transform: scale(1.1) translate3d(1.2%, 1.4%, 0);
-  }
-}
-
-@keyframes kineticFloat {
-  0% {
-    opacity: 0;
-    transform: translate3d(-50%, 0, 0) scale(0.85);
-  }
-
-  20% {
-    opacity: 0.35;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate3d(-50%, -135vh, 0) scale(1.15);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   }
 }

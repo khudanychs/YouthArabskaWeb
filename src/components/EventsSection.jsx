@@ -28,7 +28,7 @@ function EventCard({ event, index }) {
     <article 
       ref={ref} 
       onClick={handleClick}
-      className="glass-card p-6 sm:p-8 group hover:border-dawn-gold/40 transition-all duration-500 reveal-enter cursor-pointer"
+      className="glass-card tap-press p-6 sm:p-8 group hover:border-dawn-gold/40 transition-all duration-500 reveal-enter cursor-pointer"
     >
       <div className="flex justify-between items-start mb-4 gap-2">
         <span className="text-dawn-gold/80 text-xs font-bold tracking-widest uppercase">
@@ -65,7 +65,12 @@ export default function EventsSection() {
     <section id="akce" className="relative py-16 sm:py-20 md:py-24 px-4">
       <div className="max-w-7xl mx-auto">
         <header ref={headerRef} className="text-center mb-12 sm:mb-16 reveal-enter">
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+          <p className="inline-flex items-center gap-3 mb-5 text-white/55 text-xs sm:text-sm font-medium">
+            <span className="w-6 h-px bg-dawn-gold/70" aria-hidden="true" />
+            <span>{t('events.badge', 'Akce')}</span>
+            <span className="w-6 h-px bg-dawn-gold/70" aria-hidden="true" />
+          </p>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
             {t('events.header_title')}
           </h2>
           <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto px-4">

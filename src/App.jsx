@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import KineticBackground from './components/KineticBackground'
+import PremiumBackground from './components/PremiumBackground'
+import SpotlightTracker from './components/SpotlightTracker'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -25,7 +26,7 @@ function NotFound() {
     <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center">
       <h1 className="font-serif text-5xl md:text-7xl font-bold text-white mb-4">404</h1>
       <p className="text-white/60 text-lg mb-8">Stránka nebyla nalezena</p>
-      <Link to="/" className="px-6 py-3 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-bold hover:opacity-90 transition-opacity">
+      <Link to="/" className="btn-glow-gold px-6 py-3 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-bold hover:scale-[1.02] transition-all duration-300">
         Zpět na hlavní stránku
       </Link>
     </div>
@@ -36,7 +37,8 @@ export default function App() {
   return (
     <BrowserRouter basename="/YouthArabskaWeb">
       <ScrollToTop />
-      <KineticBackground />
+      <PremiumBackground />
+      <SpotlightTracker />
       <div className="relative z-10">
         <Header />
         <main>
