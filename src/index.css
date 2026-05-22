@@ -6,26 +6,25 @@
   html {
     scroll-behavior: auto;
     scroll-padding-top: 100px;
-    background-color: #0c1428;
+    background-color: #ffffff;
     min-height: 100vh;
     overscroll-behavior-y: none;
     overflow-anchor: none;
   }
 
   body {
-    @apply font-sans text-white overflow-x-hidden;
-    background-color: #0c1428;
+    @apply font-sans overflow-x-hidden;
+    background-color: #ffffff;
+    color: #0f172a;
     min-height: 100vh;
     overscroll-behavior-y: none;
     overflow-anchor: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    /* Kill the default gray flash when tapping links/buttons on mobile */
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Apply to all interactive elements for crisper mobile feel */
   a,
   button,
   [role='button'] {
@@ -41,9 +40,6 @@
 }
 
 @layer utilities {
-  /* ─────────────────────────────────────────────────────────────
-     Brand text gradient (static)
-     ───────────────────────────────────────────────────────────── */
   .text-gradient {
     background: linear-gradient(90deg, #FFD700, #FF7E5F, #C779D0);
     -webkit-background-clip: text;
@@ -80,35 +76,26 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     Premium glass card
-     - Single, clean inset highlight (no redundant outer 1px line that
-       used to read as a double border)
-     - Cursor-tracking spotlight on devices with a fine pointer
-     - Gentle persistent ambient glow on touch devices (mobile premium)
+     Light glass card — white translucent on white background
      ───────────────────────────────────────────────────────────── */
   .glass-card {
     position: relative;
     isolation: isolate;
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.07) 0%,
-        rgba(255, 255, 255, 0.028) 100%
-      );
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(0, 0, 0, 0.07);
     border-radius: 1rem;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.07),
-      0 24px 48px -28px rgba(0, 0, 0, 0.5);
+      0 1px 3px rgba(0, 0, 0, 0.04),
+      0 8px 32px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
     transition:
       border-color 300ms ease,
       box-shadow 300ms ease,
       transform 300ms ease;
   }
 
-  /* Spotlight overlay — picks up CSS vars from SpotlightTracker */
   .glass-card::after {
     content: '';
     position: absolute;
@@ -117,8 +104,8 @@
     pointer-events: none;
     background: radial-gradient(
       400px circle at var(--spot-x, 50%) var(--spot-y, 50%),
-      rgba(255, 215, 0, 0.06),
-      rgba(255, 126, 95, 0.025) 35%,
+      rgba(255, 215, 0, 0.05),
+      rgba(255, 126, 95, 0.02) 35%,
       transparent 60%
     );
     opacity: 0;
@@ -126,20 +113,24 @@
     z-index: 1;
   }
 
-  /* Desktop: spotlight only on hover */
   @media (hover: hover) and (pointer: fine) {
+    .glass-card:hover {
+      border-color: rgba(0, 0, 0, 0.10);
+      box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.06),
+        0 16px 48px rgba(0, 0, 0, 0.09),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    }
     .glass-card:hover::after {
       opacity: 1;
     }
   }
 
-  /* Mobile / touch: gentle persistent ambient glow at the top of the card,
-     so touch users still get a "premium depth" feel even without hover. */
   @media (hover: none) {
     .glass-card::after {
       background: radial-gradient(
         260px circle at 50% 0%,
-        rgba(255, 215, 0, 0.045),
+        rgba(255, 215, 0, 0.04),
         transparent 65%
       );
       opacity: 1;
@@ -150,23 +141,19 @@
   .glass-card-highlight {
     position: relative;
     isolation: isolate;
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255, 215, 0, 0.09) 0%,
-        rgba(255, 255, 255, 0.03) 100%
-      );
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
-    border: 1px solid rgba(255, 215, 0, 0.28);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 215, 0, 0.35);
     border-radius: 1rem;
     box-shadow:
-      inset 0 1px 0 rgba(255, 215, 0, 0.1),
-      0 24px 48px -28px rgba(0, 0, 0, 0.5);
+      0 1px 3px rgba(0, 0, 0, 0.04),
+      0 8px 32px rgba(0, 0, 0, 0.06),
+      0 0 0 3px rgba(255, 215, 0, 0.06);
   }
 
   /* ─────────────────────────────────────────────────────────────
-     Tap-press feedback for interactive cards (mobile-first)
+     Tap-press feedback for interactive cards
      ───────────────────────────────────────────────────────────── */
   .tap-press {
     transition: transform 200ms ease, border-color 200ms ease;
@@ -190,7 +177,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     Primary CTA — persistent gold glow + sheen sweep on hover
+     Primary CTA — gold glow + sheen sweep on hover
      ───────────────────────────────────────────────────────────── */
   .btn-glow-gold {
     position: relative;
@@ -235,8 +222,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     Editorial card index (PhilosophySection 01 / 02 / 03)
-     Rendered as a small monospaced tag — feels like print, not stamp.
+     Editorial card index
      ───────────────────────────────────────────────────────────── */
   .card-index {
     font-family: 'Playfair Display', serif;
@@ -246,7 +232,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     Reveal-on-scroll primitives (legacy — kept for non-GSAP pages)
+     Reveal-on-scroll primitives
      ───────────────────────────────────────────────────────────── */
   .reveal-enter {
     visibility: hidden;
@@ -263,7 +249,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     Moving border card (for MovingBorderCard.jsx)
+     Moving border card
      ───────────────────────────────────────────────────────────── */
   @keyframes moving-border-spin {
     from { transform: rotate(0deg); }
@@ -291,7 +277,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     SplitType line wrapping for clip-up reveals
+     SplitType line wrapping
      ───────────────────────────────────────────────────────────── */
   .split-line-wrap {
     overflow: hidden;
@@ -299,7 +285,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     Full-page cursor spotlight (set by SpotlightTracker on documentElement)
+     Full-page cursor spotlight (light version)
      ───────────────────────────────────────────────────────────── */
   .page-spotlight {
     position: fixed;
@@ -308,21 +294,21 @@
     z-index: 1;
     background: radial-gradient(
       600px circle at var(--cursor-x, -9999px) var(--cursor-y, -9999px),
-      rgba(255, 215, 0, 0.04),
-      rgba(199, 121, 208, 0.02) 35%,
+      rgba(255, 215, 0, 0.055),
+      rgba(199, 121, 208, 0.025) 35%,
       transparent 60%
     );
   }
 
   /* ─────────────────────────────────────────────────────────────
-     Editorial decorative number (watermark style)
+     Editorial decorative number (watermark style, lighter)
      ───────────────────────────────────────────────────────────── */
   .editorial-number {
     font-family: 'Playfair Display', serif;
     font-weight: 800;
     line-height: 0.85;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 215, 0, 0.07);
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.04);
     user-select: none;
     pointer-events: none;
   }
@@ -332,5 +318,13 @@
      ───────────────────────────────────────────────────────────── */
   .page-transition-wrapper {
     will-change: opacity, transform;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Light section separator
+     ───────────────────────────────────────────────────────────── */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06) 50%, transparent);
   }
 }
