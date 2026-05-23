@@ -106,13 +106,13 @@ export default function HeroSection() {
           <h1 className="font-serif leading-[1.35] tracking-tight mb-7 sm:mb-9">
             <span
               ref={line1Ref}
-              className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-slate-900 opacity-0"
+              className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-slate-900 opacity-0 mb-4 sm:mb-5 lg:mb-6"
             >
               {t('hero.title_1')}
             </span>
             <span
               ref={line2Ref}
-              className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-gradient-animated opacity-0"
+              className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-gradient-animated opacity-0 pb-3"
             >
               {t('hero.title_2')}
             </span>
