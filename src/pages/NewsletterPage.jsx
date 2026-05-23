@@ -138,32 +138,6 @@ export default function NewsletterPage() {
               <NewsletterCard key={nl.id} nl={nl} index={i} />
             ))}
           </div>
-
-          {/* Subscribe CTA */}
-          <motion.div
-            className="mt-14 sm:mt-16 rounded-2xl border border-amber-200/60 bg-gradient-to-br from-amber-50 to-orange-50/40 p-8 sm:p-12 text-center"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 mb-3">
-              Chceš dostávat newsletter?
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base mb-7 max-w-md mx-auto leading-relaxed">
-              Napiš nám e-mail a my tě přidáme na seznam odběratelů. Žádný spam — jen to, co se u nás skutečně děje.
-            </p>
-            <a
-              href="mailto:matous.tlamka.s@gyarab.cz?subject=Chci%20odebírat%20newsletter%20Youth%20Arabská"
-              className="btn-glow-gold inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-semibold text-sm sm:text-base hover:scale-[1.02] transition-all duration-300"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect width="20" height="16" x="2" y="4" rx="2"/>
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-              </svg>
-              Přihlásit k odběru
-            </a>
-          </motion.div>
         </div>
       </section>
     </>
