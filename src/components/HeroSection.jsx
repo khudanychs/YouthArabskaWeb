@@ -153,7 +153,7 @@ export default function HeroSection() {
             </Link>
 
             <a
-              href="mailto:serhii.khudanych.s@gyarab.cz"
+              href="mailto:adam.hruska.s@gyarab.cz"
               className="px-7 py-3.5 sm:px-9 sm:py-[1.125rem] lg:px-11 lg:py-5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:border-slate-300 transition-all duration-300 font-semibold text-sm sm:text-base lg:text-lg text-center backdrop-blur-sm opacity-0"
             >
               {t('hero.cta_secondary', 'Napište nám e-mail')}
