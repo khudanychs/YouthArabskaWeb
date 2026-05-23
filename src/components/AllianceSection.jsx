@@ -28,6 +28,19 @@ export default function AllianceSection() {
 
   function handleSubmit(e) {
     e.preventDefault()
+    const data = new FormData(e.target)
+    const name = data.get('name') || ''
+    const email = data.get('email') || ''
+    const vision = data.get('vision') || ''
+
+    const subject = encodeURIComponent(`Žádost o připojení – ${name}`)
+    const body = encodeURIComponent(
+      `Jméno: ${name}\nE-mail: ${email}\n\nZpráva:\n${vision}`
+    )
+
+    const link = document.createElement('a')
+    link.href = `mailto:adam.hruska.s@gyarab.cz?cc=lujza.paleckova.s@gyarab.cz&subject=${subject}&body=${body}`
+    link.click()
     setSubmitted(true)
   }
 
@@ -93,8 +106,11 @@ export default function AllianceSection() {
                   </div>
                   <div>
                     <span className="text-white/55 text-[10px] uppercase tracking-wider font-semibold block mb-1">{t('alliance.labels.communication')}</span>
-                    <a href="mailto:matous.tlamka.s@gyarab.cz" className="text-dawn-gold hover:text-dawn-orange transition-colors break-all">
-                      matous.tlamka.s@gyarab.cz
+                    <a href="mailto:adam.hruska.s@gyarab.cz" className="text-dawn-gold hover:text-dawn-orange transition-colors break-all block text-sm leading-snug">
+                      adam.hruska.s@gyarab.cz
+                    </a>
+                    <a href="mailto:lujza.paleckova.s@gyarab.cz" className="text-dawn-gold/70 hover:text-dawn-orange transition-colors break-all block text-sm leading-snug mt-1">
+                      lujza.paleckova.s@gyarab.cz
                     </a>
                   </div>
                 </div>

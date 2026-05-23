@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react'
 
-const CONTACT_EMAIL = 'serhii.khudanych.s@gyarab.cz'
+const CONTACT_EMAIL = 'adam.hruska.s@gyarab.cz'
 
 export default function Header() {
   const { t } = useTranslation()
