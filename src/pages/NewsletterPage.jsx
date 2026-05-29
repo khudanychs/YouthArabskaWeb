@@ -36,7 +36,7 @@ function NewsletterCard({ nl, index }) {
       target="_blank"
       rel="noopener noreferrer"
       className="group relative flex flex-col justify-between rounded-2xl border border-white/[0.08] hover:border-dawn-gold/25 overflow-hidden transition-all duration-500"
-      style={{ background: 'linear-gradient(160deg, #0d1526 0%, #070a17 100%)', minHeight: '300px' }}
+      style={{ background: 'linear-gradient(160deg, #0d1526 0%, #070a17 100%)', minHeight: 'clamp(250px, 40vw, 300px)' }}
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -54,7 +54,7 @@ function NewsletterCard({ nl, index }) {
       <div
         className="absolute -bottom-3 -right-2 font-serif font-bold leading-none select-none pointer-events-none"
         style={{
-          fontSize: 'clamp(5rem, 10vw, 8rem)',
+          fontSize: 'clamp(3rem, 8vw, 8rem)',
           color: 'transparent',
           WebkitTextStroke: '1px rgba(255,215,0,0.07)',
         }}
@@ -63,7 +63,7 @@ function NewsletterCard({ nl, index }) {
         {nl.issue}
       </div>
 
-      <div className="relative z-10 p-6 sm:p-8 flex flex-col justify-between h-full" style={{ minHeight: '300px' }}>
+      <div className="relative z-10 p-6 sm:p-8 flex flex-col justify-between h-full" style={{ minHeight: 'clamp(250px, 40vw, 300px)' }}>
         <div>
           {/* Issue + period */}
           <div className="flex items-center gap-3 mb-6">

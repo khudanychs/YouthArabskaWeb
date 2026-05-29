@@ -92,7 +92,7 @@ export default function Footer() {
             </div>
 
             {/* Right — two-column people grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-6">
 
               {/* Organizers */}
               <div>
@@ -120,7 +120,7 @@ export default function Footer() {
         </div>
 
         {/* ── Links grid ── */}
-        <div className="py-10 sm:py-12 border-b border-white/[0.05] grid grid-cols-2 sm:grid-cols-4 gap-8">
+        <div className="py-10 sm:py-12 border-b border-white/[0.05] grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8">
 
           <div>
             <h4 className="text-white/30 text-[10px] font-semibold tracking-[0.3em] uppercase mb-5">Rozcestník</h4>

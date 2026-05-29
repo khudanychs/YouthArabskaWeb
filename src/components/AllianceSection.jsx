@@ -66,7 +66,7 @@ export default function AllianceSection() {
             {/* Decorative editorial number */}
             <div
               className="editorial-number absolute -top-8 right-4 text-[12rem] sm:text-[16rem] pointer-events-none select-none"
-              style={{ fontSize: 'clamp(8rem, 18vw, 16rem)' }}
+              style={{ fontSize: 'clamp(4rem, 14vw, 16rem)' }}
               aria-hidden="true"
             >
               01
