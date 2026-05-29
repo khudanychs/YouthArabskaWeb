@@ -106,13 +106,13 @@ export default function HeroSection() {
           <h1 className="font-serif leading-[1.35] tracking-tight mb-7 sm:mb-9">
             <span
               ref={line1Ref}
-              className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-slate-900 opacity-0 mb-4 sm:mb-5 lg:mb-6"
+              className="block text-[2rem] min-[400px]:text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-slate-900 opacity-0 mb-4 sm:mb-5 lg:mb-6"
             >
               {t('hero.title_1')}
             </span>
             <span
               ref={line2Ref}
-              className="block text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-gradient-animated opacity-0 pb-3"
+              className="block text-[2rem] min-[400px]:text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-gradient-animated opacity-0 pb-3"
             >
               {t('hero.title_2')}
             </span>
@@ -161,7 +161,7 @@ export default function HeroSection() {
           </div>
 
           {/* Stats bar */}
-          <div ref={statsRef} className="flex items-center gap-6 sm:gap-10 lg:gap-14 flex-wrap">
+          <div ref={statsRef} className="flex items-center gap-4 sm:gap-10 lg:gap-14 flex-wrap">
             {stats.map((stat, i) => (
               <div key={stat.label} className="flex flex-col gap-1 opacity-0">
                 <span className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900">

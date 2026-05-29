@@ -58,7 +58,7 @@ function SectionCard({ section, index }) {
             </div>
             <span
               className="editorial-number text-4xl sm:text-5xl"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)' }}
+              style={{ fontSize: 'clamp(1.5rem, 4vw, 3.5rem)' }}
               aria-hidden="true"
             >
               {section.index}

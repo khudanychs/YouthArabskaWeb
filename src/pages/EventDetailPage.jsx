@@ -234,7 +234,7 @@ export default function EventDetailPage() {
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); setActiveImageIndex((prev) => (prev - 1 + event.images.length) % event.images.length) }}
-            className="absolute left-2 sm:left-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+            className="absolute left-3 sm:left-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
             aria-label={t('event_detail.prev_photo')}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -256,7 +256,7 @@ export default function EventDetailPage() {
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); setActiveImageIndex((prev) => (prev + 1) % event.images.length) }}
-            className="absolute right-2 sm:right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+            className="absolute right-3 sm:right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
             aria-label={t('event_detail.next_photo')}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

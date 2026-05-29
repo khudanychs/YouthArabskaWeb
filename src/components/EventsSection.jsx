@@ -20,7 +20,7 @@ function FeaturedEventCard({ event }) {
     <motion.article
       onClick={() => navigate(`/akce/${event.id}`)}
       className="relative overflow-hidden rounded-2xl cursor-pointer group"
-      style={{ minHeight: '380px' }}
+      style={{ minHeight: 'clamp(300px, 52vw, 380px)' }}
       whileHover={{ scale: 1.008 }}
       transition={{ type: 'spring', stiffness: 250, damping: 28 }}
     >
@@ -52,7 +52,7 @@ function FeaturedEventCard({ event }) {
       <div className="absolute inset-0 rounded-2xl border border-white/10 group-hover:border-dawn-gold/30 transition-colors duration-500" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-end h-full p-7 sm:p-9 lg:p-10" style={{ minHeight: '380px' }}>
+      <div className="relative z-10 flex flex-col justify-end h-full p-7 sm:p-9 lg:p-10" style={{ minHeight: 'clamp(300px, 52vw, 380px)' }}>
         <div className="flex items-center gap-3 mb-3">
           <span className="text-dawn-gold text-xs font-bold tracking-widest uppercase">
             {t(`events.items.${event.key}.date`)}
@@ -100,7 +100,7 @@ function SecondaryEventCard({ event }) {
     <motion.article
       onClick={() => navigate(`/akce/${event.id}`)}
       className="relative tap-press flex flex-col justify-between group cursor-pointer rounded-2xl border border-white/[0.08] hover:border-dawn-gold/25 overflow-hidden transition-all duration-500"
-      style={{ minHeight: '320px', background: 'linear-gradient(160deg, #0d1526 0%, #070a17 100%)' }}
+      style={{ minHeight: 'clamp(240px, 42vw, 320px)', background: 'linear-gradient(160deg, #0d1526 0%, #070a17 100%)' }}
       whileHover={{ y: -4, scale: 1.008 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
     >
@@ -112,7 +112,7 @@ function SecondaryEventCard({ event }) {
       {/* Glass border top highlight */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div className="relative z-10 p-6 sm:p-8 flex flex-col justify-between h-full" style={{ minHeight: '320px' }}>
+      <div className="relative z-10 p-6 sm:p-8 flex flex-col justify-between h-full" style={{ minHeight: 'clamp(240px, 42vw, 320px)' }}>
         <div>
           <div className="mb-5">
             <div className="text-dawn-gold/80 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">

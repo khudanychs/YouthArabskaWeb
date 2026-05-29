@@ -133,7 +133,7 @@ export default function PhotoGrid() {
                   transition={{ duration: 0.35 }}
                 >
                   <motion.p
-                    className="text-white/95 text-[11px] sm:text-sm font-light leading-snug drop-shadow-md"
+                    className="text-white/95 text-xs sm:text-sm font-light leading-snug drop-shadow-md"
                     initial={{ y: 12, opacity: 0 }}
                     whileHover={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.35, delay: 0.05 }}
