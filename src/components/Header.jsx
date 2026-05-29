@@ -102,7 +102,7 @@ export default function Header() {
 
               {/* Mobile hamburger */}
               <motion.button
-                className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 z-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-dawn-gold/60 transition-colors"
+                className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-slate-300 shadow-sm hover:bg-slate-50 z-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-dawn-gold/60 transition-colors"
                 onClick={() => setNavOpen((v) => !v)}
                 aria-expanded={navOpen}
                 aria-controls="main-navigation"
@@ -111,7 +111,7 @@ export default function Header() {
               >
                 <span className="relative block w-[18px] h-[14px]" aria-hidden="true">
                   <motion.span
-                    className="absolute left-0 right-0 h-[1.75px] rounded-full bg-slate-700"
+                    className="absolute left-0 right-0 h-[2px] rounded-full bg-slate-800"
                     animate={navOpen ? { top: '50%', y: '-50%', rotate: 45 } : { top: 0, y: 0, rotate: 0 }}
                     transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
                     style={{ position: 'absolute' }}
@@ -122,7 +122,7 @@ export default function Header() {
                     transition={{ duration: 0.2 }}
                   />
                   <motion.span
-                    className="absolute left-0 right-0 h-[1.75px] rounded-full bg-slate-700"
+                    className="absolute left-0 right-0 h-[2px] rounded-full bg-slate-800"
                     animate={navOpen ? { bottom: '50%', y: '50%', rotate: -45 } : { bottom: 0, y: 0, rotate: 0 }}
                     transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
                     style={{ position: 'absolute' }}

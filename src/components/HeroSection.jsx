@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import BackgroundBeams from './ui/BackgroundBeams'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -23,7 +22,6 @@ export default function HeroSection() {
   const descRef = useRef(null)
   const ctaRef = useRef(null)
   const statsRef = useRef(null)
-  const scrollIndicatorRef = useRef(null)
 
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
   const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '22%'])
@@ -68,12 +66,6 @@ export default function HeroSection() {
         { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' },
         '-=0.35'
       )
-      tl.fromTo(
-        scrollIndicatorRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5, ease: 'power2.out' },
-        '-=0.2'
-      )
     }, sectionRef)
 
     return () => ctx.revert()
@@ -84,9 +76,6 @@ export default function HeroSection() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-start px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40 overflow-hidden bg-transparent"
     >
-      {/* Background beams */}
-      <BackgroundBeams className="z-0 opacity-30" />
-
       {/* Parallax content wrapper */}
       <motion.div
         className="max-w-7xl mx-auto w-full relative z-20"
@@ -183,28 +172,6 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Scroll indicator */}
-      <div
-        ref={scrollIndicatorRef}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-0 animate-scroll-bounce"
-        aria-hidden="true"
-      >
-        <span className="text-slate-400 text-[10px] tracking-[0.3em] uppercase">Scroll</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="text-slate-400"
-        >
-          <path d="m6 9 6 6 6-6" />
-        </svg>
-      </div>
     </section>
   )
 }

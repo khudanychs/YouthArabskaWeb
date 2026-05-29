@@ -2,6 +2,7 @@ export default function PremiumBackground() {
   return (
     <div
       className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+      style={{ contain: 'strict' }}
       aria-hidden="true"
     >
       {/* White base */}
