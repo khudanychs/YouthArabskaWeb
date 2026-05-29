@@ -7,12 +7,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const stats = [
-  { value: '2', label: 'Uskutečněné akce' },
-  { value: '200+', label: 'Spokojených účastníků' },
-  { value: '2025', label: 'Rok vzniku' },
-]
-
 export default function HeroSection() {
   const { t } = useTranslation()
   const sectionRef = useRef(null)
@@ -21,7 +15,6 @@ export default function HeroSection() {
   const line2Ref = useRef(null)
   const descRef = useRef(null)
   const ctaRef = useRef(null)
-  const statsRef = useRef(null)
 
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
   const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '22%'])
@@ -60,12 +53,6 @@ export default function HeroSection() {
         { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out' },
         '-=0.4'
       )
-      tl.fromTo(
-        statsRef.current.children,
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' },
-        '-=0.35'
-      )
     }, sectionRef)
 
     return () => ctx.revert()
@@ -91,7 +78,7 @@ export default function HeroSection() {
             </p>
           </div>
 
-          {/* Headline — wrapper with overflow:hidden clips the upward slide reveal cleanly */}
+          {/* Headline */}
           <h1 className="font-serif leading-[1.35] tracking-tight mb-7 sm:mb-9">
             <span
               ref={line1Ref}
@@ -116,7 +103,7 @@ export default function HeroSection() {
           </p>
 
           {/* CTAs */}
-          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 mb-14 sm:mb-20 lg:mb-20">
+          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5">
             <Link
               to="/akce/horizon-2025"
               className="btn-glow-gold group relative px-7 py-3.5 sm:px-9 sm:py-[1.125rem] lg:px-11 lg:py-5 rounded-xl bg-gradient-to-r from-dawn-gold to-dawn-orange text-black font-bold text-sm sm:text-base lg:text-lg hover:scale-[1.02] transition-all duration-300 text-center inline-flex items-center justify-center gap-2.5 opacity-0"
@@ -147,27 +134,6 @@ export default function HeroSection() {
             >
               {t('hero.cta_secondary', 'Napište nám e-mail')}
             </a>
-          </div>
-
-          {/* Stats bar */}
-          <div ref={statsRef} className="flex items-center gap-4 sm:gap-10 lg:gap-14 flex-wrap">
-            {stats.map((stat, i) => (
-              <div key={stat.label} className="flex flex-col gap-1 opacity-0">
-                <span className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900">
-                  {stat.value}
-                </span>
-                <span className="text-slate-500 text-xs sm:text-sm tracking-wide">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-
-            {/* Divider + premium line */}
-            <div className="hidden sm:block h-10 w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent ml-2" />
-            <div className="hidden sm:flex items-center gap-2 text-slate-400 text-xs tracking-widest uppercase">
-              <span className="w-5 h-px bg-dawn-gold/40" />
-              <span>Gymnázium, Praha 6, Arabská 14</span>
-            </div>
           </div>
         </div>
       </motion.div>

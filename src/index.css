@@ -10,7 +10,7 @@
     min-height: 100vh;
     overscroll-behavior-y: none;
     overflow-anchor: none;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body {
