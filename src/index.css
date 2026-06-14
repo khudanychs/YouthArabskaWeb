@@ -10,11 +10,10 @@
     min-height: 100vh;
     overscroll-behavior-y: none;
     overflow-anchor: none;
-    overflow-x: clip;
   }
 
   body {
-    @apply font-sans overflow-x-hidden;
+    @apply font-sans;
     background-color: #ffffff;
     color: #0f172a;
     min-height: 100vh;
